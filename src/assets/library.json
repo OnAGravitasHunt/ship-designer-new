@@ -1,0 +1,68 @@
+{
+  "platforms": [
+    {
+        "name": "2310s 500-1000kt Frigate 'Kepler' 'Comet'",
+        "techTier": 2,
+        "grade": 1,
+        "overheadWeight": 0,
+        "slotWeight": 100,
+        "slotsMin": 5,
+        "slotsMax": 10,
+        "buildTime": 15,
+        "capabilities": ["Recreation", "Basic Sickbay", "Navigation Sensors"]
+    },
+    {
+        "name": "2310s 1000-1400kt Cruiser",
+        "techTier": 2,
+        "grade": 2,
+        "overheadWeight": 0,
+        "slotWeight": 100,
+        "slotsMin": 10,
+        "slotsMax": 14,
+        "buildTime": 25,
+        "capabilities": ["Recreation", "Basic Sickbay", "Navigation Sensors", "Command Facilities"]
+    }
+  ],
+  "parts": [
+    {
+      "name": "Economy Hull",
+      "type": "Hullform",
+      "slot": "Infrastructure",
+      "stats": {
+        "hull": 0,
+        "hullGrade": 1,
+        "techBonus": 0.3
+      },
+      "permittedGrades": [
+        true,
+        true,
+        true
+      ],
+      "cost": {
+        "oGrade": 2,
+        "enGrade": 2
+      }
+    },
+    {
+      "name": "Reinforced Hull",
+      "type": "Hullform",
+      "slot": "Infrastructure",
+      "stats": {
+        "hull": 1,
+        "hullGrade": 1,
+        "techBonus": 0.3
+      },
+      "permittedGrades": [
+        true,
+        true,
+        true
+      ],
+      "cost": {
+        "srGrade": 5,
+        "oGrade": 3,
+        "enGrade": 5,
+        "tGrade": 2
+      }
+    }
+  ]
+}
