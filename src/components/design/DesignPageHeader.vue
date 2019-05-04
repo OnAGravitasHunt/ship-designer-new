@@ -4,14 +4,19 @@
       &lang;
     </div>
     <div class="header-item">
-      Comet Study 1
+      {{className}}
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'DesignPageHeader'
+  name: 'DesignPageHeader',
+  computed: {
+    className () {
+      return this.$store.state.design.className
+    }
+  }
 }
 </script>
 
@@ -25,6 +30,6 @@ export default {
 }
 .header-item {
   display: inline-block;
-  padding: 0 10px;
+  padding: 0 12px;
 }
 </style>
