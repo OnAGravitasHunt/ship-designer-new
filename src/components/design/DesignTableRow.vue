@@ -1,7 +1,7 @@
 <template>
   <div class="design-row" :style="gridColumns">
     <div class="design-row-cell">{{slotType}}</div>
-    <div class="design-row-cell">{{moduleName}}</div>
+    <div class="design-row-cell" @click="printPermittedModules">{{moduleName}}</div>
     <div class="design-row-cell double-right">{{slot.techTier}}</div>
     <div class="design-row-cell">{{component.type}}</div>
     <div class="design-row-cell">{{component.slot}}</div>
@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  name: 'DesignTableHeader',
+  name: 'DesignTableRow',
   props: {
     slotType: String,
     slotIndex: Number
@@ -35,11 +35,16 @@ export default {
         return this.slot.module
       },
       set (val) {
-        // commit
+        this.$store.commit('setSlotProperties', {
+          index: this.slotIndex,
+          properties: { module: val }
+        })
       }
     },
-    slot () {
-      return this.$store.state.design.slots[this.slotIndex]
+    slot: {
+      get () {
+        return this.$store.state.design.slots[this.slotIndex]
+      }
     },
     stats () {
       return this.component.stats
@@ -49,6 +54,14 @@ export default {
     },
     component () {
       return this.$store.state.library.parts.filter(part => part.name === this.moduleName)[0]
+    },
+    // data items
+    permittedModules () {
+      let modules = this.$store.state.library.parts
+      if (this.slotType && this.slotType !== 'Any') {
+        modules = modules.filter(module => module.type === this.slotType)
+      }
+      return modules
     },
     // styles
     gridColumns () {

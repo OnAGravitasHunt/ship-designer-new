@@ -29,6 +29,10 @@ export default {
   mutations: {
     setClassName (state, name) {
       state.className = name
+    },
+    // set slot properties; properties object must contain 'module' or 'techTier'
+    setSlotProperties (state, { index, properties }) {
+      state.slots.splice(index, 1, { ...state.slots[index], ...properties })
     }
   }
 }
