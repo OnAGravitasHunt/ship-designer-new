@@ -3,7 +3,7 @@ export default {
     designTable: {
       columnWidths: [
         { heading: 'slotType', width: '100px' },
-        { heading: 'name', width: 'minmax(320px, 1fr)' },
+        { heading: 'name', width: 'minmax(350px, 1fr)' },
         { heading: 'techTier', width: '70px' },
         { heading: 'moduleType', width: '100px' },
         { heading: 'moduleSlot', width: '100px' },

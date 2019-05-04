@@ -63,9 +63,8 @@ export default {
   z-index: 4;
   display: grid;
   grid-template-rows: 32px;
-  overflow: hidden;
   width: 100vw;
-  min-width: 1350px;
+  min-width: 1390px;
   border-bottom: 1px solid black;
 }
 .design-header-cell {

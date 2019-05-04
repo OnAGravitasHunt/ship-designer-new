@@ -1,7 +1,13 @@
 <template>
-  <div class="design-row" :style="gridColumns">
+  <div class="design-row" :class="{ 'high-z': highZ }" :style="gridColumns">
     <div class="design-row-cell">{{slotType}}</div>
-    <div class="design-row-cell">{{moduleName}}</div>
+    <div
+      class="design-row-cell"
+      @mouseenter="highZ = true"
+      @mouseleave="highZ = false"
+    >
+      <v-select v-model="moduleName" :options="[...permittedModules.map(m => m.name)]"/>
+    </div>
     <div class="design-row-cell double-right">{{slot.techTier}}</div>
     <div class="design-row-cell">{{component.type}}</div>
     <div class="design-row-cell">{{component.slot}}</div>
@@ -28,6 +34,11 @@ export default {
   props: {
     slotType: String,
     slotIndex: Number
+  },
+  data () {
+    return {
+      highZ: false
+    }
   },
   computed: {
     moduleName: {
@@ -78,22 +89,27 @@ export default {
   z-index: 4;
   display: grid;
   grid-template-rows: 32px;
-  overflow: hidden;
   width: 100vw;
-  min-width: 1350px;
+  min-width: 1390px;
+  z-index: 0;
 }
 .design-row-cell {
+  box-sizing: border-box;
   line-height: 30px;
   font-size: 10pt;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
   background-color: inherit;
   text-align: center;
+  z-index: 0;
 }
 .design-row-cell:first-child {
   border-left: 1px solid black;
 }
 .double-right {
   border-right: 3px double black;
+}
+.high-z {
+  z-index: 100;
 }
 </style>

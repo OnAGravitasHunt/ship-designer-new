@@ -34,9 +34,8 @@ export default {
   z-index: 4;
   display: grid;
   grid-template-rows: 32px;
-  overflow: hidden;
   width: 100vw;
-  min-width: 1350px;
+  min-width: 1390px;
 }
 .design-row-cell {
   line-height: 30px;

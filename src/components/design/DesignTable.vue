@@ -1,12 +1,14 @@
 <template>
   <div class="design-table">
     <DesignTableHeader/>
-    <DesignTablePlatformRow/>
-    <DesignTableRow :slotIndex="0" slotType="Hullform"/>
-    <DesignTableRow :slotIndex="1" slotType="Warp Core"/>
-    <DesignTableRow :slotIndex="2" slotType="Warp Nacelles"/>
-    <DesignTableRow :slotIndex="3" slotType="Computer"/>
-    <DesignTableRow :slotIndex="4" slotType="Deflector Dish"/>
+    <div class="design-table-body">
+      <DesignTablePlatformRow/>
+      <DesignTableRow :slotIndex="0" slotType="Hullform"/>
+      <DesignTableRow :slotIndex="1" slotType="Warp Core"/>
+      <DesignTableRow :slotIndex="2" slotType="Warp Nacelles"/>
+      <DesignTableRow :slotIndex="3" slotType="Computer"/>
+      <DesignTableRow :slotIndex="4" slotType="Deflector Dish"/>
+    </div>
   </div>
 </template>
 
@@ -33,5 +35,10 @@ export default {
   display: flex;
   flex-flow: column nowrap;
   overflow-y: hidden;
+}
+.design-table-body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding-bottom: 100px;
 }
 </style>
