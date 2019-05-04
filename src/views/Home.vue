@@ -4,7 +4,7 @@
       <li>Design 1</li>
       <li>Design 2</li>
     </ul>
-    <button type="button">Create new design</button>
+    <button type="button" @click="createNew">Create new design</button>
   </div>
 </template>
 
@@ -13,8 +13,10 @@
 
 export default {
   name: 'home',
-  components: {
-
+  methods: {
+    createNew () {
+      this.$router.push('create')
+    }
   }
 }
 </script>

@@ -16,6 +16,9 @@
     <div class="design-header-cell">+{{stats.pen}}% Pen</div>
     <div class="design-header-cell">{{costs.br}}BR</div>
     <div class="design-header-cell">{{costs.sr}}SR</div>
+    <div class="design-header-cell">{{costs.o}}O</div>
+    <div class="design-header-cell">{{costs.en}}EN</div>
+    <div class="design-header-cell">{{costs.t}}T</div>
   </div>
 </template>
 
@@ -45,6 +48,9 @@ export default {
         en: 3,
         t: 3
       }
+    },
+    gridColumns () {
+      return this.$store.getters.getGridCols
     }
   }
 }
@@ -56,15 +62,20 @@ export default {
   flex: 0 0 32px;
   z-index: 4;
   display: grid;
-  grid-template-columns: 150px 200px 80px 100px 100px repeat(7, 40px) 80px 90px repeat(2, 60px) repeat(3, 40px);
   grid-template-rows: 32px;
   overflow: hidden;
   width: 100vw;
   min-width: 1350px;
+  border-bottom: 1px solid black;
 }
 .design-header-cell {
   line-height: 30px;
+  font-size: 11pt;
   background-color: inherit;
   text-align: center;
+  border-right: 1px solid black;
+}
+.design-header-cell:first-child {
+  border-left: 1px solid black;
 }
 </style>

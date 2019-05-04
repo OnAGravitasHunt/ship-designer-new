@@ -3,7 +3,29 @@ export default {
     className: 'Comet Study 1',
     classGrade: 1, // should be looked up based on platform
     platform: "2310s 500-1000kt Frigate 'Kepler' 'Comet'",
-    slots: {
+    slots: [
+      {
+        module: 'Armored Hull',
+        techTier: 1
+      },
+      {
+        module: 'Small Annihilation Core',
+        techTier: 1
+      },
+      {
+        module: 'Compact High Performance Pattern Nacelles',
+        techTier: 1
+      },
+      {
+        module: 'SMP Core',
+        techTier: 1
+      },
+      {
+        module: 'Response Pattern Deflector',
+        techTier: 1
+      }
+    ],
+    slotsOld: {
       infrastructure: {
         hullform: {
           module: 'Economy Hull',

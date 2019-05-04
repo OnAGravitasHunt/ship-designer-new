@@ -10,6 +10,7 @@
   </div>
 </template>
 
+<style src='vue-select/dist/vue-select.css'></style>
 <style>
 html, body {
   /* height: 100%; */
