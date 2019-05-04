@@ -1,7 +1,9 @@
 <template>
   <div class="design-summary">
     <div class="right-align">Class Name</div>
-    <div class="left-align">{{className}}</div>
+    <div class="left-align">
+      <input type="text" class="class-name-input" v-model="className">
+    </div>
     <div class="right-align">Platform Type</div>
     <div class="left-align">Frigate</div>
   </div>
@@ -11,8 +13,13 @@
 export default {
   name: 'DesignSummary',
   computed: {
-    className () {
-      return this.$store.state.design.className
+    className: {
+      get () {
+        return this.$store.state.design.className
+      },
+      set (val) {
+        this.$store.commit('setClassName', val)
+      }
     }
   }
 }
@@ -36,6 +43,13 @@ export default {
   padding-right: 5px;
 }
 .center-align {
+  text-align: center;
+}
+.class-name-input {
+  margin: 2px 0;
+  border: none;
+  height: 24px;
+  font-size: 12pt;
   text-align: center;
 }
 </style>
