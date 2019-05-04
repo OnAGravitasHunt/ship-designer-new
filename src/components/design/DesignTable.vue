@@ -2,6 +2,10 @@
   <div class="design-table">
     <DesignTableHeader/>
     <DesignTableRow :slotIndex="0" slotType="Hullform"/>
+    <DesignTableRow :slotIndex="1" slotType="Warp Core"/>
+    <DesignTableRow :slotIndex="2" slotType="Warp Nacelles"/>
+    <DesignTableRow :slotIndex="3" slotType="Computer"/>
+    <DesignTableRow :slotIndex="4" slotType="Deflector Dish"/>
   </div>
 </template>
 

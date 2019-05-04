@@ -2,7 +2,7 @@
   <div class="design-row" :style="gridColumns">
     <div class="design-row-cell">{{slotType}}</div>
     <div class="design-row-cell">{{moduleName}}</div>
-    <div class="design-row-cell">{{slot.techTier}}</div>
+    <div class="design-row-cell double-right">{{slot.techTier}}</div>
     <div class="design-row-cell">{{component.type}}</div>
     <div class="design-row-cell">{{component.slot}}</div>
     <div class="design-row-cell">{{stats.c}}</div>
@@ -16,6 +16,9 @@
     <div class="design-row-cell">{{stats.pen}}%</div>
     <div class="design-row-cell">{{costs.br}}</div>
     <div class="design-row-cell">{{costs.sr}}</div>
+    <div class="design-row-cell">{{costs.o}}</div>
+    <div class="design-row-cell">{{costs.en}}</div>
+    <div class="design-row-cell">{{costs.t}}</div>
   </div>
 </template>
 
@@ -68,7 +71,7 @@ export default {
 }
 .design-row-cell {
   line-height: 30px;
-  font-size: 11pt;
+  font-size: 10pt;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
   background-color: inherit;
@@ -76,5 +79,8 @@ export default {
 }
 .design-row-cell:first-child {
   border-left: 1px solid black;
+}
+.double-right {
+  border-right: 3px double black;
 }
 </style>

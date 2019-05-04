@@ -1,8 +1,8 @@
 <template>
-  <div class="design-header">
+  <div class="design-header" :style="gridColumns">
     <div class="design-header-cell">Slot Type</div>
     <div class="design-header-cell">Name</div>
-    <div class="design-header-cell">Tech Tier</div>
+    <div class="design-header-cell double-right">Tech Tier</div>
     <div class="design-header-cell">Module Type</div>
     <div class="design-header-cell">Module Slot</div>
     <div class="design-header-cell">C{{stats.c}}</div>
@@ -77,5 +77,8 @@ export default {
 }
 .design-header-cell:first-child {
   border-left: 1px solid black;
+}
+.double-right {
+  border-right: 3px double black;
 }
 </style>

@@ -9,7 +9,7 @@ export default {
         techTier: 1
       },
       {
-        module: 'Small Annihilation Core',
+        module: 'Small Annihilation Core (FC)',
         techTier: 1
       },
       {
@@ -24,31 +24,7 @@ export default {
         module: 'Response Pattern Deflector',
         techTier: 1
       }
-    ],
-    slotsOld: {
-      infrastructure: {
-        hullform: {
-          module: 'Economy Hull',
-          techTier: 1
-        },
-        warpCore: {
-          module: 'Small Annihilation Core',
-          techTier: 1
-        },
-        warpNacelles: {
-          module: 'Compact High Performance Pattern Nacelles',
-          techTier: 1
-        },
-        computer: {
-          module: 'SMP Core',
-          techTier: 1
-        },
-        deflectorDish: {
-          module: 'Response Pattern Deflector',
-          techTier: 1
-        }
-      }
-    }
+    ]
   },
   mutations: {
     setClassName (state, name) {
