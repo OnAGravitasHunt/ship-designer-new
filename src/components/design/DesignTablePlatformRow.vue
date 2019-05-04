@@ -29,26 +29,22 @@ export default {
 
 <style scoped>
 .design-row {
-  background-color: lightblue;
   flex: 0 0 32px;
-  z-index: 4;
   display: grid;
   grid-template-rows: 32px;
-  width: 100vw;
-  min-width: 1390px;
 }
 .design-row-cell {
   line-height: 30px;
   font-size: 10pt;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
   background-color: inherit;
   text-align: center;
 }
 .design-row-cell:first-child {
-  border-left: 1px solid black;
+  border-left: 1px solid grey;
 }
 .double-right {
-  border-right: 3px double black;
+  border-right: 3px double grey;
 }
 </style>

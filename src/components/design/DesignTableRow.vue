@@ -1,12 +1,17 @@
 <template>
-  <div class="design-row" :class="{ 'high-z': highZ }" :style="gridColumns">
+  <div class="design-row" :class="{ highZ, divider }" :style="gridColumns">
     <div class="design-row-cell">{{slotType}}</div>
     <div
       class="design-row-cell"
+      :class="{ 'high-z': highZ }"
       @mouseenter="highZ = true"
       @mouseleave="highZ = false"
     >
-      <v-select v-model="moduleName" :options="[...permittedModules.map(m => m.name)]"/>
+      <v-select
+        class="module-selector"
+        v-model="moduleName"
+        :options="[...permittedModules.map(m => m.name)]"
+      />
     </div>
     <div class="design-row-cell double-right">{{slot.techTier}}</div>
     <div class="design-row-cell">{{component.type}}</div>
@@ -33,7 +38,8 @@ export default {
   name: 'DesignTableRow',
   props: {
     slotType: String,
-    slotIndex: Number
+    slotIndex: Number,
+    divider: Boolean
   },
   data () {
     return {
@@ -52,10 +58,8 @@ export default {
         })
       }
     },
-    slot: {
-      get () {
-        return this.$store.state.design.slots[this.slotIndex]
-      }
+    slot () {
+      return this.$store.state.design.slots[this.slotIndex]
     },
     stats () {
       return this.component.stats
@@ -65,6 +69,7 @@ export default {
     },
     component () {
       return this.$store.state.library.parts.filter(part => part.name === this.moduleName)[0]
+        || this.nullModule
     },
     // data items
     permittedModules () {
@@ -73,6 +78,9 @@ export default {
         modules = modules.filter(module => module.type === this.slotType)
       }
       return modules
+    },
+    nullModule () {
+      return this.$store.state.library.nullModule
     },
     // styles
     gridColumns () {
@@ -84,30 +92,30 @@ export default {
 
 <style scoped>
 .design-row {
-  background-color: lightblue;
   flex: 0 0 32px;
   z-index: 4;
   display: grid;
-  grid-template-rows: 32px;
-  width: 100vw;
-  min-width: 1390px;
+  grid-template-rows: 30px;
+  border-bottom: 1px solid grey;
   z-index: 0;
 }
 .design-row-cell {
   box-sizing: border-box;
   line-height: 30px;
   font-size: 10pt;
-  border-right: 1px solid black;
-  border-bottom: 1px solid black;
+  border-right: 1px solid grey;
   background-color: inherit;
   text-align: center;
   z-index: 0;
 }
 .design-row-cell:first-child {
-  border-left: 1px solid black;
+  border-left: 1px solid grey;
 }
 .double-right {
-  border-right: 3px double black;
+  border-right: 3px double grey;
+}
+.divider {
+  border-bottom-color: black;
 }
 .high-z {
   z-index: 100;

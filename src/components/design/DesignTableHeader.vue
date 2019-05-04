@@ -65,19 +65,20 @@ export default {
   grid-template-rows: 32px;
   width: 100vw;
   min-width: 1390px;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
 }
 .design-header-cell {
   line-height: 30px;
   font-size: 11pt;
   background-color: inherit;
   text-align: center;
-  border-right: 1px solid black;
+  border-right: 1px solid grey;
 }
 .design-header-cell:first-child {
-  border-left: 1px solid black;
+  border-left: 1px solid grey;
 }
 .double-right {
-  border-right: 3px double black;
+  border-right: 3px double grey;
 }
 </style>

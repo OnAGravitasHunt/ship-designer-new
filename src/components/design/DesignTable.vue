@@ -7,7 +7,7 @@
       <DesignTableRow :slotIndex="1" slotType="Warp Core"/>
       <DesignTableRow :slotIndex="2" slotType="Warp Nacelles"/>
       <DesignTableRow :slotIndex="3" slotType="Computer"/>
-      <DesignTableRow :slotIndex="4" slotType="Deflector Dish"/>
+      <DesignTableRow :divider="true" :slotIndex="4" slotType="Deflector Dish"/>
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ export default {
 <style scoped>
 .design-table {
   flex: 1 1 auto;
-  background-color: lightblue;
+  background-color: #eee;
   overflow-x: auto;
   display: flex;
   flex-flow: column nowrap;
@@ -40,5 +40,8 @@ export default {
   flex: 1 1 auto;
   overflow-y: auto;
   padding-bottom: 100px;
+  overflow-x: hidden;
+  width: 100vw;
+  min-width: 1390px;
 }
 </style>
