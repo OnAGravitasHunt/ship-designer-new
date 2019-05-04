@@ -1,7 +1,7 @@
 <template>
   <div class="design-row" :style="gridColumns">
     <div class="design-row-cell">{{slotType}}</div>
-    <div class="design-row-cell" @click="printPermittedModules">{{moduleName}}</div>
+    <div class="design-row-cell">{{moduleName}}</div>
     <div class="design-row-cell double-right">{{slot.techTier}}</div>
     <div class="design-row-cell">{{component.type}}</div>
     <div class="design-row-cell">{{component.slot}}</div>

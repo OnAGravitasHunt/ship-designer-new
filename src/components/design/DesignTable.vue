@@ -1,6 +1,7 @@
 <template>
   <div class="design-table">
     <DesignTableHeader/>
+    <DesignTablePlatformRow/>
     <DesignTableRow :slotIndex="0" slotType="Hullform"/>
     <DesignTableRow :slotIndex="1" slotType="Warp Core"/>
     <DesignTableRow :slotIndex="2" slotType="Warp Nacelles"/>
@@ -11,12 +12,14 @@
 
 <script>
 import DesignTableHeader from './DesignTableHeader'
+import DesignTablePlatformRow from './DesignTablePlatformRow'
 import DesignTableRow from './DesignTableRow'
 
 export default {
   name: 'DesignTable',
   components: {
     DesignTableHeader,
+    DesignTablePlatformRow,
     DesignTableRow
   }
 }
