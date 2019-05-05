@@ -39,6 +39,11 @@ export default {
     },
     // set slot properties; properties object must contain 'module' or 'techTier'
     setSlotProperties (state, { index, properties }) {
+      if (properties.module === null) {
+        properties.techTier = null
+      } else if (state.slots[index].module === null) {
+        properties.techTier = 0
+      }
       state.slots.splice(index, 1, { ...state.slots[index], ...properties })
     },
     setSlots (state, slots) {

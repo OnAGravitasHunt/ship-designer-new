@@ -11,7 +11,9 @@
         :options="[...permittedModules.map(m => m.name)]"
       />
     </div>
-    <div class="design-row-cell double-right">{{slot.techTier}}</div>
+    <div class="design-row-cell double-right">
+      <input class="tech-tier-input" :disabled="moduleName === null" type="number" v-model="techTier"/>
+    </div>
     <div class="design-row-cell">{{component.type}}</div>
     <div class="design-row-cell">{{component.slot}}</div>
     <div class="design-row-cell">{{stats.c}}</div>
@@ -53,6 +55,17 @@ export default {
         this.$store.commit('setSlotProperties', {
           index: this.slotIndex,
           properties: { module: val }
+        })
+      }
+    },
+    techTier: {
+      get () {
+        return this.slot.techTier
+      },
+      set (val) {
+        this.$store.commit('setSlotProperties', {
+          index: this.slotIndex,
+          properties: { techTier: val }
         })
       }
     },
@@ -122,7 +135,17 @@ export default {
 .divider {
   border-bottom: 3px double black;
 }
-/* .high-z {
-  z-index: 100;
-} */
+.tech-tier-input {
+  box-sizing: border-box;
+  outline: none;
+  background-color: transparent;
+  font-family: 'Avenir';
+  width: 67px;
+  font-size: 10pt;
+  height: 30px;
+  /* margin: 2px 0; */
+  border: 1px solid rgba(60, 60, 60, 0.26);
+  border-radius: 4px;
+  text-align: center;
+}
 </style>
