@@ -3,11 +3,13 @@
     <DesignTableHeader/>
     <div class="design-table-body">
       <DesignTablePlatformRow/>
-      <DesignTableRow :slotIndex="0" slotType="Hullform"/>
-      <DesignTableRow :slotIndex="1" slotType="Warp Core"/>
-      <DesignTableRow :slotIndex="2" slotType="Warp Nacelles"/>
-      <DesignTableRow :slotIndex="3" slotType="Computer"/>
-      <DesignTableRow :divider="true" :slotIndex="4" slotType="Deflector Dish"/>
+      <DesignTableRow
+        v-for="(slot, index) of slots"
+        :key="index"
+        :slotIndex="index"
+        :slotType="slotTypes[index] ? slotTypes[index].name : ''"
+        :divider="slotTypes[index] ? slotTypes[index].divider : false"
+      />
     </div>
   </div>
 </template>
@@ -23,6 +25,23 @@ export default {
     DesignTableHeader,
     DesignTablePlatformRow,
     DesignTableRow
+  },
+  data () {
+    return {
+      slotTypes: [
+        { name: 'Hullform', divider: false },
+        { name: 'Warp Core', divider: false },
+        { name: 'Warp Nacelles', divider: false },
+        { name: 'Computer', divider: false },
+        { name: 'Deflector Dish', divider: true },
+        { name: 'Any', divider: false }
+      ]
+    }
+  },
+  computed: {
+    slots () {
+      return this.$store.state.design.slots
+    }
   }
 }
 </script>

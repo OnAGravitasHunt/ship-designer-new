@@ -74,6 +74,8 @@ export default {
       let modules = this.$store.state.library.parts
       if (this.slotType && this.slotType !== 'Any') {
         modules = modules.filter(module => module.type === this.slotType)
+      } else {
+        modules = modules.filter(m => m.slot !== 'Infrastructure')
       }
       return modules
     },
@@ -118,7 +120,7 @@ export default {
   border-right: 3px double grey;
 }
 .divider {
-  border-bottom-color: black;
+  border-bottom: 3px double black;
 }
 /* .high-z {
   z-index: 100;
