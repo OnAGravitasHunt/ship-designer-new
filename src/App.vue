@@ -10,6 +10,14 @@
   </div>
 </template>
 
+<script>
+export default {
+  mounted () {
+    this.$store.dispatch('setPlatform', this.$store.state.design.platform)
+  }
+}
+</script>
+
 <style src='vue-select/dist/vue-select.css'></style>
 <style>
 html, body {
