@@ -31,7 +31,7 @@ export default {
         return this.$store.state.design.platform
       },
       set (val) {
-        // commit
+        this.$store.dispatch('setPlatform', val)
       }
     },
     permittedPlatforms () {

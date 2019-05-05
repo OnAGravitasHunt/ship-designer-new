@@ -23,7 +23,8 @@
         "capabilities": ["Recreation", "Basic Sickbay", "Navigation Sensors", "Command Facilities"]
     }
   ],
-  "parts": [{
+  "parts": [
+    {
       "name": "Economy Hull",
       "type": "Hullform",
       "slot": "Infrastructure",
