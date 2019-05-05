@@ -1,11 +1,9 @@
 <template>
-  <div class="design-row" :class="{ highZ, divider }" :style="gridColumns">
+  <div class="design-row" :class="{ divider }" :style="[gridColumns, zIndex]">
     <div class="design-row-cell">{{slotType}}</div>
     <div
       class="design-row-cell"
-      :class="{ 'high-z': highZ }"
-      @mouseenter="highZ = true"
-      @mouseleave="highZ = false"
+      :style="[zIndex]"
     >
       <v-select
         class="module-selector"
@@ -85,6 +83,11 @@ export default {
     // styles
     gridColumns () {
       return this.$store.getters.getGridCols
+    },
+    zIndex () {
+      return {
+        zIndex: 1000 - this.slotIndex
+      }
     }
   }
 }
@@ -117,7 +120,7 @@ export default {
 .divider {
   border-bottom-color: black;
 }
-.high-z {
+/* .high-z {
   z-index: 100;
-}
+} */
 </style>

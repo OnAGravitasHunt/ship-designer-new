@@ -59,10 +59,10 @@ export default {
 <style scoped>
 .design-header {
   background-color: lightpink;
-  flex: 0 0 32px;
+  flex: 0 0 30px;
   z-index: 4;
   display: grid;
-  grid-template-rows: 32px;
+  grid-template-rows: 30px;
   width: 100vw;
   min-width: 1390px;
   border-bottom: 2px solid black;
@@ -70,7 +70,7 @@ export default {
 }
 .design-header-cell {
   line-height: 30px;
-  font-size: 11pt;
+  font-size: 10pt;
   background-color: inherit;
   text-align: center;
   border-right: 1px solid grey;

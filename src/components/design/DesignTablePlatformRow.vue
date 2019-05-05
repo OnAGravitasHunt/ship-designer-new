@@ -1,7 +1,17 @@
 <template>
-  <div class="design-row" :style="gridColumns">
+  <div class="design-row" :style="[gridColumns, zIndex]">
     <div class="design-row-cell">Platform</div>
-    <div class="design-row-cell">{{moduleName}}</div>
+    <div
+      class="design-row-cell"
+      :class="{ 'high-z': highZ }"
+      :style="[zIndex]"
+    >
+      <v-select
+        class="module-selector"
+        v-model="moduleName"
+        :options="[...permittedPlatforms.map(m => m.name)]"
+      />
+    </div>
     <div class="design-row-cell double-right">–</div>
     <div v-for="n in 16" :key="n" class="design-row-cell"></div>
   </div>
@@ -10,6 +20,11 @@
 <script>
 export default {
   name: 'DesignTablePlatformRow',
+  data () {
+    return {
+      highZ: false
+    }
+  },
   computed: {
     moduleName: {
       get () {
@@ -19,9 +34,17 @@ export default {
         // commit
       }
     },
+    permittedPlatforms () {
+      return this.$store.state.library.platforms
+    },
     // styles
     gridColumns () {
       return this.$store.getters.getGridCols
+    },
+    zIndex () {
+      return {
+        zIndex: 2000
+      }
     }
   }
 }
@@ -31,7 +54,7 @@ export default {
 .design-row {
   flex: 0 0 32px;
   display: grid;
-  grid-template-rows: 32px;
+  grid-template-rows: 31px;
 }
 .design-row-cell {
   line-height: 30px;
@@ -47,4 +70,7 @@ export default {
 .double-right {
   border-right: 3px double grey;
 }
+/* .high-z {
+  z-index: 100;
+} */
 </style>
