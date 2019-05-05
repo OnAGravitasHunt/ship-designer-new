@@ -23,8 +23,8 @@
     <div class="design-row-cell">{{stats.p}}</div>
     <div class="design-row-cell">{{stats.e}}</div>
     <div class="design-row-cell">{{stats.r}}</div>
-    <div class="design-row-cell">{{stats.ev}}%</div>
-    <div class="design-row-cell">{{stats.pen}}%</div>
+    <div class="design-row-cell">{{displayEvasion}}</div>
+    <div class="design-row-cell">{{displayPenetration}}</div>
     <div class="design-row-cell">{{costs.br}}</div>
     <div class="design-row-cell">{{costs.sr}}</div>
     <div class="design-row-cell">{{costs.o}}</div>
@@ -34,6 +34,8 @@
 </template>
 
 <script>
+import Statblock from '@/lib/statblock'
+
 export default {
   name: 'DesignTableRow',
   props: {
@@ -73,14 +75,38 @@ export default {
       return this.$store.state.design.slots[this.slotIndex]
     },
     stats () {
+      if (this.component.name) {
+        let s = new Statblock(this.component.stats, this.techTier, this.platformGrade)
+        return s.processedStats
+      }
       return this.component.stats
     },
     costs () {
+      if (this.component.name) {
+        let s = new Statblock(this.component.costs, this.techTier, this.platformGrade)
+        // console.log(this.component.name, s)
+        return s.processedStats
+      }
       return this.component.costs
     },
     component () {
       return this.$store.state.library.parts.filter(part => part.name === this.moduleName)[0]
         || this.nullModule
+    },
+    // display strings
+    displayEvasion () {
+      if (this.component.name) {
+        return `${this.stats.ev * 100}%`
+      } else {
+        return null
+      }
+    },
+    displayPenetration () {
+      if (this.component.name) {
+        return `${this.stats.pen * 100}%`
+      } else {
+        return null
+      }
     },
     // data items
     permittedModules () {
@@ -94,6 +120,9 @@ export default {
     },
     nullModule () {
       return this.$store.state.library.nullModule
+    },
+    platformGrade () {
+      return this.$store.state.design.platformGrade
     },
     // styles
     gridColumns () {

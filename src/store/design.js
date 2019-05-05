@@ -3,7 +3,7 @@ import Vue from 'vue'
 export default {
   state: {
     className: 'Comet Study 1',
-    classGrade: 1, // should be looked up based on platform
+    platformGrade: 1, // should be looked up based on platform
     platform: "2310s 500-1000kt Frigate 'Kepler' 'Comet'",
     slots: [
       {
@@ -54,7 +54,7 @@ export default {
       state.platform = name
     },
     setPlatformGrade (state, grade) {
-      state.grade = grade
+      state.platformGrade = grade
     }
   },
   actions: {
