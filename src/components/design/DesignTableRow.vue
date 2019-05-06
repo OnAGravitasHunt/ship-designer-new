@@ -3,13 +3,18 @@
     <div class="design-row-cell">{{slotType}}</div>
     <div
       class="design-row-cell"
+      ref="selectContainer"
       :style="[zIndex]"
     >
       <v-select
         class="module-selector"
         v-model="moduleName"
         :options="[...permittedModules.map(m => m.name)]"
-      />
+      >
+        <template v-slot:selected-option="selected">
+          <div class="selected-option-wrapper" :style="[selectedDiv]">{{selected.label}}</div>
+        </template>
+      </v-select>
     </div>
     <div class="design-row-cell double-right">
       <input class="tech-tier-input" :disabled="moduleName === null" type="number" v-model="techTier"/>
@@ -45,7 +50,7 @@ export default {
   },
   data () {
     return {
-      highZ: false
+      selectedDivWidth: 274
     }
   },
   computed: {
@@ -132,7 +137,23 @@ export default {
       return {
         zIndex: 1000 - this.slotIndex
       }
+    },
+    selectedDiv () {
+      // console.log(this.$refs.selectContainer.clientWidth - 75)
+      return { maxWidth: `${this.selectedDivWidth}px` }
     }
+  },
+  methods: {
+    handleResize () {
+      this.selectedDivWidth = this.$refs.selectContainer.clientWidth - 75
+    }
+  },
+  mounted () {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.handleResize)
   }
 }
 </script>
@@ -176,5 +197,10 @@ export default {
   border: 1px solid rgba(60, 60, 60, 0.26);
   border-radius: 4px;
   text-align: center;
+}
+.selected-option-wrapper {
+  /* max-width: 270px; */
+  white-space: nowrap;
+  overflow-x: hidden;
 }
 </style>
