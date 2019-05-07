@@ -53,7 +53,7 @@ export default class Statblock {
   static add (...blocks) {
     let final = {}
     for (const stat of [...statType1, ...statType2, ...statType3, ...statType4]) {
-      final[stat] = blocks.map(b => b.processedStats[stat]).reduce((a, c) => a + c, 0)
+      final[stat] = Math.round(10 * blocks.map(b => b.processedStats[stat]).reduce((a, c) => a + c, 0)) / 10
     }
     return final
   }

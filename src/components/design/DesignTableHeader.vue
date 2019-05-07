@@ -14,11 +14,11 @@
     <div class="design-header-cell">R{{stats.r}}</div>
     <div class="design-header-cell">+{{stats.ev}}% Ev</div>
     <div class="design-header-cell">+{{stats.pen}}% Pen</div>
-    <div class="design-header-cell">{{costs.br}}BR</div>
-    <div class="design-header-cell">{{costs.sr}}SR</div>
-    <div class="design-header-cell">{{costs.o}}O</div>
-    <div class="design-header-cell">{{costs.en}}EN</div>
-    <div class="design-header-cell">{{costs.t}}T</div>
+    <div class="design-header-cell">{{stats.br}}BR</div>
+    <div class="design-header-cell">{{stats.sr}}SR</div>
+    <div class="design-header-cell">{{stats.o}}O</div>
+    <div class="design-header-cell">{{stats.en}}EN</div>
+    <div class="design-header-cell">{{stats.t}}T</div>
   </div>
 </template>
 
@@ -28,17 +28,7 @@ export default {
   computed: {
     // hardcoded stats for now
     stats () {
-      return {
-        c: 4.1,
-        s: 4,
-        h: 3,
-        l: 5.2,
-        p: 4.0,
-        e: 8.6,
-        r: 8,
-        ev: 15,
-        pen: 10
-      }
+      return this.$store.getters.totalStats
     },
     costs () {
       return {
