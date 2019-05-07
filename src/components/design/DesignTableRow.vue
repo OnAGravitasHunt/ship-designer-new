@@ -63,7 +63,7 @@ export default {
           index: this.slotIndex,
           properties: { module: val }
         })
-        this.updateComputed()
+        console.log(this.$store.getters.totalStats)
       }
     },
     techTier: {
@@ -75,7 +75,6 @@ export default {
           index: this.slotIndex,
           properties: { techTier: val }
         })
-        this.updateComputed()
       }
     },
     slot () {
@@ -137,12 +136,6 @@ export default {
     }
   },
   methods: {
-    updateComputed () {
-      this.$store.commit('setSlotProperties', {
-        index: this.slotIndex,
-        properties: { stats: this.stats }
-      })
-    },
     handleResize () {
       this.selectedDivWidth = this.$refs.selectContainer.clientWidth - 75
     }
@@ -150,7 +143,6 @@ export default {
   mounted () {
     window.addEventListener('resize', this.handleResize)
     this.handleResize()
-    this.updateComputed()
   },
   beforeDestroy () {
     window.removeEventListener('resize', this.handleResize)

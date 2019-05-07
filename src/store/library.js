@@ -93,6 +93,9 @@ export default {
           computedProperties: {}
         }
       ]
+    },
+    parts (state) {
+      return state.parts
     }
   }
 }
