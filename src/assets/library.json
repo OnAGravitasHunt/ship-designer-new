@@ -23,7 +23,8 @@
         "capabilities": ["Recreation", "Basic Sickbay", "Navigation Sensors", "Command Facilities"]
     }
   ],
-  "parts": [{
+  "parts": [
+    {
       "name": "Economy Hull",
       "type": "Hullform",
       "slot": "Infrastructure",
@@ -49,9 +50,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -96,9 +95,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -143,9 +140,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -190,9 +185,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 5,
         "sr": 0,
@@ -237,9 +230,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 10,
@@ -284,9 +275,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 20,
@@ -331,9 +320,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -378,9 +365,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -425,9 +410,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -472,9 +455,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -519,9 +500,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -566,9 +545,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -613,9 +590,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -660,9 +635,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -707,9 +680,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -754,9 +725,7 @@
         "ev": 0.06,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -801,9 +770,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -848,9 +815,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -895,9 +860,7 @@
         "ev": 0.03,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -942,9 +905,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -989,9 +950,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -1036,9 +995,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -1083,9 +1040,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -1130,9 +1085,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0.01,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 3,
@@ -1177,9 +1130,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0.01,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 5,
@@ -1224,9 +1175,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0.01,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 20,
@@ -1271,9 +1220,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 10,
@@ -1318,9 +1265,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 13,
@@ -1365,9 +1310,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 13,
@@ -1412,9 +1355,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -1459,9 +1400,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 5,
@@ -1506,9 +1445,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 5,
@@ -1553,9 +1490,7 @@
         "ev": 0,
         "evGrade": 0.06,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 7,
@@ -1600,9 +1535,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 7,
@@ -1647,9 +1580,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -1694,9 +1625,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -1741,9 +1670,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 5,
@@ -1788,9 +1715,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -1835,9 +1760,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 5,
@@ -1882,9 +1805,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 5,
         "brGrade": 0,
         "sr": 5,
@@ -1929,9 +1850,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 10,
         "brGrade": 0,
         "sr": 20,
@@ -1976,9 +1895,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -2023,9 +1940,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 5,
@@ -2070,9 +1985,7 @@
         "ev": 0,
         "evGrade": 0.06,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -2117,9 +2030,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 5,
@@ -2164,9 +2075,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 5,
@@ -2211,9 +2120,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -2258,9 +2165,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 5,
@@ -2305,9 +2210,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 10,
@@ -2352,9 +2255,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 5,
@@ -2399,9 +2300,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 3,
@@ -2446,9 +2345,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 5,
         "brGrade": 0,
         "sr": 15,
@@ -2493,9 +2390,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -2540,9 +2435,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -2587,9 +2480,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 0,
@@ -2634,9 +2525,7 @@
         "ev": 0,
         "evGrade": 0,
         "pen": 0,
-        "penGrade": 0
-      },
-      "costs": {
+        "penGrade": 0,
         "br": 0,
         "brGrade": 0,
         "sr": 2,

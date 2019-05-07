@@ -49,4 +49,12 @@ export default class Statblock {
   crewStatCalc (baseStat, gradeStat) {
     return baseStat + this.platformGrade * gradeStat + this.raw.crewChange * this.techTier
   }
+
+  static add (...blocks) {
+    let final = {}
+    for (const stat of [...statType1, ...statType2, ...statType3, ...statType4]) {
+      final[stat] = blocks.map(b => b.processedStats[stat]).reduce((a, c) => a + c, 0)
+    }
+    return final
+  }
 }

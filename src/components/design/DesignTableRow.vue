@@ -30,11 +30,11 @@
     <div class="design-row-cell">{{stats.r}}</div>
     <div class="design-row-cell">{{displayEvasion}}</div>
     <div class="design-row-cell">{{displayPenetration}}</div>
-    <div class="design-row-cell">{{costs.br}}</div>
-    <div class="design-row-cell">{{costs.sr}}</div>
-    <div class="design-row-cell">{{costs.o}}</div>
-    <div class="design-row-cell">{{costs.en}}</div>
-    <div class="design-row-cell">{{costs.t}}</div>
+    <div class="design-row-cell">{{stats.br}}</div>
+    <div class="design-row-cell">{{stats.sr}}</div>
+    <div class="design-row-cell">{{stats.o}}</div>
+    <div class="design-row-cell">{{stats.en}}</div>
+    <div class="design-row-cell">{{stats.t}}</div>
   </div>
 </template>
 
@@ -63,6 +63,7 @@ export default {
           index: this.slotIndex,
           properties: { module: val }
         })
+        this.updateComputed()
       }
     },
     techTier: {
@@ -74,6 +75,7 @@ export default {
           index: this.slotIndex,
           properties: { techTier: val }
         })
+        this.updateComputed()
       }
     },
     slot () {
@@ -85,14 +87,6 @@ export default {
         return s.processedStats
       }
       return this.component.stats
-    },
-    costs () {
-      if (this.component.name) {
-        let s = new Statblock(this.component.costs, this.techTier, this.platformGrade)
-        // console.log(this.component.name, s)
-        return s.processedStats
-      }
-      return this.component.costs
     },
     component () {
       return this.$store.state.library.parts.filter(part => part.name === this.moduleName)[0]
@@ -139,11 +133,16 @@ export default {
       }
     },
     selectedDiv () {
-      // console.log(this.$refs.selectContainer.clientWidth - 75)
       return { maxWidth: `${this.selectedDivWidth}px` }
     }
   },
   methods: {
+    updateComputed () {
+      this.$store.commit('setSlotProperties', {
+        index: this.slotIndex,
+        properties: { stats: this.stats }
+      })
+    },
     handleResize () {
       this.selectedDivWidth = this.$refs.selectContainer.clientWidth - 75
     }
@@ -151,6 +150,7 @@ export default {
   mounted () {
     window.addEventListener('resize', this.handleResize)
     this.handleResize()
+    this.updateComputed()
   },
   beforeDestroy () {
     window.removeEventListener('resize', this.handleResize)

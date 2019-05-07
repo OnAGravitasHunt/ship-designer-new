@@ -1,5 +1,8 @@
 import Vue from 'vue'
 
+const allStats = ['c', 's', 'h', 'l', 'p', 'e', 'r', 'pen', 'ev', 'pen']
+const allCosts = ['br', 'sr', 'o', 'en', 't']
+
 export default {
   state: {
     className: 'Comet Study 1',
@@ -9,29 +12,50 @@ export default {
       {
         module: 'Armored Hull',
         techTier: 1,
-        required: true
+        required: true,
+        computedProperties: {}
       },
       {
         module: 'Small Annihilation Core (FC)',
         techTier: 1,
-        required: true
+        required: true,
+        computedProperties: {}
       },
       {
         module: 'Compact High Performance Pattern Nacelles',
         techTier: 1,
-        required: true
+        required: true,
+        computedProperties: {}
       },
       {
         module: 'SMP Core',
         techTier: 1,
-        required: true
+        required: true,
+        computedProperties: {}
       },
       {
         module: 'Response Pattern Deflector',
         techTier: 1,
-        required: true
+        required: true,
+        computedProperties: {}
       }
     ]
+  },
+  getters: {
+    totalStats (state) {
+      let stats = {}
+      let costs = {}
+      console.log(state.slots.filter(s => s.module))
+      for (const slot of state.slots.filter(s => s.module)) {
+        for (const stat of allStats) {
+          stats[stat] = stats[stat] + slot.computedProperties.stats[stat] || 0
+        }
+        for (const res of allCosts) {
+          costs[res] = costs[res] + slot.computedProperties.costs[res] || 0
+        }
+      }
+      return { stats, costs }
+    }
   },
   mutations: {
     setClassName (state, name) {
@@ -39,12 +63,16 @@ export default {
     },
     // set slot properties; properties object must contain 'module' or 'techTier'
     setSlotProperties (state, { index, properties }) {
+      console.log('setting properties')
       if (properties.module === null) {
         properties.techTier = null
+        properties.computedProperties = {}
       } else if (state.slots[index].module === null) {
         properties.techTier = 0
       }
-      state.slots.splice(index, 1, { ...state.slots[index], ...properties })
+      Vue.set(state.slots, index, { ...state.slots[index], ...properties })
+      // state.slots.splice(index, 1, { ...state.slots[index], ...properties })
+      console.log(state.slots[index].computedProperties)
     },
     setSlots (state, slots) {
       Vue.set(state, 'slots', slots)
