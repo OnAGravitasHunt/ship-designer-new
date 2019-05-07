@@ -50,7 +50,7 @@ export default {
   },
   data () {
     return {
-      selectedDivWidth: 274
+      // selectedDivWidth: 274
     }
   },
   computed: {
@@ -130,21 +130,12 @@ export default {
         zIndex: 1000 - this.slotIndex
       }
     },
+    selectedDivWidth () {
+      return this.$store.state.ui.designTable.col2Width - 75
+    },
     selectedDiv () {
       return { maxWidth: `${this.selectedDivWidth}px` }
     }
-  },
-  methods: {
-    handleResize () {
-      this.selectedDivWidth = this.$refs.selectContainer.clientWidth - 75
-    }
-  },
-  mounted () {
-    window.addEventListener('resize', this.handleResize)
-    this.handleResize()
-  },
-  beforeDestroy () {
-    window.removeEventListener('resize', this.handleResize)
   }
 }
 </script>

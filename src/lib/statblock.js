@@ -1,7 +1,23 @@
-const statType1 = ['c', 's', 'h', 'l', 'p', 'e', 'r', 'pen']
-const statType2 = ['ev']
-const statType3 = ['pen', 'br', 'sr']
-const statType4 = ['o', 'en', 't']
+const statCalcs = [
+  { name: 'c', calc: 'defStatCalc', round: 1 },
+  { name: 's', calc: 'defStatCalc', round: 1 },
+  { name: 'h', calc: 'defStatCalc', round: 1 },
+  { name: 'l', calc: 'defStatCalc', round: 1 },
+  { name: 'p', calc: 'defStatCalc', round: 1 },
+  { name: 'e', calc: 'defStatCalc', round: 1 },
+  { name: 'r', calc: 'defStatCalc', round: 1 },
+  { name: 'ev', calc: 'evStatCalc', round: 1 },
+  { name: 'pen', calc: 'penStatCalc', round: 1 },
+  { name: 'br', calc: 'penStatCalc', round: 1 },
+  { name: 'sr', calc: 'penStatCalc', round: 1 },
+  { name: 'o', calc: 'crewStatCalc', round: 1 },
+  { name: 'en', calc: 'crewStatCalc', round: 1 },
+  { name: 't', calc: 'crewStatCalc', round: 1 }
+]
+
+function fixRounding (n, places = 1) {
+  return Math.round(n * 10 ** places) / 10 ** places
+}
 
 export default class Statblock {
   constructor (raw, techTier, platformGrade) {
@@ -9,29 +25,18 @@ export default class Statblock {
     this.techTier = techTier
     this.platformGrade = platformGrade
     this.processedStats = {}
-    for (const stat of statType1) {
-      if (stat in this.raw) {
-        this.processedStats[stat] = this.defaultStatCalc(this.raw[stat], this.raw[`${stat}Grade`])
-      }
-    }
-    for (const stat of statType2) {
-      if (stat in this.raw) {
-        this.processedStats[stat] = this.evStatCalc(this.raw[stat], this.raw[`${stat}Grade`])
-      }
-    }
-    for (const stat of statType3) {
-      if (stat in this.raw) {
-        this.processedStats[stat] = this.penStatCalc(this.raw[stat], this.raw[`${stat}Grade`])
-      }
-    }
-    for (const stat of statType4) {
-      if (stat in this.raw) {
-        this.processedStats[stat] = this.crewStatCalc(this.raw[stat], this.raw[`${stat}Grade`])
+
+    for (const stat of statCalcs) {
+      if (stat.name in this.raw) {
+        this.processedStats[stat.name] = fixRounding(
+          this[stat.calc](this.raw[stat.name], this.raw[`${stat.name}Grade`]),
+          stat.round
+        )
       }
     }
   }
 
-  defaultStatCalc (baseStat, gradeStat) {
+  defStatCalc (baseStat, gradeStat) {
     return baseStat + this.platformGrade * gradeStat
       ? baseStat + this.platformGrade * gradeStat + this.techTier * this.raw.techBonus
       : 0
@@ -52,8 +57,11 @@ export default class Statblock {
 
   static add (...blocks) {
     let final = {}
-    for (const stat of [...statType1, ...statType2, ...statType3, ...statType4]) {
-      final[stat] = Math.round(10 * blocks.map(b => b.processedStats[stat]).reduce((a, c) => a + c, 0)) / 10
+    for (const stat of statCalcs) {
+      final[stat.name] = fixRounding(
+        blocks.map(b => b.processedStats[stat.name]).reduce((a, c) => a + c, 0),
+        stat.round
+      )
     }
     return final
   }

@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import Statblock from '@/lib/statblock'
 
-// const allStats = ['c', 's', 'h', 'l', 'p', 'e', 'r', 'pen', 'ev', 'pen']
-// const allCosts = ['br', 'sr', 'o', 'en', 't']
-
 export default {
   state: {
     className: 'Comet Study 1',

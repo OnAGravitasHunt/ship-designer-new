@@ -21,7 +21,8 @@ export default {
         { heading: 'o', width: '40px' },
         { heading: 'en', width: '40px' },
         { heading: 't', width: '40px' }
-      ]
+      ],
+      col2Width: 350
     }
   },
   getters: {
@@ -29,6 +30,11 @@ export default {
       return {
         gridTemplateColumns: state.designTable.columnWidths.map(w => w.width).join(' ')
       }
+    }
+  },
+  mutations: {
+    setCol2Width (state, newWidth) {
+      state.designTable.col2Width = newWidth
     }
   }
 }

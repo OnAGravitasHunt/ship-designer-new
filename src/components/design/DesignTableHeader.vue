@@ -1,7 +1,7 @@
 <template>
   <div class="design-header" :style="gridColumns">
     <div class="design-header-cell">Slot Type</div>
-    <div class="design-header-cell">Name</div>
+    <div class="design-header-cell" ref="col2">Name</div>
     <div class="design-header-cell double-right">Tech Tier</div>
     <div class="design-header-cell">Module Type</div>
     <div class="design-header-cell">Module Slot</div>
@@ -12,8 +12,8 @@
     <div class="design-header-cell">P{{stats.p}}</div>
     <div class="design-header-cell">E{{stats.e}}</div>
     <div class="design-header-cell">R{{stats.r}}</div>
-    <div class="design-header-cell">+{{stats.ev}}% Ev</div>
-    <div class="design-header-cell">+{{stats.pen}}% Pen</div>
+    <div class="design-header-cell">{{displayEvasion}} Ev</div>
+    <div class="design-header-cell">{{displayPenetration}} Pen</div>
     <div class="design-header-cell">{{stats.br}}BR</div>
     <div class="design-header-cell">{{stats.sr}}SR</div>
     <div class="design-header-cell">{{stats.o}}O</div>
@@ -26,22 +26,42 @@
 export default {
   name: 'DesignTableHeader',
   computed: {
-    // hardcoded stats for now
     stats () {
-      return this.$store.getters.totalStats
+      return { ...this.$store.getters.totalStats, br: this.br }
     },
-    costs () {
-      return {
-        br: 105,
-        sr: 75,
-        o: 2,
-        en: 3,
-        t: 3
-      }
+    br () {
+      return this.$store.getters.weights.design / 10 + this.$store.getters.totalStats.br
     },
     gridColumns () {
       return this.$store.getters.getGridCols
+    },
+    col2Width: {
+      get () {
+        return this.$store.state.ui.designTable.col2Width
+      },
+      set (w) {
+        this.$store.commit('setCol2Width', w)
+      }
+    },
+    // display strings
+    displayEvasion () {
+      return `${this.stats.ev * 100}%`
+    },
+    displayPenetration () {
+      return `${this.stats.pen * 100}%`
     }
+  },
+  methods: {
+    handleResize () {
+      this.col2Width = this.$refs.col2.clientWidth
+    }
+  },
+  mounted () {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
+  },
+  beforeDestroy () {
+    window.removeEventListener('resize', this.handleResize)
   }
 }
 </script>
