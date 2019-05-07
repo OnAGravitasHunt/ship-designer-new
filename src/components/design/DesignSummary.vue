@@ -4,8 +4,12 @@
     <div class="left-align">
       <input type="text" class="class-name-input" v-model="className">
     </div>
+    <div class="right-align">Max Weight</div>
+    <div>{{weights.max}}kt</div>
     <div class="right-align">Platform Type</div>
-    <div class="left-align">Frigate</div>
+    <div class="left-align">{{platformType}}</div>
+    <div class="right-align">Design Weight</div>
+    <div>{{weights.design}}kt</div>
   </div>
 </template>
 
@@ -20,6 +24,12 @@ export default {
       set (val) {
         this.$store.commit('setClassName', val)
       }
+    },
+    platformType () {
+      return ['', 'Frigate', 'Cruiser', 'Explorer'][this.$store.state.design.platformGrade]
+    },
+    weights () {
+      return this.$store.getters.weights
     }
   }
 }
@@ -30,9 +40,12 @@ export default {
   background-color: lightgreen;
   flex: 0 0 100px;
   display: grid;
-  grid-template-columns: 150px 200px;
+  grid-template-columns: 150px 200px 150px 200px;
   grid-template-rows: 30px 30px;
   line-height: 30px;
+}
+.max-weight {
+  grid-column-start: 4;
 }
 .left-align {
   text-align: left;

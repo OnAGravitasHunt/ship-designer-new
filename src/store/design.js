@@ -46,6 +46,14 @@ export default {
           stats: rootState.library.parts.filter(p => p.name === slot.module)[0].stats
         }))
       return Statblock.add(...parts.map(p => new Statblock(p.stats, p.slot.techTier, state.platformGrade)))
+    },
+    weights (state, getters, rootState) {
+      let platform = rootState.library.platforms.filter(p => p.name === state.platform)[0]
+      return {
+        max: platform.overheadWeight + platform.slotsMax * platform.slotWeight,
+        design: platform.overheadWeight
+          + (state.slots.filter(s => s.module).length - 5) * platform.slotWeight
+      }
     }
   },
   mutations: {

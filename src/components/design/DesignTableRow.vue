@@ -63,7 +63,6 @@ export default {
           index: this.slotIndex,
           properties: { module: val }
         })
-        console.log(this.$store.getters.totalStats)
       }
     },
     techTier: {
