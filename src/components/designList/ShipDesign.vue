@@ -1,8 +1,8 @@
 <template>
   <div class="ship-design">
-    <div class="table-cell">Sovereign</div>
-    <div class="table-cell">Explorer</div>
-    <div class="table-cell">Starfleet</div>
+    <div class="table-cell">{{name}}</div>
+    <div class="table-cell">{{platformType}}</div>
+    <div class="table-cell">{{partList}}</div>
     <div class="table-cell">{{shipStats}}</div>
     <div class="table-cell">{{crewing}}</div>
     <div class="table-cell">{{resources}}</div>
@@ -13,28 +13,22 @@
 <script>
 export default {
   name: 'ShipDesign',
+  props: { design: Object },
   data () {
     return {
-      name: 'Sovereign',
-      platform: 'Explorer',
-      partList: 'Starfleet',
-      stats: {
-        c: 24,
-        s: 15,
-        h: 13,
-        l: 15,
-        p: 14,
-        e: 16,
-        r: 18,
-        o: 10,
-        en: 15,
-        t: 12,
-        br: 500,
-        sr: 475
-      }
+      partList: 'Starfleet'
     }
   },
   computed: {
+    name () {
+      return this.design.name
+    },
+    platformType () {
+      return ['Frigate', 'Cruiser', 'Explorer'][this.design.design.platformGrade - 1]
+    },
+    stats () {
+      return this.design.stats
+    },
     shipStats () {
       return ['C', 'S', 'H', 'L', 'P', 'E', 'R']
         .map(s => `${s}${this.stats[s.toLowerCase()]}`)

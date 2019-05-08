@@ -15,7 +15,7 @@
         <div class="header-cell"></div>
       </div>
       <div class="table-body">
-        <ShipDesign/>
+        <ShipDesign v-for="(design, index) of designs" :key="index" :design="design"/>
       </div>
     </div>
   </div>
@@ -28,6 +28,11 @@ export default {
   name: 'DesignList',
   components: {
     ShipDesign
+  },
+  computed: {
+    designs () {
+      return this.$store.state.savedDesigns
+    }
   },
   methods: {
     addNewDesign () {

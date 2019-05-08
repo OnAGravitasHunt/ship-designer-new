@@ -14,10 +14,12 @@ export default new Vuex.Store({
     library
   },
   state: {
-
+    savedDesigns: []
   },
   mutations: {
-
+    addDesign (state, design) {
+      state.savedDesigns.push(design)
+    }
   },
   actions: {
 
