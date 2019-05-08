@@ -1,6 +1,6 @@
 <template>
   <div class="design-row" :class="{ divider }" :style="[gridColumns, zIndex]">
-    <div class="design-row-cell">{{slotType}}</div>
+    <div class="design-row-cell" :class="{ required }">{{slotType}}</div>
     <div
       class="design-row-cell"
       ref="selectContainer"
@@ -122,6 +122,9 @@ export default {
       return this.$store.state.design.platformGrade
     },
     // styles
+    required () {
+      return this.slot.required && this.slotIndex > 4
+    },
     gridColumns () {
       return this.$store.getters.getGridCols
     },
@@ -160,6 +163,9 @@ export default {
 }
 .design-row-cell:first-child {
   border-left: 1px solid grey;
+}
+.required {
+  background-color: lightgreen;
 }
 .double-right {
   border-right: 3px double grey;

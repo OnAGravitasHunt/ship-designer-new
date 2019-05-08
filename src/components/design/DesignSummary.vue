@@ -1,21 +1,59 @@
 <template>
-  <div class="design-summary">
-    <div class="right-align">Class Name</div>
-    <div class="left-align">
+  <div class="design-summary" :style="[gridStyle]">
+    <div class="right-align col1">Class Name</div>
+    <div class="left-align b-right">
       <input type="text" class="class-name-input" v-model="className">
     </div>
     <div class="right-align">Max Weight</div>
-    <div>{{weights.max}}kt</div>
-    <div class="right-align">Platform Type</div>
-    <div class="left-align">{{platformType}}</div>
+    <div class="right-align b-right">{{weights.max}}kt</div>
+    <div class="center-align b-right b-under build-time">Build Time: 4 Years</div>
+    <div class="center-align ev-pen b-right">
+      <div>{{finalStats.ev}}% Ev</div>
+      <div>{{finalStats.pen}}% Pen</div>
+    </div>
+    <!-- <div class="b-right"></div> -->
+    <div class="center-align b-right crew-stat">O{{finalStats.o}}</div>
+    <div class="center-align b-right crew-stat">EN{{finalStats.en}}</div>
+    <div class="center-align b-right crew-stat">T{{finalStats.t}}</div>
+    <!-- <div class="center-align pen-display">{{finalStats.pen}}% Pen</div> -->
+    <!--  -->
+    <div class="right-align col1">Platform Type</div>
+    <div class="left-align b-right">{{platformType}}</div>
     <div class="right-align">Design Weight</div>
-    <div>{{weights.design}}kt</div>
+    <div class="right-align b-right">{{weights.design}}kt</div>
+    <div class="right-align b-top">{{finalStats.br}}BR</div>
+    <div class="right-align b-right b-top">{{finalStats.sr}}SR</div>
+    <div class="b-right b-top right-align">Rounded:</div>
+    <div v-for="s of shipStats" :key="s" class="b-right b-top center-align">
+      {{s.toUpperCase()}}{{finalStats[s]}}
+      </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'DesignSummary',
+  data () {
+    return {
+      shipStats: ['c', 's', 'h', 'l', 'p', 'e', 'r'],
+      roundingFunctions: {
+        c: s => Math.floor(s),
+        s: s => Math.floor(s),
+        h: s => Math.floor(s),
+        l: s => Math.floor(s),
+        p: s => Math.floor(s),
+        e: s => Math.floor(s),
+        r: s => Math.floor(s),
+        pen: s => s,
+        ev: s => s,
+        br: this.roundRes,
+        sr: this.roundRes,
+        o: this.roundCrew,
+        en: this.roundCrew,
+        t: this.roundCrew
+      }
+    }
+  },
   computed: {
     className: {
       get () {
@@ -30,6 +68,34 @@ export default {
     },
     weights () {
       return this.$store.getters.weights
+    },
+    finalStats () {
+      let tStats = { ...this.$store.getters.totalStats, br: this.br }
+      Object.keys(tStats).forEach(s => {
+        tStats[s] = this.roundingFunctions[s](tStats[s])
+      })
+      return tStats
+    },
+    br () {
+      return this.$store.getters.weights.design / 10 + this.$store.getters.totalStats.br
+    },
+    // styles
+    col2Width () {
+      return this.$store.state.ui.designTable.col2Width
+    },
+    gridStyle () {
+      return {
+        gridTemplateColumns: `120px ${this.col2Width - 179}px 120px 60px 90px 60px 100px repeat(7,40px)`
+      }
+    }
+  },
+  methods: {
+    roundCrew (c) {
+      return Math.ceil(c / 10)
+    },
+    roundRes (r) {
+      let step = this.$store.state.design.platformGrade === 1 ? 5 : 10
+      return step * Math.ceil(r / step)
     }
   }
 }
@@ -37,15 +103,26 @@ export default {
 
 <style scoped>
 .design-summary {
-  background-color: lightgreen;
-  flex: 0 0 100px;
+  background-color: lightblue;
+  flex: 0 0 60px;
   display: grid;
-  grid-template-columns: 150px 200px 150px 200px;
   grid-template-rows: 30px 30px;
   line-height: 30px;
+  overflow-x: auto;
+  font-size: 11pt;
 }
-.max-weight {
-  grid-column-start: 4;
+.col1 {
+  grid-column-start: 1;
+}
+.build-time {
+  grid-column: 5 / 7;
+}
+.ev-pen {
+  grid-column: 7 / 9;
+}
+.ev-pen>div {
+  display: inline-block;
+  width: 50%;
 }
 .left-align {
   text-align: left;
@@ -58,11 +135,24 @@ export default {
 .center-align {
   text-align: center;
 }
+.crew-stat {
+  font-size: 10pt;
+}
 .class-name-input {
   margin: 2px 0;
   border: none;
   height: 24px;
   font-size: 12pt;
   text-align: center;
+  width: calc(100% - 10px);
+}
+.b-right {
+  border-right: 1px solid grey;
+}
+.double-right {
+  border-right: 3px double grey;
+}
+.b-top {
+  border-top: 1px solid grey;
 }
 </style>

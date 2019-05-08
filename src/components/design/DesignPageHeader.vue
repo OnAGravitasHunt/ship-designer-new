@@ -23,7 +23,8 @@ export default {
 <style scoped>
 .page-header {
   flex: 0 0 60px;
-  background-color: lightblue;
+  background-color: lightsteelblue;
+  border-bottom: 1px solid black;
   line-height: 60px;
   font-size: 18pt;
   font-weight: bold;
