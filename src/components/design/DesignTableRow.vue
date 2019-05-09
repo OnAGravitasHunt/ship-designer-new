@@ -64,7 +64,7 @@ export default {
         return this.slot.module
       },
       set (val) {
-        this.$store.commit('setSlotProperties', {
+        this.$store.dispatch('setSlotProperties', {
           index: this.slotIndex,
           properties: { module: val }
         })
@@ -75,7 +75,7 @@ export default {
         return this.slot.techTier
       },
       set (val) {
-        this.$store.commit('setSlotProperties', {
+        this.$store.dispatch('setSlotProperties', {
           index: this.slotIndex,
           properties: { techTier: val }
         })

@@ -56,8 +56,7 @@ export default {
       return {
         module: null,
         techTier: null,
-        required: false,
-        computedProperties: {}
+        required: false
       }
     },
     defaultSlots () {
@@ -65,37 +64,38 @@ export default {
         {
           module: null,
           techTier: 0,
-          required: true,
-          computedProperties: {}
+          required: true
         },
         {
           module: null,
           techTier: 0,
-          required: true,
-          computedProperties: {}
+          required: true
         },
         {
           module: null,
           techTier: 0,
-          required: true,
-          computedProperties: {}
+          required: true
         },
         {
           module: null,
           techTier: 0,
-          required: true,
-          computedProperties: {}
+          required: true
         },
         {
           module: null,
           techTier: 0,
-          required: true,
-          computedProperties: {}
+          required: true
         }
       ]
     },
     parts (state) {
       return state.parts
+    },
+    partByName (state) {
+      return (name) => state.parts.filter(p => p.name === name)[0] || null
+    },
+    platformByName (state) {
+      return (name) => state.platforms.filter(p => p.name === name)[0] || null
     }
   }
 }

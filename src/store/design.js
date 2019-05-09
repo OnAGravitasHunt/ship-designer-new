@@ -33,19 +33,11 @@ export default {
     setClassName (state, name) {
       state.className = name
     },
-    // set slot properties; properties object must contain 'module' or 'techTier'
-    setSlotProperties (state, { index, properties }) {
-      if (properties.module === null) {
-        properties.techTier = null
-        properties.stats = {}
-      } else if (state.slots[index].module === null) {
-        properties.techTier = 0
-      }
-      Vue.set(state.slots, index, { ...state.slots[index], ...properties })
-      // state.slots.splice(index, 1, { ...state.slots[index], ...properties })
-    },
     setSlots (state, slots) {
       Vue.set(state, 'slots', slots)
+    },
+    setSlot (state, { index, properties }) {
+      Vue.set(state.slots, index, properties)
     },
     // set platform type
     setPlatformName (state, name) {
@@ -80,6 +72,41 @@ export default {
         commit('setPlatformGrade', platformData.grade)
         resolve()
       })
+    },
+    // set slot properties; properties object must contain 'module' or 'techTier'
+    setSlotProperties ({ commit, state, dispatch }, { index, properties }) {
+      if (properties.module === null) {
+        properties.techTier = null
+        properties.stats = {}
+      } else if (state.slots[index].module === null) {
+        properties.techTier = 0
+      }
+      commit('setSlot', {
+        index,
+        properties: { ...state.slots[index], ...properties }
+      })
+      if (properties.module) {
+        dispatch('setExtraSlots')
+      }
+    },
+    setExtraSlots ({ state, rootGetters, commit }) {
+      let extraSlots = state.slots
+        .filter(p => p.module)
+        .map(p => p.module)
+        .map(m => rootGetters.partByName(m))
+        .map(m => m.extraSlots)
+        .reduce((a, c) => a + c, 0)
+      let baseSlots = rootGetters.platformByName(state.platform).maxSlots + 5
+      let currentSlots = state.slots.length
+      // if we need to remove a slot
+      if (currentSlots > baseSlots + extraSlots) {
+        commit('setSlots', state.slots.slice(0, baseSlots + extraSlots))
+      } else if (currentSlots < baseSlots + extraSlots) {
+        commit('setSlots', [
+          ...state.slots,
+          ...new Array(baseSlots + extraSlots - currentSlots).fill(rootGetters.emptySlot)
+        ])
+      }
     },
     // clear design
     clearDesign ({ dispatch, commit, rootState }) {
