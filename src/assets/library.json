@@ -1,26 +1,360 @@
 {
   "platforms": [
     {
-        "name": "2310s 500-1000kt Frigate 'Kepler' 'Comet'",
-        "techTier": 2,
-        "grade": 1,
-        "overheadWeight": 0,
-        "slotWeight": 100,
-        "slotsMin": 5,
-        "slotsMax": 10,
-        "buildTime": 15,
-        "capabilities": ["Recreation", "Basic Sickbay", "Navigation Sensors"]
+      "name": "2240s 100-300kt Frigate 'Soyuz'",
+      "techTier": -2,
+      "grade": 1,
+      "overheadWeight": -100,
+      "slotWeight": 100,
+      "maxSlots": 4,
+      "minSlots": 2,
+      "buildTime": 19,
+      "capabilities": [
+        "Recreation",
+        "Basic Sickbay",
+        "Navigational Sensors"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
     },
     {
-        "name": "2310s 1000-1400kt Cruiser",
-        "techTier": 2,
-        "grade": 2,
-        "overheadWeight": 0,
-        "slotWeight": 100,
-        "slotsMin": 10,
-        "slotsMax": 14,
-        "buildTime": 25,
-        "capabilities": ["Recreation", "Basic Sickbay", "Navigation Sensors", "Command Facilities"]
+      "name": "2240s 400-800kt Cruiser",
+      "techTier": -2,
+      "grade": 2,
+      "overheadWeight": 100,
+      "slotWeight": 100,
+      "maxSlots": 7,
+      "minSlots": 3,
+      "buildTime": 29,
+      "capabilities": [
+        "Recreation",
+        "Sickbay",
+        "Navigational Sensors",
+        "Command Facilities"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2260s 400-600kt Frigate 'Miranda'",
+      "techTier": -1,
+      "grade": 1,
+      "overheadWeight": 0,
+      "slotWeight": 100,
+      "maxSlots": 6,
+      "minSlots": 4,
+      "buildTime": 18,
+      "capabilities": [
+        "Recreation",
+        "Basic Sickbay",
+        "Navigational Sensors"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2260s 700-900kt Cruiser 'Constitution'",
+      "techTier": -1,
+      "grade": 2,
+      "overheadWeight": 100,
+      "slotWeight": 100,
+      "maxSlots": 8,
+      "minSlots": 5,
+      "buildTime": 28,
+      "capabilities": [
+        "Recreation",
+        "Sickbay",
+        "Navigational Sensors",
+        "Command Facilities"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2280s 500-800kt Frigate 'Centaur'",
+      "techTier": 0,
+      "grade": 1,
+      "overheadWeight": 0,
+      "slotWeight": 100,
+      "maxSlots": 8,
+      "minSlots": 5,
+      "buildTime": 16,
+      "capabilities": [
+        "Recreation",
+        "Basic Sickbay",
+        "Navigational Sensors"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2280s 800-1000kt Cruiser 'Constellation'",
+      "techTier": 0,
+      "grade": 2,
+      "overheadWeight": 0,
+      "slotWeight": 100,
+      "maxSlots": 10,
+      "minSlots": 7,
+      "buildTime": 28,
+      "capabilities": [
+        "Recreation",
+        "Sickbay",
+        "Navigational Sensors",
+        "Command Facilities"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2280s 1600-2300kt Explorer 'Excelsior'",
+      "techTier": 0,
+      "grade": 3,
+      "overheadWeight": 300,
+      "slotWeight": 111.1111111,
+      "maxSlots": 18,
+      "minSlots": 12,
+      "buildTime": 32,
+      "capabilities": [
+        "Recreation",
+        "Sickbay",
+        "Navigational Sensors",
+        "Large Command Facilities",
+        "5YM Ability"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2300s 500-900kt Frigate",
+      "techTier": 1,
+      "grade": 1,
+      "overheadWeight": 0,
+      "slotWeight": 100,
+      "maxSlots": 9,
+      "minSlots": 5,
+      "buildTime": 15,
+      "capabilities": [
+        "Recreation",
+        "Basic Sickbay",
+        "Navigational Sensors"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2300s 900-1200kt Cruiser 'Renaissance'",
+      "techTier": 1,
+      "grade": 2,
+      "overheadWeight": 0,
+      "slotWeight": 100,
+      "maxSlots": 12,
+      "minSlots": 9,
+      "buildTime": 26,
+      "capabilities": [
+        "Recreation",
+        "Sickbay",
+        "Navigational Sensors",
+        "Command Facilities"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2300s 1800-2500kt Explorer",
+      "techTier": 1,
+      "grade": 3,
+      "overheadWeight": 300,
+      "slotWeight": 110,
+      "maxSlots": 20,
+      "minSlots": 14,
+      "buildTime": 30,
+      "capabilities": [
+        "Recreation",
+        "Sickbay",
+        "Navigational Sensors",
+        "Large Command Facilities",
+        "5YM Ability"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2310s 500-1000kt Frigate 'Kepler' 'Comet'",
+      "techTier": 2,
+      "grade": 1,
+      "overheadWeight": 0,
+      "slotWeight": 100,
+      "maxSlots": 10,
+      "minSlots": 5,
+      "buildTime": 15,
+      "capabilities": [
+        "Recreation",
+        "Basic Sickbay",
+        "Navigational Sensors"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2310s 1000-1400kt Cruiser",
+      "techTier": 2,
+      "grade": 2,
+      "overheadWeight": 0,
+      "slotWeight": 100,
+      "maxSlots": 14,
+      "minSlots": 10,
+      "buildTime": 25,
+      "capabilities": [
+        "Recreation",
+        "Sickbay",
+        "Navigational Sensors",
+        "Command Facilities"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2310s 2000-2800kt Explorer 'Ambassador'",
+      "techTier": 2,
+      "grade": 3,
+      "overheadWeight": 300,
+      "slotWeight": 108.6956522,
+      "maxSlots": 23,
+      "minSlots": 16,
+      "buildTime": 30,
+      "capabilities": [
+        "Recreation",
+        "Sickbay",
+        "Navigational Sensors",
+        "Large Command Facilities",
+        "5YM Ability"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2320s 500-1100kt Frigate",
+      "techTier": 3,
+      "grade": 1,
+      "overheadWeight": 0,
+      "slotWeight": 100,
+      "maxSlots": 11,
+      "minSlots": 5,
+      "buildTime": 15,
+      "capabilities": [
+        "Recreation",
+        "Basic Sickbay",
+        "Navigational Sensors"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2320s 1000-1600kt Cruiser",
+      "techTier": 3,
+      "grade": 2,
+      "overheadWeight": 0,
+      "slotWeight": 100,
+      "maxSlots": 16,
+      "minSlots": 10,
+      "buildTime": 25,
+      "capabilities": [
+        "Recreation",
+        "Sickbay",
+        "Navigational Sensors",
+        "Command Facilities"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2320s 2100-3100kt Explorer",
+      "techTier": 3,
+      "grade": 3,
+      "overheadWeight": 300,
+      "slotWeight": 107.6923077,
+      "maxSlots": 26,
+      "minSlots": 17,
+      "buildTime": 30,
+      "capabilities": [
+        "Recreation",
+        "Sickbay",
+        "Navigational Sensors",
+        "Large Command Facilities",
+        "5YM Ability"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
+    },
+    {
+      "name": "2330s 2400-3400kt Explorer",
+      "techTier": 4,
+      "grade": 3,
+      "overheadWeight": 300,
+      "slotWeight": 106.8965517,
+      "maxSlots": 29,
+      "minSlots": 20,
+      "buildTime": 30,
+      "capabilities": [
+        "Recreation",
+        "Sickbay",
+        "Navigational Sensors",
+        "Large Command Facilities",
+        "5YM Ability"
+      ],
+      "hull": null,
+      "warpCore": null,
+      "deflectorDish": null,
+      "computer": null,
+      "impulse": null
     }
   ],
   "parts": [

@@ -21,7 +21,7 @@ export default {
     weights (state, getters, rootState) {
       let platform = rootState.library.platforms.filter(p => p.name === state.platform)[0]
       return {
-        max: platform.overheadWeight + platform.slotsMax * platform.slotWeight,
+        max: platform.overheadWeight + platform.maxSlots * platform.slotWeight,
         design: platform.overheadWeight
           + (state.slots.filter(s => s.module).length - 5) * platform.slotWeight
       }
@@ -56,8 +56,8 @@ export default {
   actions: {
     setPlatform ({ commit, state, rootState, rootGetters }, { name, overwrite = false }) {
       let platformData = rootState.library.platforms.filter(p => p.name === name)[0]
-      let reqSlots = platformData.slotsMin
-      let optSlots = platformData.slotsMax - reqSlots
+      let reqSlots = platformData.minSlots
+      let optSlots = platformData.maxSlots - reqSlots
       let slots = [
         ...rootGetters.defaultSlots,
         ...new Array(reqSlots).fill({ ...rootGetters.emptySlot, required: true }),
