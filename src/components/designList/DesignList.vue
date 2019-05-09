@@ -79,7 +79,6 @@ export default {
 .design-list-table {
   text-align: center;
   overflow: auto;
-  /* min-width: 900px; */
   padding-bottom: 30px;
 }
 .list-row {

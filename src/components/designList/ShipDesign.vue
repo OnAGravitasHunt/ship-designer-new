@@ -60,7 +60,9 @@ export default {
       this.$router.push('create')
     },
     deleteDesign () {
-      this.$store.dispatch('deleteDesign')
+      if (confirm(`Are you sure you want to delete '${this.name}'`)) {
+        this.$store.dispatch('deleteDesign')
+      }
     }
   }
 }
@@ -73,25 +75,6 @@ export default {
   grid-template-columns: 6fr 4fr 4fr minmax(220px, 6fr) 4fr 4fr 60px 70px;
   grid-template-rows: 33px;
   min-width: 900px;
-}
-.header-cell {
-  border: 1px solid black;
-  border-bottom: 3px double black;
-  border-left: none;
-  line-height: 30px;
-}
-.header-cell:first-child {
-  border-left: 1px solid black;
-  border-top-left-radius: 5px;
-}
-.header-cell:last-child {
-  border-top-right-radius: 5px;
-}
-.table-body {
-  max-height: 250px;
-  overflow-y: auto;
-  border-bottom: 2px solid black;
-  font-size: 11pt;
 }
 .table-cell {
   line-height: 30px;

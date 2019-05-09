@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <div class="logo">logo</div>
-    <div class="head">TOP BAR</div>
+    <!-- <div class="logo">logo</div> -->
+    <div class="head">Starfleet Ship Design Bureau</div>
     <!-- <div class="nav">NAV</div> -->
     <div class="main">
       <DesignList/>
@@ -39,8 +39,11 @@ export default {
   border-bottom: 1px solid black;
 }
 .head {
+  grid-column: 1/3;
   border-bottom: 1px solid black;
   line-height: 100px;
+  font-size: 36pt;
+  font-weight: bold;
 }
 .main {
   grid-column: 1/3;
