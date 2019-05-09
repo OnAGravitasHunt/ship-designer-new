@@ -75,6 +75,7 @@ export default {
 .design-list-table {
   text-align: center;
   overflow: auto;
+  /* min-width: 900px; */
   padding-bottom: 30px;
 }
 .list-row {
@@ -100,6 +101,7 @@ export default {
 .table-body {
   max-height: 250px;
   overflow-y: auto;
+  min-width: 900px;
   border-bottom: 2px solid black;
   font-size: 11pt;
 }

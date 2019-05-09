@@ -6,7 +6,9 @@
     <div class="table-cell">{{shipStats}}</div>
     <div class="table-cell">{{crewing}}</div>
     <div class="table-cell">{{resources}}</div>
-    <div class="table-cell"></div>
+    <div class="table-cell">
+      <div class="edit-button">Edit</div>
+    </div>
   </div>
 </template>
 
@@ -84,5 +86,13 @@ export default {
 }
 .table-cell:last-child {
   border-right: 1px solid black;
+}
+.edit-button {
+  background-color: lightgrey;
+  border-radius: 10px;
+  height: 28px;
+  line-height: 28px;
+  margin: 2px;
+  cursor: pointer;
 }
 </style>

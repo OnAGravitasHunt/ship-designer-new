@@ -1,6 +1,6 @@
 <template>
   <div class="page-header">
-    <div class="header-item" style="border-right: 1px solid black;" @click="saveDesign">
+    <div class="header-item back-button" @click="saveDesign">
       &lang;
     </div>
     <div class="header-item">
@@ -25,8 +25,10 @@ export default {
         stats: this.$store.getters.totalStats,
         design
       }
+      // TODO: account for editing a design
       this.$store.commit('addDesign', savedDesign)
       this.$router.push('/')
+      this.$store.dispatch('clearDesign')
     }
   }
 }
@@ -44,5 +46,9 @@ export default {
 .header-item {
   display: inline-block;
   padding: 0 12px;
+}
+.back-button {
+  border-right: 1px solid black;
+  cursor: pointer;
 }
 </style>

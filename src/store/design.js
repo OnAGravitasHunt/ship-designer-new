@@ -6,33 +6,7 @@ export default {
     className: 'Comet Study 1',
     platformGrade: 1, // should be looked up based on platform
     platform: "2310s 500-1000kt Frigate 'Kepler' 'Comet'",
-    slots: [
-      {
-        module: 'Armored Hull',
-        techTier: 1,
-        required: true
-      },
-      {
-        module: 'Small Annihilation Core (FC)',
-        techTier: 1,
-        required: true
-      },
-      {
-        module: 'Compact High Performance Pattern Nacelles',
-        techTier: 1,
-        required: true
-      },
-      {
-        module: 'SMP Core',
-        techTier: 1,
-        required: true
-      },
-      {
-        module: 'Response Pattern Deflector',
-        techTier: 1,
-        required: true
-      }
-    ]
+    slots: []
   },
   getters: {
     totalStats (state, getters, rootState) {
@@ -80,7 +54,7 @@ export default {
     }
   },
   actions: {
-    setPlatform ({ commit, rootState, rootGetters }, name) {
+    setPlatform ({ commit, state, rootState, rootGetters }, { name, overwrite = false }) {
       let platformData = rootState.library.platforms.filter(p => p.name === name)[0]
       let reqSlots = platformData.slotsMin
       let optSlots = platformData.slotsMax - reqSlots
@@ -89,9 +63,19 @@ export default {
         ...new Array(reqSlots).fill({ ...rootGetters.emptySlot, required: true }),
         ...new Array(optSlots).fill(rootGetters.emptySlot)
       ]
+      if (!overwrite) {
+        slots = slots.map((s, i) => {
+          return state.slots[i] && state.slots[i].module ? state.slots[i] : s
+        })
+      }
+
       commit('setPlatformName', name)
       commit('setSlots', slots)
       commit('setPlatformGrade', platformData.grade)
+    },
+    // clear design
+    clearDesign ({ dispatch, rootState }) {
+      dispatch('setPlatform', { name: rootState.library.platforms[0].name, overwrite: true })
     }
   }
 }

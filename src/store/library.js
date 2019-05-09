@@ -63,32 +63,32 @@ export default {
     defaultSlots () {
       return [
         {
-          module: 'Armored Hull',
-          techTier: 1,
+          module: null,
+          techTier: 0,
           required: true,
           computedProperties: {}
         },
         {
-          module: 'Small Annihilation Core (FC)',
-          techTier: 1,
+          module: null,
+          techTier: 0,
           required: true,
           computedProperties: {}
         },
         {
-          module: 'Compact High Performance Pattern Nacelles',
-          techTier: 1,
+          module: null,
+          techTier: 0,
           required: true,
           computedProperties: {}
         },
         {
-          module: 'SMP Core',
-          techTier: 1,
+          module: null,
+          techTier: 0,
           required: true,
           computedProperties: {}
         },
         {
-          module: 'Response Pattern Deflector',
-          techTier: 1,
+          module: null,
+          techTier: 0,
           required: true,
           computedProperties: {}
         }

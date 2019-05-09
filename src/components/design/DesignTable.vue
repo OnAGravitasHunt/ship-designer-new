@@ -58,7 +58,7 @@ export default {
 .design-table-body {
   flex: 1 1 auto;
   overflow-y: auto;
-  padding-bottom: 100px;
+  padding-bottom: 380px;
   overflow-x: hidden;
   width: 100vw;
   min-width: 1390px;

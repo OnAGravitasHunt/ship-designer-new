@@ -9,6 +9,7 @@
       <v-select
         class="module-selector"
         v-model="moduleName"
+        :clearable="false"
         :options="[...permittedPlatforms.map(m => m.name)]"
       />
     </div>
@@ -30,8 +31,8 @@ export default {
       get () {
         return this.$store.state.design.platform
       },
-      set (val) {
-        this.$store.dispatch('setPlatform', val)
+      set (name) {
+        this.$store.dispatch('setPlatform', { name })
       }
     },
     permittedPlatforms () {
