@@ -17,7 +17,12 @@
       </v-select>
     </div>
     <div class="design-row-cell double-right">
-      <input class="tech-tier-input" :disabled="moduleName === null" type="number" v-model="techTier"/>
+      <input
+        class="tech-tier-input"
+        :disabled="moduleName === null"
+        type="number"
+        v-model="techTier"
+      />
     </div>
     <div class="design-row-cell">{{component.type}}</div>
     <div class="design-row-cell">{{component.slot}}</div>

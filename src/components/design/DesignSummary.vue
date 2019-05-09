@@ -8,8 +8,8 @@
     <div class="right-align b-right">{{weights.max}}kt</div>
     <div class="center-align b-right b-under build-time">Build Time: 4 Years</div>
     <div class="center-align ev-pen b-right">
-      <div>{{finalStats.ev}}% Ev</div>
-      <div>{{finalStats.pen}}% Pen</div>
+      <div>{{finalStats.ev * 100}}% Ev</div>
+      <div>{{finalStats.pen * 100}}% Pen</div>
     </div>
     <!-- <div class="b-right"></div> -->
     <div class="center-align b-right crew-stat">O{{finalStats.o}}</div>
