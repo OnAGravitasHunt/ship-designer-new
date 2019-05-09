@@ -24,14 +24,38 @@ export default new Vuex.Store({
     updateDesign (state, design) {
       state.savedDesigns.splice(state.editingDesign, 1, design)
     },
+    updateLocalStorage (state) {
+      localStorage.setItem('designs', JSON.stringify(state.savedDesigns))
+    },
+    loadFromStorage (state) {
+      let loaded = localStorage.getItem('designs')
+      if (loaded) {
+        Vue.set(state, 'savedDesigns', JSON.parse(loaded))
+      }
+    },
     setEditing (state, index) {
       state.editingDesign = index
     },
     clearEditing (state) {
       state.editingDesign = null
+    },
+    removeDesign (state, index) {
+      state.savedDesigns.splice(index, 1)
     }
   },
   actions: {
-
+    // TODO: maybe merge these?
+    saveNewDesign ({ commit }, design) {
+      commit('addDesign', design)
+      commit('updateLocalStorage')
+    },
+    saveExistingDesign ({ commit }, design) {
+      commit('updateDesign', design)
+      commit('updateLocalStorage')
+    },
+    deleteDesign ({ commit }, index) {
+      commit('removeDesign', index)
+      commit('updateLocalStorage')
+    }
   }
 })

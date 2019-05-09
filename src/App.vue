@@ -14,6 +14,7 @@
 export default {
   mounted () {
     this.$store.dispatch('clearDesign')
+    this.$store.commit('loadFromStorage')
   }
 }
 </script>

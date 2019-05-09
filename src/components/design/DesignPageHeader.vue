@@ -30,9 +30,9 @@ export default {
           design
         }
         if (this.editingDesign === null) {
-          this.$store.commit('addDesign', savedDesign)
+          this.$store.dispatch('saveNewDesign', savedDesign)
         } else {
-          this.$store.commit('updateDesign', savedDesign)
+          this.$store.dispatch('saveExistingDesign', savedDesign)
         }
         return true
       }

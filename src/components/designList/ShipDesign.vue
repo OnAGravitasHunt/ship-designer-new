@@ -7,7 +7,10 @@
     <div class="table-cell">{{crewing}}</div>
     <div class="table-cell">{{resources}}</div>
     <div class="table-cell">
-      <div class="edit-button" @click="editDesign">Edit</div>
+      <div class="button edit-button" @click="editDesign">Edit</div>
+    </div>
+    <div class="table-cell">
+      <div class="button delete-button" @click="deleteDesign">Delete</div>
     </div>
   </div>
 </template>
@@ -55,6 +58,9 @@ export default {
       this.$store.commit('setEditing', this.index)
       this.$store.dispatch('restoreDesign', { design: this.design.design })
       this.$router.push('create')
+    },
+    deleteDesign () {
+      this.$store.dispatch('deleteDesign')
     }
   }
 }
@@ -64,7 +70,7 @@ export default {
 .ship-design {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 6fr 4fr 4fr minmax(220px, 6fr) 4fr 4fr 60px;
+  grid-template-columns: 6fr 4fr 4fr minmax(220px, 6fr) 4fr 4fr 60px 70px;
   grid-template-rows: 33px;
   min-width: 900px;
 }
@@ -97,12 +103,17 @@ export default {
 .table-cell:last-child {
   border-right: 1px solid black;
 }
-.edit-button {
-  background-color: lightgrey;
+.button {
   border-radius: 10px;
   height: 28px;
   line-height: 28px;
   margin: 2px;
   cursor: pointer;
+}
+.edit-button {
+  background-color: lightgrey;
+}
+.delete-button {
+  background-color: lightcoral;
 }
 </style>
