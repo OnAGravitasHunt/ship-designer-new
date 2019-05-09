@@ -22,23 +22,29 @@ export default {
   },
   methods: {
     saveDesign () {
-      let design = JSON.parse(JSON.stringify(this.$store.state.design))
-      let savedDesign = {
-        name: design.className,
-        stats: this.$store.getters.totalStats,
-        design
+      if (this.$store.state.design.className) {
+        let design = JSON.parse(JSON.stringify(this.$store.state.design))
+        let savedDesign = {
+          name: design.className,
+          stats: this.$store.getters.totalStats,
+          design
+        }
+        if (this.editingDesign === null) {
+          this.$store.commit('addDesign', savedDesign)
+        } else {
+          this.$store.commit('updateDesign', savedDesign)
+        }
+        return true
       }
-      if (this.editingDesign === null) {
-        this.$store.commit('addDesign', savedDesign)
-      } else {
-        this.$store.commit('updateDesign', savedDesign)
-      }
+      alert('Please enter a name for the class!')
+      return false
     },
     saveAndExit () {
-      this.saveDesign()
-      this.$router.push('/')
-      this.$store.dispatch('clearDesign')
-      this.$store.commit('clearEditing')
+      if (this.saveDesign()) {
+        this.$router.push('/')
+        this.$store.dispatch('clearDesign')
+        this.$store.commit('clearEditing')
+      }
     }
   }
 }

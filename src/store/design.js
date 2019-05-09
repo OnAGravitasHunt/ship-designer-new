@@ -82,7 +82,8 @@ export default {
       })
     },
     // clear design
-    clearDesign ({ dispatch, rootState }) {
+    clearDesign ({ dispatch, commit, rootState }) {
+      commit('setClassName', '')
       dispatch('setPlatform', { name: rootState.library.platforms[0].name, overwrite: true })
     },
     restoreDesign ({ dispatch, commit }, { design }) {
