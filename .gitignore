@@ -2,6 +2,9 @@
 node_modules
 /dist
 
+# deploy script
+deploy.sh
+
 # local env files
 .env.local
 .env.*.local
