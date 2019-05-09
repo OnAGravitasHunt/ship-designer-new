@@ -15,7 +15,10 @@
         <div class="header-cell"></div>
       </div>
       <div class="table-body">
-        <ShipDesign v-for="(design, index) of designs" :key="index" :design="design"/>
+        <div class="no-designs" v-if="!designs.length">
+          You have no designs!
+        </div>
+        <ShipDesign v-for="(design, index) of designs" :key="index" :design="design" :index="index"/>
       </div>
     </div>
   </div>
@@ -105,14 +108,11 @@ export default {
   border-bottom: 2px solid black;
   font-size: 11pt;
 }
-.table-cell {
-  line-height: 30px;
-  border-bottom: 1px solid black;
-}
-.table-cell:first-child {
-  border-left: 1px solid black;
-}
-.table-cell:last-child {
+.no-designs {
+  height: 80px;
+  line-height: 80px;
+  font-size: 15pt;
   border-right: 1px solid black;
+  border-left: 1px solid black;
 }
 </style>

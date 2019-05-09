@@ -7,7 +7,7 @@
     <div class="table-cell">{{crewing}}</div>
     <div class="table-cell">{{resources}}</div>
     <div class="table-cell">
-      <div class="edit-button">Edit</div>
+      <div class="edit-button" @click="editDesign">Edit</div>
     </div>
   </div>
 </template>
@@ -15,7 +15,10 @@
 <script>
 export default {
   name: 'ShipDesign',
-  props: { design: Object },
+  props: {
+    design: Object,
+    index: Number
+  },
   data () {
     return {
       partList: 'Starfleet'
@@ -45,6 +48,13 @@ export default {
       return ['BR', 'SR']
         .map(r => `${this.stats[r.toLowerCase()]}${r}`)
         .join(' ')
+    }
+  },
+  methods: {
+    editDesign () {
+      this.$store.commit('setEditing', this.index)
+      this.$store.dispatch('restoreDesign', { design: this.design.design })
+      this.$router.push('create')
     }
   }
 }

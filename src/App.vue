@@ -13,10 +13,7 @@
 <script>
 export default {
   mounted () {
-    this.$store.dispatch('setPlatform', {
-      name: this.$store.state.design.platform,
-      overwrite: true
-    })
+    this.$store.dispatch('clearDesign')
   }
 }
 </script>

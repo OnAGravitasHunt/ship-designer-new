@@ -14,11 +14,21 @@ export default new Vuex.Store({
     library
   },
   state: {
-    savedDesigns: []
+    savedDesigns: [],
+    editingDesign: null
   },
   mutations: {
     addDesign (state, design) {
       state.savedDesigns.push(design)
+    },
+    updateDesign (state, design) {
+      state.savedDesigns.splice(state.editingDesign, 1, design)
+    },
+    setEditing (state, index) {
+      state.editingDesign = index
+    },
+    clearEditing (state) {
+      state.editingDesign = null
     }
   },
   actions: {

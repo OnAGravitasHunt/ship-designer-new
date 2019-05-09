@@ -1,6 +1,6 @@
 <template>
   <div class="page-header">
-    <div class="header-item back-button" @click="saveDesign">
+    <div class="header-item back-button" @click="saveAndExit">
       &lang;
     </div>
     <div class="header-item">
@@ -15,20 +15,30 @@ export default {
   computed: {
     className () {
       return this.$store.state.design.className
+    },
+    editingDesign () {
+      return this.$store.state.editingDesign
     }
   },
   methods: {
     saveDesign () {
-      let design = this.$store.state.design
+      let design = JSON.parse(JSON.stringify(this.$store.state.design))
       let savedDesign = {
         name: design.className,
         stats: this.$store.getters.totalStats,
         design
       }
-      // TODO: account for editing a design
-      this.$store.commit('addDesign', savedDesign)
+      if (this.editingDesign === null) {
+        this.$store.commit('addDesign', savedDesign)
+      } else {
+        this.$store.commit('updateDesign', savedDesign)
+      }
+    },
+    saveAndExit () {
+      this.saveDesign()
       this.$router.push('/')
       this.$store.dispatch('clearDesign')
+      this.$store.commit('clearEditing')
     }
   }
 }

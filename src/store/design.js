@@ -16,7 +16,9 @@ export default {
           slot,
           stats: rootState.library.parts.filter(p => p.name === slot.module)[0].stats
         }))
-      return Statblock.add(...parts.map(p => new Statblock(p.stats, p.slot.techTier, state.platformGrade)))
+      return Statblock.add(
+        ...parts.map(p => new Statblock(p.stats, p.slot.techTier, state.platformGrade))
+      )
     },
     weights (state, getters, rootState) {
       let platform = rootState.library.platforms.filter(p => p.name === state.platform)[0]
@@ -55,27 +57,39 @@ export default {
   },
   actions: {
     setPlatform ({ commit, state, rootState, rootGetters }, { name, overwrite = false }) {
-      let platformData = rootState.library.platforms.filter(p => p.name === name)[0]
-      let reqSlots = platformData.minSlots
-      let optSlots = platformData.maxSlots - reqSlots
-      let slots = [
-        ...rootGetters.defaultSlots,
-        ...new Array(reqSlots).fill({ ...rootGetters.emptySlot, required: true }),
-        ...new Array(optSlots).fill(rootGetters.emptySlot)
-      ]
-      if (!overwrite) {
-        slots = slots.map((s, i) => {
-          return state.slots[i] && state.slots[i].module ? state.slots[i] : s
-        })
-      }
+      return new Promise((resolve, reject) => {
+        let platformData = rootState.library.platforms.filter(p => p.name === name)[0]
+        let reqSlots = platformData.minSlots
+        let optSlots = platformData.maxSlots - reqSlots
+        let slots = [
+          ...rootGetters.defaultSlots,
+          ...new Array(reqSlots).fill({
+            ...rootGetters.emptySlot,
+            required: true
+          }),
+          ...new Array(optSlots).fill(rootGetters.emptySlot)
+        ]
+        if (!overwrite) {
+          slots = slots.map((s, i) => {
+            return state.slots[i] && state.slots[i].module ? state.slots[i] : s
+          })
+        }
 
-      commit('setPlatformName', name)
-      commit('setSlots', slots)
-      commit('setPlatformGrade', platformData.grade)
+        commit('setPlatformName', name)
+        commit('setSlots', slots)
+        commit('setPlatformGrade', platformData.grade)
+        resolve()
+      })
     },
     // clear design
     clearDesign ({ dispatch, rootState }) {
       dispatch('setPlatform', { name: rootState.library.platforms[0].name, overwrite: true })
+    },
+    restoreDesign ({ dispatch, commit }, { design }) {
+      dispatch('setPlatform', { name: design.platform, overwrite: true }).then(() => {
+        commit('setSlots', design.slots)
+        commit('setClassName', design.className)
+      })
     }
   }
 }
