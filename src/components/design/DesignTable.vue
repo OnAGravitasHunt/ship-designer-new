@@ -33,8 +33,8 @@ export default {
         { name: 'Warp Core', divider: false },
         { name: 'Warp Nacelles', divider: false },
         { name: 'Computer', divider: false },
-        { name: 'Deflector Dish', divider: true },
-        { name: 'Any', divider: false }
+        { name: 'Deflector Dish', divider: true } // ,
+        // { name: 'Any', divider: false }
       ]
     }
   },

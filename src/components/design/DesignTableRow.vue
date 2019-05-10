@@ -1,8 +1,16 @@
 <template>
   <div class="design-row" :class="{ divider }" :style="[gridColumns, zIndex]">
-    <div class="design-row-cell" :class="{ required }">{{slotType}}</div>
+    <div class="design-row-cell" :class="{ required }">
+      <template v-if="slotType">
+        {{slotType}}
+      </template>
+      <template v-else>
+        Refit? <input type="checkbox" v-model="isRefit" @click="logRefitFlag">
+      </template>
+    </div>
     <div
       class="design-row-cell"
+      :class="{ 'is-refit': isRefit }"
       ref="selectContainer"
       :style="[zIndex]"
     >
@@ -16,7 +24,7 @@
         </template>
       </v-select>
     </div>
-    <div class="design-row-cell double-right">
+    <div class="design-row-cell double-right" :class="{ 'is-refit': isRefit }">
       <input
         class="tech-tier-input"
         :disabled="moduleName === null"
@@ -55,7 +63,7 @@ export default {
   },
   data () {
     return {
-      // selectedDivWidth: 274
+      isRefit: false
     }
   },
   computed: {
@@ -144,6 +152,11 @@ export default {
     selectedDiv () {
       return { maxWidth: `${this.selectedDivWidth}px` }
     }
+  },
+  methods: {
+    logRefitFlag () {
+      setTimeout(() => { console.log(this.isRefit) }, 1000)
+    }
   }
 }
 </script>
@@ -190,10 +203,15 @@ export default {
   border: 1px solid rgba(60, 60, 60, 0.26);
   border-radius: 4px;
   text-align: center;
+  font-weight: inherit;
 }
 .selected-option-wrapper {
   /* max-width: 270px; */
   white-space: nowrap;
   overflow-x: hidden;
+}
+.is-refit {
+  font-weight: bold;
+  background-color: mediumturquoise;
 }
 </style>
