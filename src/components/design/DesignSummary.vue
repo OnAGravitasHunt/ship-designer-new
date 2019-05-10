@@ -6,7 +6,7 @@
     </div>
     <div class="right-align">Max Weight</div>
     <div class="right-align b-right">{{weights.max}}kt</div>
-    <div class="center-align b-right b-under build-time">Build Time: 4 Years</div>
+    <div class="center-align b-right b-under build-time">Build Time: {{buildTime}} Years</div>
     <div class="center-align ev-pen b-right">
       <div>{{finalStats.ev}}% Ev</div>
       <div>{{finalStats.pen}}% Pen</div>
@@ -78,6 +78,9 @@ export default {
     },
     br () {
       return this.$store.getters.weights.design / 10 + this.$store.getters.totalStats.br
+    },
+    buildTime () {
+      return this.$store.getters.buildTime
     },
     // styles
     col2Width () {

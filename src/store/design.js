@@ -66,6 +66,11 @@ export default {
         tStats[s] = roundingFunctions[s](tStats[s], state.platformGrade)
       })
       return tStats
+    },
+    buildTime (state, getters, rootState, rootGetters) {
+      let base = rootGetters.platformByName(state.platform).buildTime
+      let additional = state.slots.filter(s => s.module).length - 5
+      return Math.ceil((base + additional) / 3) / 4
     }
   },
   mutations: {
