@@ -26,7 +26,7 @@ export default {
         let design = JSON.parse(JSON.stringify(this.$store.state.design))
         let savedDesign = {
           name: design.className,
-          stats: this.$store.getters.totalStats,
+          stats: this.$store.getters.roundedStats,
           design
         }
         if (this.editingDesign === null) {

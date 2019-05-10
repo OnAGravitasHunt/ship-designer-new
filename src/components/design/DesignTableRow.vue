@@ -98,14 +98,14 @@ export default {
     // display strings
     displayEvasion () {
       if (this.component.name) {
-        return `${this.stats.ev * 100}%`
+        return `${Math.round(this.stats.ev * 1000) / 10}%`
       } else {
         return null
       }
     },
     displayPenetration () {
       if (this.component.name) {
-        return `${this.stats.pen * 100}%`
+        return `${Math.round(this.stats.pen * 1000) / 10}%`
       } else {
         return null
       }

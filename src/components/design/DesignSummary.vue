@@ -8,8 +8,8 @@
     <div class="right-align b-right">{{weights.max}}kt</div>
     <div class="center-align b-right b-under build-time">Build Time: 4 Years</div>
     <div class="center-align ev-pen b-right">
-      <div>{{finalStats.ev * 100}}% Ev</div>
-      <div>{{finalStats.pen * 100}}% Pen</div>
+      <div>{{finalStats.ev}}% Ev</div>
+      <div>{{finalStats.pen}}% Pen</div>
     </div>
     <!-- <div class="b-right"></div> -->
     <div class="center-align b-right crew-stat">O{{finalStats.o}}</div>
@@ -44,8 +44,8 @@ export default {
         p: s => Math.floor(s),
         e: s => Math.floor(s),
         r: s => Math.floor(s),
-        pen: s => s,
-        ev: s => s,
+        pen: this.roundPercents,
+        ev: this.roundPercents,
         br: this.roundRes,
         sr: this.roundRes,
         o: this.roundCrew,
@@ -96,6 +96,9 @@ export default {
     roundRes (r) {
       let step = this.$store.state.design.platformGrade === 1 ? 5 : 10
       return step * Math.ceil(r / step)
+    },
+    roundPercents (s) {
+      return Math.round(s * 1000) / 10
     }
   }
 }

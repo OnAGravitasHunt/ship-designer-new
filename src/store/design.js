@@ -1,6 +1,34 @@
 import Vue from 'vue'
 import Statblock from '@/lib/statblock'
 
+const roundingFunctions = {
+  c: s => Math.floor(s),
+  s: s => Math.floor(s),
+  h: s => Math.floor(s),
+  l: s => Math.floor(s),
+  p: s => Math.floor(s),
+  e: s => Math.floor(s),
+  r: s => Math.floor(s),
+  pen: roundPercents,
+  ev: roundPercents,
+  br: roundRes,
+  sr: roundRes,
+  o: roundCrew,
+  en: roundCrew,
+  t: roundCrew
+}
+
+function roundCrew (c) {
+  return Math.ceil(c / 10)
+}
+function roundRes (r, grade) {
+  let step = grade === 1 ? 5 : 10
+  return step * Math.ceil(r / step)
+}
+function roundPercents (s) {
+  return Math.round(s * 1000) / 10
+}
+
 export default {
   state: {
     className: 'Comet Study 1',
@@ -23,10 +51,21 @@ export default {
     weights (state, getters, rootState) {
       let platform = rootState.library.platforms.filter(p => p.name === state.platform)[0]
       return {
-        max: platform.overheadWeight + platform.maxSlots * platform.slotWeight,
-        design: platform.overheadWeight
-          + (state.slots.filter(s => s.module).length - 5) * platform.slotWeight
+        max: Math.round(platform.overheadWeight + platform.maxSlots * platform.slotWeight),
+        design: Math.round(
+          platform.overheadWeight + (state.slots.filter(s => s.module).length - 5) * platform.slotWeight
+        )
       }
+    },
+    roundedStats (state, getters) {
+      let tStats = {
+        ...getters.totalStats,
+        br: getters.weights.design / 10 + getters.totalStats.br
+      }
+      Object.keys(tStats).forEach(s => {
+        tStats[s] = roundingFunctions[s](tStats[s], state.platformGrade)
+      })
+      return tStats
     }
   },
   mutations: {

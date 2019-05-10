@@ -45,10 +45,10 @@ export default {
     },
     // display strings
     displayEvasion () {
-      return `${this.stats.ev * 100}%`
+      return `${Math.round(this.stats.ev * 1000) / 10}%`
     },
     displayPenetration () {
-      return `${this.stats.pen * 100}%`
+      return `${Math.round(this.stats.pen * 1000) / 10}%`
     }
   },
   methods: {
