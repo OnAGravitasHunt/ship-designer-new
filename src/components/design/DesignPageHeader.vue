@@ -3,13 +3,18 @@
     <div class="header-item back-button" @click="saveAndExit">
       &lang;
     </div>
-    <div class="header-item">
+    <div class="header-item header-title">
       {{className}}
+    </div>
+    <div class="export-button-wrapper">
+      <div class="export-button" @click="exportBBCode">Export BBCode</div>
     </div>
   </div>
 </template>
 
 <script>
+import BBCodeExport from '@/lib/bbcodeExport'
+
 export default {
   name: 'DesignPageHeader',
   computed: {
@@ -18,6 +23,15 @@ export default {
     },
     editingDesign () {
       return this.$store.state.editingDesign
+    },
+    bbcodeText () {
+      return BBCodeExport.export({
+        name: this.$store.state.design.className,
+        stats: this.$store.getters.roundedStats,
+        weight: this.$store.getters.weights.design,
+        buildTime: this.$store.getters.buildTime,
+        design: JSON.parse(JSON.stringify(this.$store.state.design))
+      })
     }
   },
   methods: {
@@ -45,6 +59,15 @@ export default {
         this.$store.dispatch('clearDesign')
         this.$store.commit('clearEditing')
       }
+    },
+    exportBBCode () {
+      navigator.clipboard.writeText(this.bbcodeText).then(() => {
+        console.log('Copied!')
+      }, () => {
+        console.error('Failed to copy to clipboard. Logging below')
+        console.log()
+        console.log(this.bbcodeText)
+      })
     }
   }
 }
@@ -58,13 +81,34 @@ export default {
   line-height: 60px;
   font-size: 18pt;
   font-weight: bold;
+  display: flex;
+  flex-flow: row nowrap;
 }
 .header-item {
-  display: inline-block;
+  /* display: inline-block; */
   padding: 0 12px;
 }
+.header-title {
+  flex: 1 1 auto;
+}
 .back-button {
+  text-align: center;
+  flex: 0 0 30px;
   border-right: 1px solid black;
   cursor: pointer;
+}
+.export-button-wrapper {
+  flex: 0 0 150px;
+  font-size: 12pt;
+  font-weight: normal;
+}
+.export-button {
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin: 10px 0;
+  background-color: lightgreen;
+  margin-right: 10px;
+  border-radius: 20px;
 }
 </style>
