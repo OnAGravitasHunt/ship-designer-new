@@ -61,7 +61,7 @@ export default {
     },
     deleteDesign () {
       if (confirm(`Are you sure you want to delete '${this.name}'`)) {
-        this.$store.dispatch('deleteDesign')
+        this.$store.dispatch('deleteDesign', this.index)
       }
     }
   }
