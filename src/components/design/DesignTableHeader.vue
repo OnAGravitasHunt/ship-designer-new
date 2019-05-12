@@ -1,6 +1,7 @@
 <template>
   <div class="design-header" :style="gridColumns">
-    <div class="design-header-cell">{{/*Slot Type*/}}</div>
+    <div class="design-header-cell">Slot Type</div>
+    <div class="design-header-cell">Refit</div>
     <div class="design-header-cell" ref="col2">Name</div>
     <div class="design-header-cell double-right">Tech Tier</div>
     <div class="design-header-cell">Module Type</div>

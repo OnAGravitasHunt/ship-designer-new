@@ -3,10 +3,11 @@ export default {
     designTable: {
       columnWidths: [
         { heading: 'slotType', width: '100px' },
+        { heading: 'refit', width: '30px' },
         { heading: 'name', width: 'minmax(350px, 1fr)' },
         { heading: 'techTier', width: '70px' },
         { heading: 'moduleType', width: '100px' },
-        { heading: 'moduleSlot', width: '100px' },
+        { heading: 'moduleSlot', width: '90px' },
         { heading: 'c', width: '40px' },
         { heading: 's', width: '40px' },
         { heading: 'h', width: '40px' },

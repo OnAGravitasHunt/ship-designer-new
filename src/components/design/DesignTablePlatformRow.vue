@@ -1,6 +1,7 @@
 <template>
   <div class="design-row" :style="[gridColumns, zIndex]">
     <div class="design-row-cell">Platform</div>
+    <div class="design-row-cell">-</div>
     <div
       class="design-row-cell"
       :class="{ 'high-z': highZ }"

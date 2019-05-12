@@ -1,12 +1,10 @@
 <template>
   <div class="design-row" :class="{ divider }" :style="[gridColumns, zIndex]">
     <div class="design-row-cell" :class="{ required }">
-      <template v-if="slotType">
         {{slotType}}
-      </template>
-      <template v-else>
-        Refit? <input type="checkbox" v-model="isRefit" @click="logRefitFlag">
-      </template>
+    </div>
+    <div class="design-row-cell" :class="{ required }">
+      <input type="checkbox" v-model="isRefit" @click="logRefitFlag">
     </div>
     <div
       class="design-row-cell"

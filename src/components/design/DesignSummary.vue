@@ -15,7 +15,6 @@
     <div class="center-align b-right crew-stat">O{{finalStats.o}}</div>
     <div class="center-align b-right crew-stat">EN{{finalStats.en}}</div>
     <div class="center-align b-right crew-stat">T{{finalStats.t}}</div>
-    <!-- <div class="center-align pen-display">{{finalStats.pen}}% Pen</div> -->
     <!--  -->
     <div class="right-align col1">Platform Type</div>
     <div class="left-align b-right">{{platformType}}</div>
@@ -88,7 +87,7 @@ export default {
     },
     gridStyle () {
       return {
-        gridTemplateColumns: `120px ${this.col2Width - 179}px 120px 60px 90px 60px 100px repeat(7,40px)`
+        gridTemplateColumns: `120px ${this.col2Width - 179}px 120px 70px 100px 70px 90px repeat(7,40px)`
       }
     }
   },
