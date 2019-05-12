@@ -4,7 +4,7 @@
         {{slotType}}
     </div>
     <div class="design-row-cell" :class="{ required }">
-      <input type="checkbox" v-model="isRefit" @click="logRefitFlag">
+      <input type="checkbox" v-model="isRefit" :disabled="refitDisabled">
     </div>
     <div
       class="design-row-cell"
@@ -61,7 +61,7 @@ export default {
   },
   data () {
     return {
-      isRefit: false
+      // isRefit: false
     }
   },
   computed: {
@@ -86,6 +86,20 @@ export default {
           properties: { techTier: val }
         })
       }
+    },
+    isRefit: {
+      get () {
+        return this.slot.isRefit
+      },
+      set (val) {
+        this.$store.dispatch('setSlotProperties', {
+          index: this.slotIndex,
+          properties: { isRefit: val }
+        })
+      }
+    },
+    refitDisabled () {
+      return this.slot.module === null
     },
     slot () {
       return this.$store.state.design.slots[this.slotIndex]
@@ -149,11 +163,6 @@ export default {
     },
     selectedDiv () {
       return { maxWidth: `${this.selectedDivWidth}px` }
-    }
-  },
-  methods: {
-    logRefitFlag () {
-      setTimeout(() => { console.log(this.isRefit) }, 1000)
     }
   }
 }

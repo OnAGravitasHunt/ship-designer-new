@@ -56,37 +56,12 @@ export default {
       return {
         module: null,
         techTier: null,
-        required: false
+        required: false,
+        isRefit: false
       }
     },
-    defaultSlots () {
-      return [
-        {
-          module: null,
-          techTier: 0,
-          required: true
-        },
-        {
-          module: null,
-          techTier: 0,
-          required: true
-        },
-        {
-          module: null,
-          techTier: 0,
-          required: true
-        },
-        {
-          module: null,
-          techTier: 0,
-          required: true
-        },
-        {
-          module: null,
-          techTier: 0,
-          required: true
-        }
-      ]
+    defaultSlots (state, getters) {
+      return new Array(5).fill(getters.emptySlot)
     },
     parts (state) {
       return state.parts

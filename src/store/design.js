@@ -32,7 +32,7 @@ function roundPercents (s) {
 export default {
   state: {
     className: 'Comet Study 1',
-    platformGrade: 1, // should be looked up based on platform
+    platformGrade: 1,
     platform: "2310s 500-1000kt Frigate 'Kepler' 'Comet'",
     slots: []
   },
@@ -121,6 +121,7 @@ export default {
     setSlotProperties ({ commit, state, dispatch }, { index, properties }) {
       if (properties.module === null) {
         properties.techTier = null
+        properties.isRefit = false
         properties.stats = {}
       } else if (state.slots[index].module === null) {
         properties.techTier = 0
