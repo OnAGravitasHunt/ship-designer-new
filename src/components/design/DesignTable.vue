@@ -9,6 +9,7 @@
         :slotIndex="index"
         :slotType="slotTypes[index] ? slotTypes[index].name : ''"
         :divider="slotTypes[index] ? slotTypes[index].divider : false"
+        :isInfra="index < slotTypes.length"
       />
     </div>
   </div>

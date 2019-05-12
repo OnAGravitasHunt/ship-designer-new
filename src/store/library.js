@@ -57,7 +57,8 @@ export default {
         module: null,
         techTier: null,
         required: false,
-        isRefit: false
+        isRefit: false,
+        userDivider: false
       }
     },
     defaultSlots (state, getters) {

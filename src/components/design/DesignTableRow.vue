@@ -1,7 +1,17 @@
 <template>
-  <div class="design-row" :class="{ divider }" :style="[gridColumns, zIndex]">
+  <div
+    class="design-row"
+    :class="{ divider, 'user-divider': userDivider }"
+    :style="[gridColumns, zIndex]"
+  >
     <div class="design-row-cell" :class="{ required }">
+      <template v-if="isInfra">
         {{slotType}}
+      </template>
+      <template v-else>
+        <div class="cell-main">{{slotType}}</div>
+        <div class="cell-footer" @click="userDivider = !userDivider"></div>
+      </template>
     </div>
     <div class="design-row-cell" :class="{ required }">
       <input type="checkbox" v-model="isRefit" :disabled="refitDisabled">
@@ -57,7 +67,8 @@ export default {
   props: {
     slotType: String,
     slotIndex: Number,
-    divider: Boolean
+    divider: Boolean,
+    isInfra: Boolean
   },
   data () {
     return {
@@ -69,10 +80,10 @@ export default {
       get () {
         return this.slot.module
       },
-      set (val) {
+      set (module) {
         this.$store.dispatch('setSlotProperties', {
           index: this.slotIndex,
-          properties: { module: val }
+          properties: { module }
         })
       }
     },
@@ -80,10 +91,10 @@ export default {
       get () {
         return this.slot.techTier
       },
-      set (val) {
+      set (techTier) {
         this.$store.dispatch('setSlotProperties', {
           index: this.slotIndex,
-          properties: { techTier: val }
+          properties: { techTier }
         })
       }
     },
@@ -91,11 +102,24 @@ export default {
       get () {
         return this.slot.isRefit
       },
-      set (val) {
+      set (isRefit) {
         this.$store.dispatch('setSlotProperties', {
           index: this.slotIndex,
-          properties: { isRefit: val }
+          properties: { isRefit }
         })
+      }
+    },
+    userDivider: {
+      get () {
+        return this.slot.userDivider && !this.divider
+      },
+      set (userDivider) {
+        if (!this.divider && !this.isInfra) {
+          this.$store.dispatch('setSlotProperties', {
+            index: this.slotIndex,
+            properties: { userDivider }
+          })
+        }
       }
     },
     refitDisabled () {
@@ -189,6 +213,16 @@ export default {
 .design-row-cell:first-child {
   border-left: 1px solid grey;
 }
+.cell-main {
+  height: 28px;
+}
+.cell-footer {
+  height: 3px;
+  background-color: rgba(0.5, 0.5, 0.5, 0.5);
+}
+.cell-footer:hover {
+  background-color: rgba(0, 0, 0, 0.8)
+}
 .required {
   background-color: lightgreen;
 }
@@ -197,6 +231,9 @@ export default {
 }
 .divider {
   border-bottom: 3px double black;
+}
+.user-divider {
+  border-bottom: 2px solid black;
 }
 .tech-tier-input {
   box-sizing: border-box;
