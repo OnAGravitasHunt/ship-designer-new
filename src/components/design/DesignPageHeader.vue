@@ -64,8 +64,7 @@ export default {
       navigator.clipboard.writeText(this.bbcodeText).then(() => {
         console.log('Copied!')
       }, () => {
-        console.error('Failed to copy to clipboard. Logging below')
-        console.log()
+        console.error('Failed to copy to clipboard. Logging below instead.')
         console.log(this.bbcodeText)
       })
     }

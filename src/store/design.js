@@ -123,7 +123,7 @@ export default {
         properties.techTier = null
         properties.isRefit = false
         properties.stats = {}
-      } else if (state.slots[index].module === null) {
+      } else if (state.slots[index].module === null && properties.module) {
         properties.techTier = 0
       }
       commit('setSlot', {
