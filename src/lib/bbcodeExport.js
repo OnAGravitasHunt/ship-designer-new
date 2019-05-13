@@ -47,10 +47,12 @@ export default class BBCodeExport {
         this.tableCell('[b]Module[/b]'),
         this.tableCell('[b]Tech Tier[/b]')
       ),
-      ...slots.map(s => this.tableRow(
-        this.tableCell(s.module),
-        this.tableCell(s.techTier)
-      ))
+      ...slots
+        .filter(s => s.module)
+        .map(s => this.tableRow(
+          this.tableCell(s.module),
+          this.tableCell(s.techTier)
+        ))
     )
   }
 
