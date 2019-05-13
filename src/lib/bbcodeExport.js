@@ -10,6 +10,7 @@ export default class BBCodeExport {
   }
 
   static summaryTable (design) {
+    console.log(design.stats)
     return this.tableWrapper(
       this.tableRow(
         this.tableCell(design.name),
@@ -35,7 +36,11 @@ export default class BBCodeExport {
             .map(s => `${s}${design.stats[s.toLowerCase()]}`)
             .join(' ')
         ),
-        this.tableCell(),
+        this.tableCell(
+          ['Ev', 'Pen']
+            .map(s => `${design.stats[s.toLowerCase()]}% ${s}`)
+            .join(' ')
+        ),
         this.tableCell()
       )
     )
