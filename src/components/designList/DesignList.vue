@@ -49,8 +49,8 @@ export default {
 <style scoped>
 .design-list {
   text-align: left;
-  width: 90%;
-  margin: auto;
+  /* width: 90%; */
+  margin: 0 50px;
 }
 .title-bar {
   height: 60px;

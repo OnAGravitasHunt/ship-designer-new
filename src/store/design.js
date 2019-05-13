@@ -131,25 +131,25 @@ export default {
         properties: { ...state.slots[index], ...properties }
       })
       if (properties.module) {
-        dispatch('setExtraSlots')
+        dispatch('setextraSlot')
       }
     },
-    setExtraSlots ({ state, rootGetters, commit }) {
-      let extraSlots = state.slots
+    setextraSlot ({ state, rootGetters, commit }) {
+      let extraSlot = state.slots
         .filter(p => p.module)
         .map(p => p.module)
         .map(m => rootGetters.partByName(m))
-        .map(m => m.extraSlots)
+        .map(m => m.extraSlot)
         .reduce((a, c) => a + c, 0)
       let baseSlots = rootGetters.platformByName(state.platform).maxSlots + 5
       let currentSlots = state.slots.length
       // if we need to remove a slot
-      if (currentSlots > baseSlots + extraSlots) {
-        commit('setSlots', state.slots.slice(0, baseSlots + extraSlots))
-      } else if (currentSlots < baseSlots + extraSlots) {
+      if (currentSlots > baseSlots + extraSlot) {
+        commit('setSlots', state.slots.slice(0, baseSlots + extraSlot))
+      } else if (currentSlots < baseSlots + extraSlot) {
         commit('setSlots', [
           ...state.slots,
-          ...new Array(baseSlots + extraSlots - currentSlots).fill(rootGetters.emptySlot)
+          ...new Array(baseSlots + extraSlot - currentSlots).fill(rootGetters.emptySlot)
         ])
       }
     },

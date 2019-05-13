@@ -5,6 +5,7 @@
     <!-- <div class="nav">NAV</div> -->
     <div class="main">
       <DesignList/>
+      <PartsLists/>
     </div>
   </div>
 </template>
@@ -12,11 +13,13 @@
 <script>
 // @ is an alias to /src
 import DesignList from '@/components/designList/DesignList'
+import PartsLists from '@/components/partsLists/PartsLists'
 
 export default {
   name: 'home',
   components: {
-    DesignList
+    DesignList,
+    PartsLists
   },
   methods: {
     createNew () {
@@ -47,6 +50,8 @@ export default {
 }
 .main {
   grid-column: 1/3;
+  overflow-y: auto;
+  padding: 20px 0;
 }
 .nav {
   border-right: 1px solid black;

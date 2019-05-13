@@ -363,7 +363,7 @@
       "type": "Hullform",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.3,
@@ -408,7 +408,7 @@
       "type": "Hullform",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.3,
@@ -453,7 +453,7 @@
       "type": "Hullform",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.3,
@@ -498,7 +498,7 @@
       "type": "Hullform",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 1,
+      "extraSlot": 1,
       "special": 0,
       "stats": {
         "techBonus": 0.3,
@@ -543,7 +543,7 @@
       "type": "Warp Core",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -588,7 +588,7 @@
       "type": "Warp Core",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -633,7 +633,7 @@
       "type": "Warp Nacelles",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -678,7 +678,7 @@
       "type": "Warp Nacelles",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -723,7 +723,7 @@
       "type": "Warp Nacelles",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -768,7 +768,7 @@
       "type": "Warp Nacelles",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -813,7 +813,7 @@
       "type": "Warp Nacelles",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -858,7 +858,7 @@
       "type": "Computer",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0,
@@ -903,7 +903,7 @@
       "type": "Computer",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.3,
@@ -948,7 +948,7 @@
       "type": "Computer",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.3,
@@ -993,7 +993,7 @@
       "type": "Computer",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.3,
@@ -1038,7 +1038,7 @@
       "type": "Computer",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0,
@@ -1083,7 +1083,7 @@
       "type": "Computer",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.3,
@@ -1128,7 +1128,7 @@
       "type": "Computer",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1173,7 +1173,7 @@
       "type": "Computer",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1218,7 +1218,7 @@
       "type": "Deflector Dish",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1263,7 +1263,7 @@
       "type": "Deflector Dish",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1308,7 +1308,7 @@
       "type": "Deflector Dish",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1353,7 +1353,7 @@
       "type": "Deflector Dish",
       "slot": "Infrastructure",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1398,7 +1398,7 @@
       "type": "Phaser",
       "slot": "Tactical",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1443,7 +1443,7 @@
       "type": "Phaser",
       "slot": "Tactical",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1488,7 +1488,7 @@
       "type": "Phaser",
       "slot": "Tactical",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1533,7 +1533,7 @@
       "type": "Torpedo",
       "slot": "Tactical",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1578,7 +1578,7 @@
       "type": "Torpedo",
       "slot": "Tactical",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1623,7 +1623,7 @@
       "type": "Torpedo",
       "slot": "Tactical",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1668,7 +1668,7 @@
       "type": "Shields",
       "slot": "Tactical",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1713,7 +1713,7 @@
       "type": "Shields",
       "slot": "Tactical",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1758,7 +1758,7 @@
       "type": "Armor",
       "slot": "Tactical",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -1803,7 +1803,7 @@
       "type": "Sensors",
       "slot": "Tactical",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.1,
@@ -1848,7 +1848,7 @@
       "type": "Sensors",
       "slot": "Tactical",
       "limit": 1,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": "Mine Detection and Anti-Cloaking",
       "stats": {
         "techBonus": 0.1,
@@ -1893,7 +1893,7 @@
       "type": "Away Teams",
       "slot": "Tactical",
       "limit": 1,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": "Peacekeeping Ops",
       "stats": {
         "techBonus": 0.1,
@@ -1938,7 +1938,7 @@
       "type": "Sensors",
       "slot": "Operations",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.1,
@@ -1983,7 +1983,7 @@
       "type": "Sensors",
       "slot": "Operations",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.1,
@@ -2028,7 +2028,7 @@
       "type": "Sensors",
       "slot": "Operations",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.1,
@@ -2073,7 +2073,7 @@
       "type": "Sensors",
       "slot": "Operations",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.1,
@@ -2118,7 +2118,7 @@
       "type": "Shuttlebay",
       "slot": "Operations",
       "limit": 1,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.1,
@@ -2163,7 +2163,7 @@
       "type": "Shuttlebay",
       "slot": "Operations",
       "limit": 1,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.1,
@@ -2208,7 +2208,7 @@
       "type": "Industry",
       "slot": "Operations",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.1,
@@ -2253,7 +2253,7 @@
       "type": "Industry",
       "slot": "Operations",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -2298,7 +2298,7 @@
       "type": "Engines",
       "slot": "Operations",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -2343,7 +2343,7 @@
       "type": "Comms",
       "slot": "Operations",
       "limit": 1,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.1,
@@ -2388,7 +2388,7 @@
       "type": "SIF",
       "slot": "Operations",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.1,
@@ -2433,7 +2433,7 @@
       "type": "Diplomacy",
       "slot": "Science",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -2478,7 +2478,7 @@
       "type": "Lab",
       "slot": "Science",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -2523,7 +2523,7 @@
       "type": "Lab",
       "slot": "Science",
       "limit": 1,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -2568,7 +2568,7 @@
       "type": "Medical",
       "slot": "Science",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.1,
@@ -2613,7 +2613,7 @@
       "type": "Diplomacy",
       "slot": "Science",
       "limit": 0,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.1,
@@ -2658,7 +2658,7 @@
       "type": "Medical",
       "slot": "Science",
       "limit": 1,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": "Specialist Medical Ops",
       "stats": {
         "techBonus": 0.1,
@@ -2703,7 +2703,7 @@
       "type": "Diplomacy",
       "slot": "Science",
       "limit": 1,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -2748,7 +2748,7 @@
       "type": "Specialists",
       "slot": "Science",
       "limit": 1,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.2,
@@ -2793,7 +2793,7 @@
       "type": "Specialists",
       "slot": "Science",
       "limit": 1,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": 0,
       "stats": {
         "techBonus": 0.1,
@@ -2838,7 +2838,7 @@
       "type": "Specialists",
       "slot": "Science",
       "limit": 1,
-      "extraSlots": 0,
+      "extraSlot": 0,
       "special": "Espionage Ops",
       "stats": {
         "techBonus": 0.1,

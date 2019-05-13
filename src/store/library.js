@@ -8,7 +8,7 @@ export default {
       type: null,
       slot: null,
       limit: null,
-      extraSlots: null,
+      extraSlot: null,
       crewChange: null,
       special: null,
       stats: {
