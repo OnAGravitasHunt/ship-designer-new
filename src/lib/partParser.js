@@ -21,7 +21,6 @@ const statKeys = [
   { csvKey: 'T', csvGrade: 'TGrade', jsonKey: 't', jsonGrade: 'tGrade' }
 ]
 const gradeKeys = ['Frigates', 'Cruisers', 'Explorers']
-
 const otherKeys = [
   'Extra Slot',
   'Legal Techbases',
@@ -32,9 +31,13 @@ const otherKeys = [
   'Type'
 ]
 
+const specials = {
+  'Base Built Time in Months': 'buildTime'
+}
+
 function makeNumerical (part) {
   Object.keys(part).forEach(stat => {
-    part[stat] = isNaN(part[stat]) || stat === 'Special' ? part[stat] : +part[stat]
+    part[stat] = part[stat] === '' ? null : isNaN(part[stat]) ? part[stat] : +part[stat]
   })
   return part
 }
@@ -62,10 +65,6 @@ function makeGradesArray (part) {
   for (const grade of gradeKeys) {
     delete part[grade]
   }
-  // for (const [i, grade] of gradeKeys.entries()) {
-  //   grades[i] = !!part[grade]
-  //   delete part[grade]
-  // }
   return {
     ...part,
     grades
@@ -88,15 +87,38 @@ function reKey (part) {
   }
 }
 
-export default class PartParser {
+function reKeyPlatform (part) {
+  let newPart = {}
+  Object.keys(part).forEach(stat => {
+    if (stat in specials) {
+      newPart[specials[stat]] = part[stat]
+    } else {
+      newPart[camelKey(stat)] = part[stat]
+    }
+  })
+  return newPart
+}
+
+function mapCapabilities (part) {
+  part.capabilities = part.capabilities.split(', ')
+  return part
+}
+
+export class PartParser {
   static parse (file) {
-    let data = papa.parse(file, config).data
-    // console.log(data)
-    data = data
+    return papa.parse(file, config).data
       .map(makeNumerical)
       .map(makeStatsObject)
       .map(makeGradesArray)
       .map(reKey)
-    return data
+  }
+}
+
+export class PlatformParser {
+  static parse (file) {
+    return papa.parse(file, config).data
+      .map(makeNumerical)
+      .map(reKeyPlatform)
+      .map(mapCapabilities)
   }
 }

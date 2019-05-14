@@ -14,35 +14,54 @@
     <div class="right-col bottom-row">
       <input ref="platformsCSV" class="list-name" type="file">
     </div>
-    <div class="left-col" @click="uploadParts">Log</div>
+    <div class="left-col" @click="upload">Log</div>
   </div>
 </template>
 
 <script>
-import PartParser from '@/lib/partParser'
+import { PartParser, PlatformParser } from '@/lib/partParser'
 
 export default {
   name: 'NewList',
   methods: {
-    uploadParts () {
-      let loadFile = this.$refs.partsCSV.files[0]
-      let reader = new FileReader()
-      reader.onload = event => {
-        if (reader.readyState === FileReader.DONE) {
-          console.log(PartParser.parse(reader.result))
+    readFile (file) {
+      return new Promise((resolve, reject) => {
+        let reader = new FileReader()
+        reader.onload = () => {
+          resolve(reader.result)
         }
-      }
-      reader.readAsText(loadFile)
+        reader.onerror = (e) => {
+          reject(e)
+        }
+        reader.readAsText(file)
+      })
+    },
+    uploadParts () {
+      return new Promise((resolve, reject) => {
+        this.readFile(this.$refs.partsCSV.files[0]).then(res => {
+          resolve(PartParser.parse(res))
+        }).catch(e => {
+          reject(e)
+        })
+      })
     },
     uploadPlatforms () {
-      let loadFile = this.$refs.platformsCSV.files[0]
-      let reader = new FileReader()
-      reader.onload = event => {
-        if (reader.readyState === FileReader.DONE) {
-          // PartParser.parse(reader.result)
-        }
-      }
-      reader.readAsText(loadFile)
+      return new Promise((resolve, reject) => {
+        this.readFile(this.$refs.platformsCSV.files[0]).then(res => {
+          resolve(PlatformParser.parse(res))
+        }).catch(e => {
+          reject(e)
+        })
+      })
+    },
+    upload () {
+      Promise.all([
+        this.uploadParts(),
+        this.uploadPlatforms()
+      ]).then(vals => {
+        console.log('All promises complete')
+        console.log(vals)
+      })
     }
   }
 }
@@ -53,7 +72,6 @@ export default {
   display: grid;
   grid-template-columns: 125px 225px;
   grid-auto-rows: 30px;
-  /* line-height: 30px; */
 }
 .new-list > div {
   border-right: 1px solid grey;
@@ -70,9 +88,6 @@ export default {
 }
 .right-col {
   padding-left: 5px;
-}
-.input-cell {
-  /* line-height: 26px; */
 }
 .list-name {
   height: 18px;
