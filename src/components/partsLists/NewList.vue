@@ -83,7 +83,7 @@ export default {
             }
           })
         }).catch(e => {
-          console.error(e)
+          // console.error(e)
           alert('Something went wrong. Are you sure you selected the correct files?')
         })
       }

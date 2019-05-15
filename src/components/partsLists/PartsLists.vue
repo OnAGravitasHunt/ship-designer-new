@@ -11,12 +11,7 @@
         <div class="header-cell"></div>
       </div>
       <div class="table-body">
-        <div class="list-row">
-          <div class="table-cell">D</div>
-          <div class="table-cell">Starfleet</div>
-          <div class="table-cell">Rename</div>
-          <div class="table-cell">Delete</div>
-        </div>
+        <PartListRow v-for="(partList, index) of partLists" :key="partList" :index="index"/>
       </div>
     </div>
     <NewList/>
@@ -24,12 +19,19 @@
 </template>
 
 <script>
+import PartListRow from './PartListRow'
 import NewList from './NewList'
 
 export default {
   name: 'PartsLists',
   components: {
+    PartListRow,
     NewList
+  },
+  computed: {
+    partLists () {
+      return this.$store.state.library.partListNames
+    }
   }
 }
 </script>
@@ -81,21 +83,5 @@ export default {
   overflow-y: auto;
   border-bottom: 2px solid black;
   font-size: 11pt;
-}
-.table-cell {
-  line-height: 30px;
-  border-bottom: 1px solid black;
-}
-.table-cell:first-child {
-  border-left: 1px solid black;
-}
-.table-cell:last-child {
-  border-right: 1px solid black;
-}
-.new-partlist-row {
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 150px 150px 50px;
-  grid-template-rows: 33px;
 }
 </style>
