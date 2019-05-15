@@ -136,8 +136,7 @@ export default {
       return this.component.stats
     },
     component () {
-      return this.$store.state.library.parts.filter(part => part.name === this.moduleName)[0]
-        || this.nullModule
+      return this.$store.getters.partByName(this.moduleName) || this.nullModule
     },
     // display strings
     displayEvasion () {
@@ -156,7 +155,7 @@ export default {
     },
     // data items
     permittedModules () {
-      let modules = this.$store.state.library.parts
+      let modules = this.$store.getters.currentParts
       if (this.slotType && this.slotType !== 'Any') {
         modules = modules.filter(module => module.type === this.slotType)
       } else {

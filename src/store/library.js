@@ -1,7 +1,10 @@
+// import Vue from 'vue'
+
 import libData from '@/assets/library.json'
 
 export default {
   state: {
+    name: 'Starfleet',
     ...libData,
     nullModule: {
       name: null,
@@ -72,6 +75,20 @@ export default {
     },
     platformByName (state) {
       return (name) => state.platforms.filter(p => p.name === name)[0] || null
+    },
+    currentParts (state) {
+      return state.parts
+    },
+    currentPlatforms (state) {
+      return state.platforms
+    }
+  },
+  mutations: {
+    setPartList (state, partList) {
+      state = {
+        ...state,
+        ...partList
+      }
     }
   }
 }

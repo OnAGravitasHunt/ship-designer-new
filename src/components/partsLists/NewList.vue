@@ -59,7 +59,6 @@ export default {
         this.uploadParts(),
         this.uploadPlatforms()
       ]).then(vals => {
-        console.log('All promises complete')
         console.log(vals)
       })
     }

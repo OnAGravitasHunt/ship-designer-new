@@ -37,12 +37,12 @@ export default {
     slots: []
   },
   getters: {
-    totalStats (state, getters, rootState) {
+    totalStats (state, getters, rootState, rootGetters) {
       let parts = state.slots
         .filter(s => s.module)
         .map(slot => ({
           slot,
-          stats: rootState.library.parts.filter(p => p.name === slot.module)[0].stats
+          stats: rootGetters.partByName(slot.module).stats
         }))
       return Statblock.add(
         ...parts.map(p => new Statblock(p.stats, p.slot.techTier, state.platformGrade))

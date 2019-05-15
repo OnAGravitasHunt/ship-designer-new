@@ -37,7 +37,7 @@ export default {
       }
     },
     permittedPlatforms () {
-      return this.$store.state.library.platforms
+      return this.$store.getters.currentPlatforms
     },
     // styles
     gridColumns () {
