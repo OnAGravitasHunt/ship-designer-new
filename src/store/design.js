@@ -48,8 +48,8 @@ export default {
         ...parts.map(p => new Statblock(p.stats, p.slot.techTier, state.platformGrade))
       )
     },
-    weights (state, getters, rootState) {
-      let platform = rootState.library.platforms.filter(p => p.name === state.platform)[0]
+    weights (state, getters, rootState, rootGetters) {
+      let platform = rootGetters.currentPlatforms.filter(p => p.name === state.platform)[0]
       return {
         max: Math.round(platform.overheadWeight + platform.maxSlots * platform.slotWeight),
         design: Math.round(
@@ -94,7 +94,7 @@ export default {
   actions: {
     setPlatform ({ commit, state, rootState, rootGetters }, { name, overwrite = false }) {
       return new Promise((resolve, reject) => {
-        let platformData = rootState.library.platforms.filter(p => p.name === name)[0]
+        let platformData = rootGetters.platformByName(name)
         let reqSlots = platformData.minSlots
         let optSlots = platformData.maxSlots - reqSlots
         let slots = [
@@ -154,9 +154,9 @@ export default {
       }
     },
     // clear design
-    clearDesign ({ dispatch, commit, rootState }) {
+    clearDesign ({ dispatch, commit, rootGetters }) {
       commit('setClassName', '')
-      dispatch('setPlatform', { name: rootState.library.platforms[0].name, overwrite: true })
+      dispatch('setPlatform', { name: rootGetters.currentPlatforms[0].name, overwrite: true })
     },
     restoreDesign ({ dispatch, commit }, { design }) {
       dispatch('setPlatform', { name: design.platform, overwrite: true }).then(() => {

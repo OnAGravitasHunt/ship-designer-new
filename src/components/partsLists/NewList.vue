@@ -2,7 +2,7 @@
   <div class="new-list">
     <div class="left-col top-row">List name</div>
     <div class="right-col top-row input-cell">
-      <input class="list-name" type="text">
+      <input class="list-name" v-model="newListName" type="text">
     </div>
     <!--  -->
     <div class="left-col">Parts CSV</div>
@@ -14,7 +14,9 @@
     <div class="right-col bottom-row">
       <input ref="platformsCSV" class="list-name" type="file">
     </div>
-    <div class="left-col" @click="upload">Log</div>
+    <div class="left-col span-cols">
+      <div class="btn" @click="upload">Upload Part List</div>
+    </div>
   </div>
 </template>
 
@@ -23,6 +25,15 @@ import { PartParser, PlatformParser } from '@/lib/partParser'
 
 export default {
   name: 'NewList',
+  data () {
+    return {
+      newListName: '',
+      newList: {
+        parts: [],
+        platforms: []
+      }
+    }
+  },
   methods: {
     readFile (file) {
       return new Promise((resolve, reject) => {
@@ -55,12 +66,27 @@ export default {
       })
     },
     upload () {
-      Promise.all([
-        this.uploadParts(),
-        this.uploadPlatforms()
-      ]).then(vals => {
-        console.log(vals)
-      })
+      if (!this.newListName) {
+        alert('No name given to part list')
+      } else if (this.$store.state.library.partListNames.indexOf(this.newListName) > 0) {
+        alert('Name taken')
+      } else {
+        Promise.all([
+          this.uploadParts(),
+          this.uploadPlatforms()
+        ]).then(vals => {
+          this.$store.commit('addPartList', {
+            name: this.newListName,
+            partList: {
+              parts: vals[0],
+              platforms: vals[1]
+            }
+          })
+        }).catch(e => {
+          console.error(e)
+          alert('Something went wrong. Are you sure you selected the correct files?')
+        })
+      }
     }
   }
 }
@@ -93,5 +119,18 @@ export default {
   margin: auto 0;
   font-family: 'Avenir';
   outline: none;
+}
+.span-cols {
+  grid-column: 1/3;
+  text-align: center;
+  padding: 0;
+}
+.btn {
+  width: 190px;
+  background-color: #aaa  ;
+  margin: 1px auto;
+  height: calc(100% - 2px);
+  line-height: 28px;
+  border-radius: 14px;
 }
 </style>

@@ -1,11 +1,18 @@
-// import Vue from 'vue'
+import Vue from 'vue'
 
 import libData from '@/assets/library.json'
 
 export default {
   state: {
-    name: 'Starfleet',
-    ...libData,
+    // name: 'Starfleet',
+    // ...libData,
+    partLists: {
+      'Starfleet': {
+        ...libData
+      }
+    },
+    partListNames: ['Starfleet'],
+    currentPartListIndex: 0,
     nullModule: {
       name: null,
       type: null,
@@ -67,28 +74,54 @@ export default {
     defaultSlots (state, getters) {
       return new Array(5).fill(getters.emptySlot)
     },
-    parts (state) {
-      return state.parts
+    partByName (state, getters) {
+      return (name) => getters.currentParts.filter(p => p.name === name)[0] || null
     },
-    partByName (state) {
-      return (name) => state.parts.filter(p => p.name === name)[0] || null
+    platformByName (state, getters) {
+      return (name) => getters.currentPlatforms.filter(p => p.name === name)[0] || null
     },
-    platformByName (state) {
-      return (name) => state.platforms.filter(p => p.name === name)[0] || null
+    currentPartList (state) {
+      return state.partLists[state.partListNames[state.currentPartListIndex]]
     },
-    currentParts (state) {
-      return state.parts
+    currentParts (state, getters) {
+      return getters.currentPartList.parts
     },
-    currentPlatforms (state) {
-      return state.platforms
+    currentPlatforms (state, getters) {
+      return getters.currentPartList.platforms
     }
   },
   mutations: {
-    setPartList (state, partList) {
-      state = {
-        ...state,
-        ...partList
-      }
+    addPartList (state, { name, partList }) {
+      Vue.set(state.partLists, name, partList)
+      state.partListNames.push(name)
+    },
+    setCurrentPartList (state, index) {
+      state.currentPartListIndex = index
+    },
+    deletePartList (state, index) {
+      delete state.partLists[state.partListNames[state.currentPartListIndex]]
+      state.partListNames.splice(index, 1)
+    },
+    storePartLists (state) {
+      localStorage.setItem('partLists', {
+        names: state.partListNames,
+        lists: state.partLists
+      })
+    },
+    loadPartLists (state) {
+      let stored = localStorage.getItem('partLists')
+      Vue.set(state, 'partListNames', stored.names)
+      Vue.set(state, 'partLists', stored.lists)
+    }
+  },
+  actions: {
+    savePartList ({ commit }, { name, partList }) {
+      commit('addPartList', { name, partList })
+      commit('storePartLists')
+    },
+    removePartList ({ commit }, index) {
+      commit('deletePartList', index)
+      commit('storePartLists')
     }
   }
 }
