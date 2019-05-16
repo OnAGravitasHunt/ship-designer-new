@@ -86,7 +86,10 @@ export default {
       }
     },
     deleteList () {
-      if (this.canDeleteList) {
+      if (
+        this.canDeleteList
+        && confirm(`Are you sure you want to delete '${this.listName}'?`)
+      ) {
         this.$store.dispatch('removePartList', this.index)
       }
     }
