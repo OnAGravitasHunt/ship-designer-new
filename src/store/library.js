@@ -102,6 +102,12 @@ export default {
       delete state.partLists[state.partListNames[state.currentPartListIndex]]
       state.partListNames.splice(index, 1)
     },
+    changePartListName (state, { index, name }) {
+      let oldName = state.partListNames[index]
+      Vue.set(state.partLists, name, state.partLists[oldName])
+      state.partListNames.splice(index, 1, name)
+      delete state.partLists[oldName]
+    },
     storePartLists (state) {
       localStorage.setItem('partLists', {
         names: state.partListNames,
@@ -121,6 +127,10 @@ export default {
     },
     removePartList ({ commit }, index) {
       commit('deletePartList', index)
+      commit('storePartLists')
+    },
+    renamePartList ({ commit }, payload) {
+      commit('changePartListName', payload)
       commit('storePartLists')
     }
   }
