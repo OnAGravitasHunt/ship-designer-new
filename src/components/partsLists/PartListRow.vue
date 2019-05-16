@@ -9,7 +9,13 @@
         <button type="button" class="btn" @click="editName">Rename</button>
       </div>
       <div class="table-cell">
-        <button type="button" class="btn delete-btn">Delete</button>
+        <button
+          type="button"
+          :title="deleteButtonTitle"
+          :disabled="!canDeleteList"
+          class="btn delete-btn"
+          @click="deleteList"
+        >Delete</button>
       </div>
     </template>
     <template v-else>
@@ -49,6 +55,12 @@ export default {
       set (i) {
         this.$store.commit('setCurrentPartList', i)
       }
+    },
+    canDeleteList () {
+      return this.$store.state.library.partListNames.length > 1
+    },
+    deleteButtonTitle () {
+      return this.canDeleteList ? null : 'Cannot delete only list!'
     }
   },
   methods: {
@@ -71,6 +83,11 @@ export default {
           name: this.newName
         })
         this.editingName = false
+      }
+    },
+    deleteList () {
+      if (this.canDeleteList) {
+        this.$store.dispatch('removePartList', this.index)
       }
     }
   }
@@ -111,6 +128,9 @@ export default {
 }
 .delete-btn {
   background-color: lightcoral;
+}
+.delete-btn:disabled {
+  cursor: not-allowed;
 }
 .new-name {
   font: inherit;
