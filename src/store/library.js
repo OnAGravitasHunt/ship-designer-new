@@ -109,19 +109,18 @@ export default {
       delete state.partLists[oldName]
     },
     storePartLists (state) {
-      localStorage.setItem('partLists', {
+      localStorage.setItem('partLists', JSON.stringify({
         names: state.partListNames,
         lists: state.partLists
-      })
+      }))
     },
-    loadPartLists (state) {
-      let stored = localStorage.getItem('partLists')
-      Vue.set(state, 'partListNames', stored.names)
-      Vue.set(state, 'partLists', stored.lists)
+    loadLists (state, storedLists) {
+      Vue.set(state, 'partListNames', storedLists.names)
+      Vue.set(state, 'partLists', storedLists.lists)
     }
   },
   actions: {
-    savePartList ({ commit }, { name, partList }) {
+    savePartList ({ commit, state }, { name, partList }) {
       commit('addPartList', { name, partList })
       commit('storePartLists')
     },
@@ -132,6 +131,21 @@ export default {
     renamePartList ({ commit }, payload) {
       commit('changePartListName', payload)
       commit('storePartLists')
+    },
+    loadPartListsFromStorage ({ commit }) {
+      let stored = localStorage.getItem('partLists')
+      if (stored) {
+        try {
+          // console.log(stored)
+          stored = JSON.parse(stored)
+          commit('loadLists', stored)
+        } catch (error) {
+          console.error('Unable to parse saved part lists. Resetting...')
+          commit('storePartLists')
+        }
+      } else {
+        commit('storePartLists')
+      }
     }
   }
 }

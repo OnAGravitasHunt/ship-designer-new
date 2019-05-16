@@ -27,7 +27,7 @@ export default new Vuex.Store({
     updateLocalStorage (state) {
       localStorage.setItem('designs', JSON.stringify(state.savedDesigns))
     },
-    loadFromStorage (state) {
+    loadDesignsFromStorage (state) {
       let loaded = localStorage.getItem('designs')
       if (loaded) {
         Vue.set(state, 'savedDesigns', JSON.parse(loaded))

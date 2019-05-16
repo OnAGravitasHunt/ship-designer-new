@@ -75,7 +75,7 @@ export default {
           this.uploadParts(),
           this.uploadPlatforms()
         ]).then(vals => {
-          this.$store.commit('addPartList', {
+          this.$store.dispatch('savePartList', {
             name: this.newListName,
             partList: {
               parts: vals[0],

@@ -14,7 +14,8 @@
 export default {
   mounted () {
     this.$store.dispatch('clearDesign')
-    this.$store.commit('loadFromStorage')
+    this.$store.commit('loadDesignsFromStorage')
+    this.$store.dispatch('loadPartListsFromStorage')
   }
 }
 </script>
