@@ -9,6 +9,10 @@
     <div class="export-button-wrapper">
       <div class="export-button" @click="exportBBCode">Export BBCode</div>
     </div>
+    <div class="export-button-wrapper">
+      <div class="export-button" @click="downloadJSON">Download File</div>
+      <a ref="downloadShipJSON" style="display:none"></a>
+    </div>
   </div>
 </template>
 
@@ -67,6 +71,16 @@ export default {
         console.error('Failed to copy to clipboard. Logging below instead.')
         console.log(this.bbcodeText)
       })
+    },
+    downloadJSON () {
+      let timestamp = new Date()
+      timestamp.setMilliseconds(0)
+      let data = JSON.stringify(this.$store.state.design)
+      let element = this.$refs.downloadShipJSON
+      let filename = `${this.$store.state.design.className || `design-${timestamp.toISOString()}`}.json`
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + data)
+      element.setAttribute('download', filename)
+      element.click()
     }
   }
 }
