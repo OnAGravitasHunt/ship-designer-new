@@ -2,6 +2,10 @@
   <div class="design-list">
     <div class="title-bar">
       <div class="title-bar-left">Designs</div>
+      <div class="add-new-design" @click="$refs.uploadShipJSON.click()">
+        Upload
+        <input ref="uploadShipJSON" v-show="false" type="file" @change="uploadDesign">
+      </div>
       <div class="add-new-design" @click="addNewDesign">Add new</div>
     </div>
     <div class="design-list-table">
@@ -39,8 +43,27 @@ export default {
     }
   },
   methods: {
+    readFile (file) {
+      return new Promise((resolve, reject) => {
+        let reader = new FileReader()
+        reader.onload = () => {
+          resolve(reader.result)
+        }
+        reader.onerror = (e) => {
+          reject(e)
+        }
+        reader.readAsText(file)
+      })
+    },
     addNewDesign () {
       this.$router.push('create')
+    },
+    uploadDesign () {
+      this.readFile(this.$refs.uploadShipJSON.files[0]).then(res =>{
+        let design = JSON.parse(res)
+        this.$store.dispatch('restoreDesign', { design })
+        this.$router.push('create')
+      })
     }
   }
 }
@@ -68,6 +91,7 @@ export default {
   width: 120px;
   background-color: palegreen;
   margin: 10px 0;
+  margin-left: 10px;
   line-height: 40px;
   text-align: center;
   padding: 0 10px;
