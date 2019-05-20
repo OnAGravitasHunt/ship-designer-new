@@ -9,7 +9,8 @@
         {{slotType}}
       </template>
       <template v-else>
-        <div class="cell-main">{{slotType}}</div>
+        <div v-if="slotType" class="cell-main">{{slotType}}</div>
+        <div v-else class="cell-main handle"><span class="rearrange">&equiv;</span></div>
         <div class="cell-footer" @click="userDivider = !userDivider"></div>
       </template>
     </div>
@@ -171,7 +172,8 @@ export default {
     },
     // styles
     required () {
-      return this.slot.required && this.slotIndex > 4
+      return this.$store.getters.requiredSlot(this.slotIndex) && this.slotIndex > 4
+      // return this.slot.required && this.slotIndex > 4
     },
     gridColumns () {
       return this.$store.getters.getGridCols
@@ -214,6 +216,14 @@ export default {
 }
 .cell-main {
   height: 28px;
+}
+.handle {
+  text-align: left;
+  padding-left: 20px;
+}
+.rearrange {
+  display: inline-block;
+  transform: scale(2, 1)
 }
 .cell-footer {
   height: 3px;

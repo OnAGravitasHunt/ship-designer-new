@@ -33,6 +33,7 @@ export default {
   state: {
     className: 'Comet Study 1',
     platformGrade: 1,
+    minSlots: 2,
     platform: "2310s 500-1000kt Frigate 'Kepler' 'Comet'",
     slots: []
   },
@@ -71,6 +72,9 @@ export default {
       let base = rootGetters.platformByName(state.platform).buildTime
       let additional = state.slots.filter(s => s.module).length - 5
       return Math.ceil((base + additional) / 3) / 4
+    },
+    requiredSlot (state) {
+      return (i) => i < state.minSlots + 5
     }
   },
   mutations: {
@@ -89,6 +93,9 @@ export default {
     },
     setPlatformGrade (state, grade) {
       state.platformGrade = grade
+    },
+    setMinSlots (state, min) {
+      state.minSlots = min
     }
   },
   actions: {
@@ -110,6 +117,8 @@ export default {
             return state.slots[i] && state.slots[i].module ? state.slots[i] : s
           })
         }
+        // console.log(slots)
+        slots = slots.map((s, i) => ({ ...s, key: i }))
 
         commit('setPlatformName', name)
         commit('setSlots', slots)

@@ -59,7 +59,7 @@ export default {
       this.$router.push('create')
     },
     uploadDesign () {
-      this.readFile(this.$refs.uploadShipJSON.files[0]).then(res =>{
+      this.readFile(this.$refs.uploadShipJSON.files[0]).then(res => {
         let design = JSON.parse(res)
         this.$store.dispatch('restoreDesign', { design })
         this.$router.push('create')
