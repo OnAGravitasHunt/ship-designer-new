@@ -123,6 +123,7 @@ export default {
         commit('setPlatformName', name)
         commit('setSlots', slots)
         commit('setPlatformGrade', platformData.grade)
+        commit('setMinSlots', reqSlots)
         resolve()
       })
     },
