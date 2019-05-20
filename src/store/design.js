@@ -51,10 +51,11 @@ export default {
     },
     weights (state, getters, rootState, rootGetters) {
       let platform = rootGetters.currentPlatforms.filter(p => p.name === state.platform)[0]
+      let filled = Math.max(0, state.slots.filter(s => s.module).length - 5)
       return {
         max: Math.round(platform.overheadWeight + platform.maxSlots * platform.slotWeight),
         design: Math.round(
-          platform.overheadWeight + (state.slots.filter(s => s.module).length - 5) * platform.slotWeight
+          platform.overheadWeight + filled * platform.slotWeight
         )
       }
     },
