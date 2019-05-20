@@ -92,6 +92,6 @@ export default {
   padding-bottom: 380px;
   overflow-x: hidden;
   width: 100vw;
-  min-width: 1390px;
+  min-width: 1410px;
 }
 </style>
