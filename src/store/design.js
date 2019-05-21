@@ -31,6 +31,7 @@ function roundPercents (s) {
 
 export default {
   state: {
+    defaultTier: 0,
     className: 'Comet Study 1',
     platformGrade: 1,
     minSlots: 2,
@@ -97,6 +98,9 @@ export default {
     },
     setMinSlots (state, min) {
       state.minSlots = min
+    },
+    setDefaultTier (state, tier) {
+      state.defaultTier = tier
     }
   },
   actions: {
@@ -118,7 +122,6 @@ export default {
             return state.slots[i] && state.slots[i].module ? state.slots[i] : s
           })
         }
-        // console.log(slots)
         slots = slots.map((s, i) => ({ ...s, key: i }))
 
         commit('setPlatformName', name)
@@ -135,7 +138,7 @@ export default {
         properties.isRefit = false
         properties.stats = {}
       } else if (state.slots[index].module === null && properties.module) {
-        properties.techTier = 0
+        properties.techTier = state.defaultTier
       }
       commit('setSlot', {
         index,
@@ -173,6 +176,7 @@ export default {
       dispatch('setPlatform', { name: design.platform, overwrite: true }).then(() => {
         commit('setSlots', design.slots)
         commit('setClassName', design.className)
+        commit('setDefaultTier', design.defaultTier)
       })
     }
   }

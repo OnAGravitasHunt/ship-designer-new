@@ -4,7 +4,6 @@
     <div class="design-row-cell">-</div>
     <div
       class="design-row-cell"
-      :class="{ 'high-z': highZ }"
       :style="[zIndex]"
     >
       <v-select
@@ -14,7 +13,14 @@
         :options="[...permittedPlatforms.map(m => m.name)]"
       />
     </div>
-    <div class="design-row-cell double-right">–</div>
+    <div class="design-row-cell double-right input-wrapper">
+      <div class="input-label">Def-ault:</div>
+      <input
+        class="tech-tier-input"
+        type="number"
+        v-model="defaultTier"
+      />
+    </div>
     <div v-for="n in 16" :key="n" class="design-row-cell"></div>
   </div>
 </template>
@@ -22,11 +28,6 @@
 <script>
 export default {
   name: 'DesignTablePlatformRow',
-  data () {
-    return {
-      highZ: false
-    }
-  },
   computed: {
     moduleName: {
       get () {
@@ -34,6 +35,14 @@ export default {
       },
       set (name) {
         this.$store.dispatch('setPlatform', { name })
+      }
+    },
+    defaultTier: {
+      get () {
+        return this.$store.state.design.defaultTier
+      },
+      set (t) {
+        this.$store.commit('setDefaultTier', t)
       }
     },
     permittedPlatforms () {
@@ -72,7 +81,26 @@ export default {
 .double-right {
   border-right: 3px double grey;
 }
-/* .high-z {
-  z-index: 100;
-} */
+.tech-tier-input {
+  box-sizing: border-box;
+  outline: none;
+  background-color: transparent;
+  font-family: 'Avenir';
+  width: 38px;
+  font-size: 10pt;
+  height: 30px;
+  border: 1px solid rgba(60, 60, 60, 0.26);
+  border-radius: 4px;
+  text-align: center;
+  font-weight: inherit;
+  vertical-align: top;
+}
+.input-label {
+  width: 25px;
+  height: 30px;
+  display: inline-block;
+  margin: 0 2px;
+  line-height: 10pt;
+  padding-top: 2px;
+}
 </style>

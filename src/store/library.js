@@ -136,7 +136,6 @@ export default {
       let stored = localStorage.getItem('partLists')
       if (stored) {
         try {
-          // console.log(stored)
           stored = JSON.parse(stored)
           commit('loadLists', stored)
         } catch (error) {
