@@ -6,6 +6,10 @@
     <template v-if="!editingName">
       <div class="table-cell">{{listName}}</div>
       <div class="table-cell">
+        <button type="button" class="btn narrow-btn" @click="downloadList">&#8681;</button>
+        <a ref="downloadPartsJSON" style="display:none"></a>
+      </div>
+      <div class="table-cell">
         <button type="button" class="btn" @click="editName">Rename</button>
       </div>
       <div class="table-cell">
@@ -22,6 +26,7 @@
       <div class="table-cell">
         <input type="text" class="new-name" v-model="newName"/>
       </div>
+      <div class="table-cell"></div>
       <div class="table-cell">
         <button type="button" class="btn" @click="cancelEdit">Cancel</button>
       </div>
@@ -92,6 +97,16 @@ export default {
       ) {
         this.$store.dispatch('removePartList', this.index)
       }
+    },
+    downloadList () {
+      let timestamp = new Date()
+      timestamp.setMilliseconds(0)
+      let data = JSON.stringify(this.$store.state.library.partLists[this.listName])
+      let element = this.$refs.downloadPartsJSON
+      let filename = `${this.listName || `parts-library-${timestamp.toISOString()}`}.json`
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + data)
+      element.setAttribute('download', filename)
+      element.click()
     }
   }
 }
@@ -101,7 +116,7 @@ export default {
 .part-list-row {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 40px 200px 80px 80px;
+  grid-template-columns: 40px 200px 60px 80px 80px;
   grid-template-rows: 33px;
 }
 .table-cell {
@@ -128,6 +143,9 @@ export default {
   font-size: inherit;
   color: inherit;
   outline: none;
+}
+.narrow-btn {
+  width: 50px;
 }
 .delete-btn {
   background-color: lightcoral;

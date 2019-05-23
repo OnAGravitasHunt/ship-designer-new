@@ -9,6 +9,7 @@
         <div class="header-cell">List Name</div>
         <div class="header-cell"></div>
         <div class="header-cell"></div>
+        <div class="header-cell"></div>
       </div>
       <div class="table-body">
         <PartListRow v-for="(partList, index) of partLists" :key="partList" :index="index"/>
@@ -40,7 +41,7 @@ export default {
 .parts-lists {
   text-align: left;
   margin-left: 50px;
-  width: 400px;
+  width: 460px;
 }
 .title-bar {
   height: 60px;
@@ -62,7 +63,7 @@ export default {
 .list-row {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 40px 200px 80px 80px;
+  grid-template-columns: 40px 200px 60px 80px 80px;
   grid-template-rows: 33px;
 }
 .header-cell {
