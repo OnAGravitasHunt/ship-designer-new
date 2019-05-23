@@ -1,27 +1,27 @@
 export default {
   state: {
     designTable: {
-      columnWidths: [
-        { key: 'slotType', width: '100px', headingComp: 'HeadingCell', tableComp: 'SlotTypeCell' },
-        { key: 'refit', width: '30px', headingComp: 'HeadingCell', tableComp: 'RefitTableCell' },
-        { key: 'name', width: 'minmax(350px, 1fr)', headingComp: 'HeadingCell', tableComp: 'NameTableCell' },
-        { key: 'techTier', width: '70px', headingComp: 'HeadingCell', tableComp: 'TableCell' },
-        { key: 'moduleType', width: '100px', headingComp: 'HeadingCell', tableComp: 'TableCell' },
-        { key: 'moduleSlot', width: '90px', headingComp: 'HeadingCell', tableComp: 'TableCell' },
-        { key: 'c', width: '40px', headingComp: 'StatHeadingCell', tableComp: 'TableCell' },
-        { key: 's', width: '40px', headingComp: 'StatHeadingCell', tableComp: 'TableCell' },
-        { key: 'h', width: '40px', headingComp: 'StatHeadingCell', tableComp: 'TableCell' },
-        { key: 'l', width: '40px', headingComp: 'StatHeadingCell', tableComp: 'TableCell' },
-        { key: 'p', width: '40px', headingComp: 'StatHeadingCell', tableComp: 'TableCell' },
-        { key: 'e', width: '40px', headingComp: 'StatHeadingCell', tableComp: 'TableCell' },
-        { key: 'r', width: '40px', headingComp: 'StatHeadingCell', tableComp: 'TableCell' },
-        { key: 'ev', width: '70px', headingComp: 'PercentHeadingCell', tableComp: 'PercentTableCell' },
-        { key: 'pen', width: '80px', headingComp: 'PercentHeadingCell', tableComp: 'TablePercentTableCellCell' },
-        { key: 'br', width: '60px', headingComp: 'CostHeadingCell', tableComp: 'TableCell' },
-        { key: 'sr', width: '60px', headingComp: 'CostHeadingCell', tableComp: 'TableCell' },
-        { key: 'o', width: '40px', headingComp: 'CostHeadingCell', tableComp: 'TableCell' },
-        { key: 'en', width: '40px', headingComp: 'CostHeadingCell', tableComp: 'TableCell' },
-        { key: 't', width: '40px', headingComp: 'CostHeadingCell', tableComp: 'TableCell' }
+      columns: [
+        { key: 'slotType', title: 'Slot Type', width: '100px', headingComp: 'HeaderCell', tableComp: 'SlotTypeCell' },
+        { key: 'refit', title: 'Refit', width: '30px', headingComp: 'HeaderCell', tableComp: 'RefitTableCell' },
+        { key: 'name', title: 'Name', width: 'minmax(350px, 1fr)', headingComp: 'HeaderCell', tableComp: 'NameTableCell' },
+        { key: 'techTier', title: 'Tech Tier', width: '70px', headingComp: 'HeaderCell', tableComp: 'TableCell' },
+        { key: 'moduleType', title: 'Module Type', width: '100px', headingComp: 'HeaderCell', tableComp: 'TableCell' },
+        { key: 'moduleSlot', title: 'Module Slot', width: '90px', headingComp: 'HeaderCell', tableComp: 'TableCell' },
+        { key: 'c', title: 'C', width: '40px', headingComp: 'StatHeaderCell', tableComp: 'TableCell' },
+        { key: 's', title: 'S', width: '40px', headingComp: 'StatHeaderCell', tableComp: 'TableCell' },
+        { key: 'h', title: 'H', width: '40px', headingComp: 'StatHeaderCell', tableComp: 'TableCell' },
+        { key: 'l', title: 'L', width: '40px', headingComp: 'StatHeaderCell', tableComp: 'TableCell' },
+        { key: 'p', title: 'P', width: '40px', headingComp: 'StatHeaderCell', tableComp: 'TableCell' },
+        { key: 'e', title: 'E', width: '40px', headingComp: 'StatHeaderCell', tableComp: 'TableCell' },
+        { key: 'r', title: 'R', width: '40px', headingComp: 'StatHeaderCell', tableComp: 'TableCell' },
+        { key: 'ev', title: 'Ev', width: '70px', headingComp: 'PercentHeaderCell', tableComp: 'PercentTableCell' },
+        { key: 'pen', title: 'Pen', width: '80px', headingComp: 'PercentHeaderCell', tableComp: 'TablePercentTableCellCell' },
+        { key: 'br', title: 'BR', width: '60px', headingComp: 'CostHeaderCell', tableComp: 'TableCell' },
+        { key: 'sr', title: 'SR', width: '60px', headingComp: 'CostHeaderCell', tableComp: 'TableCell' },
+        { key: 'o', title: 'O', width: '40px', headingComp: 'CostHeaderCell', tableComp: 'TableCell' },
+        { key: 'en', title: 'EN', width: '40px', headingComp: 'CostHeaderCell', tableComp: 'TableCell' },
+        { key: 't', title: 'T', width: '40px', headingComp: 'CostHeaderCell', tableComp: 'TableCell' }
       ],
       col2Width: 350
     }
@@ -29,7 +29,7 @@ export default {
   getters: {
     getGridTemplateColumns (state) {
       return {
-        gridTemplateColumns: state.designTable.columnWidths.map(w => w.width).join(' ')
+        gridTemplateColumns: state.designTable.columns.map(w => w.width).join(' ')
       }
     }
   },

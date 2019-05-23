@@ -1,32 +1,31 @@
 <template>
   <div class="design-header" :style="gridColumns">
-    <div class="design-header-cell">Slot Type</div>
-    <div class="design-header-cell">Refit</div>
-    <div class="design-header-cell" ref="col2">Name</div>
-    <div class="design-header-cell double-right">Tech Tier</div>
-    <div class="design-header-cell">Module Type</div>
-    <div class="design-header-cell">Module Slot</div>
-    <div class="design-header-cell">C{{stats.c}}</div>
-    <div class="design-header-cell">S{{stats.s}}</div>
-    <div class="design-header-cell">H{{stats.h}}</div>
-    <div class="design-header-cell">L{{stats.l}}</div>
-    <div class="design-header-cell">P{{stats.p}}</div>
-    <div class="design-header-cell">E{{stats.e}}</div>
-    <div class="design-header-cell">R{{stats.r}}</div>
-    <div class="design-header-cell">{{displayEvasion}} Ev</div>
-    <div class="design-header-cell">{{displayPenetration}} Pen</div>
-    <div class="design-header-cell">{{stats.br}}BR</div>
-    <div class="design-header-cell">{{stats.sr}}SR</div>
-    <div class="design-header-cell">{{stats.o}}O</div>
-    <div class="design-header-cell">{{stats.en}}EN</div>
-    <div class="design-header-cell">{{stats.t}}T</div>
+    <component
+      v-for="col of columns"
+      :key="col.key"
+      :is="col.headingComp" v-bind="{ title: col.title, value: stats[col.key] || null }"
+    />
   </div>
 </template>
 
 <script>
+import HeaderCell from './cells/HeaderCell'
+import StatHeaderCell from './cells/StatHeaderCell'
+import PercentHeaderCell from './cells/PercentHeaderCell'
+import CostHeaderCell from './cells/CostHeaderCell'
+
 export default {
   name: 'DesignTableHeader',
+  components: {
+    HeaderCell,
+    StatHeaderCell,
+    PercentHeaderCell,
+    CostHeaderCell
+  },
   computed: {
+    columns () {
+      return this.$store.state.ui.designTable.columns
+    },
     stats () {
       return { ...this.$store.getters.totalStats, br: this.br }
     },
@@ -43,18 +42,11 @@ export default {
       set (w) {
         this.$store.commit('setCol2Width', w)
       }
-    },
-    // display strings
-    displayEvasion () {
-      return `${Math.round(this.stats.ev * 1000) / 10}%`
-    },
-    displayPenetration () {
-      return `${Math.round(this.stats.pen * 1000) / 10}%`
     }
   },
   methods: {
     handleResize () {
-      this.col2Width = this.$refs.col2.clientWidth
+      this.col2Width = this.$el.childNodes[2].clientWidth
     }
   },
   mounted () {
