@@ -16,6 +16,9 @@
       </div>
     </div>
     <NewList/>
+    <div class="purge" @click="purgePartLists">
+      Click here to reset to default part lists.
+    </div>
   </div>
 </template>
 
@@ -32,6 +35,13 @@ export default {
   computed: {
     partLists () {
       return this.$store.state.library.partListNames
+    }
+  },
+  methods: {
+    purgePartLists () {
+      if (confirm('Are you sure? This will erase all your custom part lists.')) {
+        localStorage.removeItem('partLists')
+      }
     }
   }
 }
@@ -84,5 +94,16 @@ export default {
   overflow-y: auto;
   border-bottom: 2px solid black;
   font-size: 11pt;
+}
+.purge {
+  margin-top: 50px;
+  width: 230px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 9pt;
+  background-color: lightcoral;
+  border-radius: 15px;
+  text-align: center;
+  cursor: pointer;
 }
 </style>
