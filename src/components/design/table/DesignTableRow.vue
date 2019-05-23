@@ -205,7 +205,7 @@ export default {
 .design-row-cell {
   box-sizing: border-box;
   line-height: 30px;
-  font-size: 10pt;
+  font-size: 9pt;
   border-right: 1px solid grey;
   background-color: inherit;
   text-align: center;
@@ -250,21 +250,24 @@ export default {
   background-color: transparent;
   font-family: 'Avenir';
   width: 67px;
-  font-size: 10pt;
+  font-size: 9pt;
   height: 30px;
-  /* margin: 2px 0; */
   border: 1px solid rgba(60, 60, 60, 0.26);
   border-radius: 4px;
   text-align: center;
   font-weight: inherit;
 }
 .selected-option-wrapper {
-  /* max-width: 270px; */
   white-space: nowrap;
   overflow-x: hidden;
 }
 .is-refit {
   font-weight: bold;
   background-color: mediumturquoise;
+}
+</style>
+<style>
+.module-selector .vs__dropdown-toggle {
+  height: 30px;
 }
 </style>

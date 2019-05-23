@@ -3,7 +3,8 @@
     <component
       v-for="col of columns"
       :key="col.key"
-      :is="col.headingComp" v-bind="{ title: col.title, value: stats[col.key] || null }"
+      :is="col.headingComp"
+      v-bind="{ title: col.title, value: stats[col.key] }"
     />
   </div>
 </template>
@@ -30,7 +31,7 @@ export default {
       return { ...this.$store.getters.totalStats, br: this.br }
     },
     br () {
-      return this.$store.getters.weights.design / 10 + this.$store.getters.totalStats.br
+      return Math.ceil(this.$store.getters.weights.design / 10 + this.$store.getters.totalStats.br)
     },
     gridColumns () {
       return this.$store.getters.getGridTemplateColumns

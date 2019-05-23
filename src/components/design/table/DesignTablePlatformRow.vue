@@ -69,7 +69,7 @@ export default {
 }
 .design-row-cell {
   line-height: 30px;
-  font-size: 10pt;
+  font-size: 9pt;
   border-right: 1px solid grey;
   border-bottom: 1px solid grey;
   background-color: inherit;
@@ -87,7 +87,7 @@ export default {
   background-color: transparent;
   font-family: 'Avenir';
   width: 38px;
-  font-size: 10pt;
+  font-size: 9pt;
   height: 30px;
   border: 1px solid rgba(60, 60, 60, 0.26);
   border-radius: 4px;

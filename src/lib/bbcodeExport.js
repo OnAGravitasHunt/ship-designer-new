@@ -10,7 +10,6 @@ export default class BBCodeExport {
   }
 
   static summaryTable (design) {
-    console.log(design.stats)
     return this.tableWrapper(
       this.tableRow(
         this.tableCell(design.name),
