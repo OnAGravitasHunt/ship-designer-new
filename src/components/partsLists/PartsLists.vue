@@ -41,6 +41,7 @@ export default {
     purgePartLists () {
       if (confirm('Are you sure? This will erase all your custom part lists.')) {
         localStorage.removeItem('partLists')
+        this.$store.commit('loadListsFromData')
       }
     }
   }

@@ -117,6 +117,14 @@ export default {
     loadLists (state, storedLists) {
       Vue.set(state, 'partListNames', storedLists.names)
       Vue.set(state, 'partLists', storedLists.lists)
+    },
+    loadListsFromData (state) {
+      Vue.set(state, 'partListNames', ['Starfleet'])
+      Vue.set(state, 'partLists', {
+        'Starfleet': {
+          ...libData
+        }
+      })
     }
   },
   actions: {
