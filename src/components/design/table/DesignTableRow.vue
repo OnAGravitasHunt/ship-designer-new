@@ -43,28 +43,22 @@
     </div>
     <div class="design-row-cell">{{component.type}}</div>
     <div class="design-row-cell">{{component.slot}}</div>
-    <div class="design-row-cell">{{stats.c}}</div>
-    <div class="design-row-cell">{{stats.s}}</div>
-    <div class="design-row-cell">{{stats.h}}</div>
-    <div class="design-row-cell">{{stats.l}}</div>
-    <div class="design-row-cell">{{stats.p}}</div>
-    <div class="design-row-cell">{{stats.e}}</div>
-    <div class="design-row-cell">{{stats.r}}</div>
-    <div class="design-row-cell">{{displayEvasion}}</div>
-    <div class="design-row-cell">{{displayPenetration}}</div>
-    <div class="design-row-cell">{{stats.br}}</div>
-    <div class="design-row-cell">{{stats.sr}}</div>
-    <div class="design-row-cell">{{stats.o}}</div>
-    <div class="design-row-cell">{{stats.en}}</div>
-    <div class="design-row-cell">{{stats.t}}</div>
+    <component v-for="col of columns" :key="col.key" :is="col.tableComp" :value="stats[col.key]"/>
   </div>
 </template>
 
 <script>
 import Statblock from '@/lib/statblock'
 
+import TableCell from './cells/TableCell'
+import PercentTableCell from './cells/PercentTableCell'
+
 export default {
   name: 'DesignTableRow',
+  components: {
+    TableCell,
+    PercentTableCell
+  },
   props: {
     slotType: String,
     slotIndex: Number,
@@ -188,6 +182,12 @@ export default {
     },
     selectedDiv () {
       return { maxWidth: `${this.selectedDivWidth}px` }
+    },
+    // ------------
+    // NEW STUFF
+    // ------------
+    columns () {
+      return this.$store.state.ui.designTable.columns.slice(6)
     }
   }
 }

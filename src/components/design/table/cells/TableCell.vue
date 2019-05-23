@@ -1,26 +1,27 @@
 <template>
-  <div class="header-cell">{{title}}{{value}}</div>
+  <div class="design-row-cell">{{value}}</div>
 </template>
 
 <script>
 export default {
-  name: 'StatHeaderCell',
+  name: 'TableCell',
   props: {
-    title: String,
-    value: Number
+    value: [String, Number]
   }
 }
 </script>
 
  <style scoped>
-.header-cell {
+.design-row-cell {
+  box-sizing: border-box;
   line-height: 30px;
   font-size: 10pt;
+  border-right: 1px solid grey;
   background-color: inherit;
   text-align: center;
-  border-right: 1px solid grey;
+  z-index: 0;
 }
-.header-cell:first-child {
+.design-row-cell:first-child {
   border-left: 1px solid grey;
 }
  </style>

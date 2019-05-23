@@ -1,13 +1,13 @@
 <template>
-  <div class="header-cell">{{title}}{{value}}</div>
+  <div class="header-cell">{{title}}</div>
 </template>
 
 <script>
 export default {
-  name: 'StatHeaderCell',
+  name: 'SlotTableCell',
   props: {
-    title: String,
-    value: Number
+    isInfra: Boolean,
+    slotName: String
   }
 }
 </script>

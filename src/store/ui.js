@@ -16,7 +16,7 @@ export default {
         { key: 'e', title: 'E', width: '40px', headingComp: 'StatHeaderCell', tableComp: 'TableCell' },
         { key: 'r', title: 'R', width: '40px', headingComp: 'StatHeaderCell', tableComp: 'TableCell' },
         { key: 'ev', title: 'Ev', width: '70px', headingComp: 'PercentHeaderCell', tableComp: 'PercentTableCell' },
-        { key: 'pen', title: 'Pen', width: '80px', headingComp: 'PercentHeaderCell', tableComp: 'TablePercentTableCellCell' },
+        { key: 'pen', title: 'Pen', width: '80px', headingComp: 'PercentHeaderCell', tableComp: 'PercentTableCell' },
         { key: 'br', title: 'BR', width: '60px', headingComp: 'CostHeaderCell', tableComp: 'TableCell' },
         { key: 'sr', title: 'SR', width: '60px', headingComp: 'CostHeaderCell', tableComp: 'TableCell' },
         { key: 'o', title: 'O', width: '40px', headingComp: 'CostHeaderCell', tableComp: 'TableCell' },

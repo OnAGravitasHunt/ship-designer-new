@@ -13,7 +13,7 @@ export default {
 </script>
 
  <style scoped>
- .header-cell {
+.header-cell {
   line-height: 30px;
   font-size: 10pt;
   background-color: inherit;
