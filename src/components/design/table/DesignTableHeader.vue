@@ -34,7 +34,7 @@ export default {
       return this.$store.getters.weights.design / 10 + this.$store.getters.totalStats.br
     },
     gridColumns () {
-      return this.$store.getters.getGridCols
+      return this.$store.getters.getGridTemplateColumns
     },
     col2Width: {
       get () {

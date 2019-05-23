@@ -50,7 +50,7 @@ export default {
     },
     // styles
     gridColumns () {
-      return this.$store.getters.getGridCols
+      return this.$store.getters.getGridTemplateColumns
     },
     zIndex () {
       return {

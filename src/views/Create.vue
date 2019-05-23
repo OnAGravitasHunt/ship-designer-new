@@ -9,7 +9,7 @@
 <script>
 import DesignPageHeader from '@/components/design/DesignPageHeader'
 import DesignSummary from '@/components/design/DesignSummary'
-import DesignTable from '@/components/design/DesignTable'
+import DesignTable from '@/components/design/table/DesignTable'
 
 export default {
   name: 'create',

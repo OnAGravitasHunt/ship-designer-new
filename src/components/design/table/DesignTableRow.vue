@@ -176,7 +176,7 @@ export default {
       // return this.slot.required && this.slotIndex > 4
     },
     gridColumns () {
-      return this.$store.getters.getGridCols
+      return this.$store.getters.getGridTemplateColumns
     },
     zIndex () {
       return {
