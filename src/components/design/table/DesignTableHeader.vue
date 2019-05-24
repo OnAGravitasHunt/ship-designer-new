@@ -6,6 +6,7 @@
       :is="col.headingComp"
       v-bind="{ title: col.title, value: stats[col.key] }"
     />
+    <div></div>
   </div>
 </template>
 
@@ -34,7 +35,9 @@ export default {
       return Math.ceil(this.$store.getters.weights.design / 10 + this.$store.getters.totalStats.br)
     },
     gridColumns () {
-      return this.$store.getters.getGridTemplateColumns
+      let g = { ...this.$store.getters.getGridTemplateColumns }
+      g.gridTemplateColumns += ' 4px'
+      return g
     },
     col2Width: {
       get () {

@@ -88,10 +88,19 @@ export default {
 }
 .design-table-body {
   flex: 1 1 auto;
-  overflow-y: auto;
+  overflow-y: scroll;
   padding-bottom: 380px;
   overflow-x: hidden;
   width: 100vw;
   min-width: 1410px;
+}
+.design-table-body::-webkit-scrollbar {
+  background-color: transparent;
+  border: none;
+  width: 4px;
+}
+.design-table-body::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 </style>

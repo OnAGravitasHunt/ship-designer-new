@@ -11,7 +11,11 @@
         v-model="moduleName"
         :clearable="false"
         :options="[...permittedPlatforms.map(m => m.name)]"
-      />
+      >
+        <template v-slot:selected-option="selected">
+          <div class="selected-option-wrapper" :style="[selectedDiv]">{{selected.label}}</div>
+        </template>
+      </v-select>
     </div>
     <div class="design-row-cell double-right input-wrapper">
       <div class="input-label">Def-ault:</div>
@@ -56,6 +60,12 @@ export default {
       return {
         zIndex: 2000
       }
+    },
+    selectedDivWidth () {
+      return this.$store.state.ui.designTable.col2Width - 75
+    },
+    selectedDiv () {
+      return { maxWidth: `${this.selectedDivWidth}px` }
     }
   }
 }
@@ -77,6 +87,10 @@ export default {
 }
 .design-row-cell:first-child {
   border-left: 1px solid grey;
+}
+.selected-option-wrapper {
+  white-space: nowrap;
+  overflow-x: hidden;
 }
 .double-right {
   border-right: 3px double grey;
