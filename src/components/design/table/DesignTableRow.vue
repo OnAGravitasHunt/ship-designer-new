@@ -4,6 +4,7 @@
     :class="{ divider, 'user-divider': userDivider }"
     :style="[gridColumns, zIndex]"
   >
+    <!-- Column 1: Slot type/rearrage -->
     <div class="design-row-cell" :class="{ required }">
       <template v-if="isInfra">
         {{slotType}}
@@ -14,9 +15,11 @@
         <div class="cell-footer" @click="userDivider = !userDivider"></div>
       </template>
     </div>
+    <!-- Column 2: Refit checkbox -->
     <div class="design-row-cell" :class="{ required }">
       <input type="checkbox" v-model="isRefit" :disabled="refitDisabled">
     </div>
+    <!-- Column 3: Module Name -->
     <div
       class="design-row-cell"
       :class="{ 'is-refit': isRefit }"
@@ -33,6 +36,7 @@
         </template>
       </v-select>
     </div>
+    <!-- Column 4: Tech Tier -->
     <div class="design-row-cell double-right" :class="{ 'is-refit': isRefit }">
       <input
         class="tech-tier-input"
@@ -41,6 +45,7 @@
         v-model="techTier"
       />
     </div>
+    <!-- Column 5,6: Module Type, Slot -->
     <div class="design-row-cell">{{component.type}}</div>
     <div class="design-row-cell">{{component.slot}}</div>
     <component v-for="col of columns" :key="col.key" :is="col.tableComp" :value="stats[col.key]"/>
@@ -178,7 +183,7 @@ export default {
       }
     },
     selectedDivWidth () {
-      return this.$store.state.ui.designTable.col2Width - 75
+      return this.$store.state.ui.designTable.col2Width - 70
     },
     selectedDiv () {
       return { maxWidth: `${this.selectedDivWidth}px` }
@@ -260,6 +265,7 @@ export default {
 .selected-option-wrapper {
   white-space: nowrap;
   overflow-x: hidden;
+  vertical-align: top;
 }
 .is-refit {
   font-weight: bold;

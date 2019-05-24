@@ -71,7 +71,7 @@ export default {
   display: grid;
   grid-template-rows: 30px;
   width: 100vw;
-  min-width: 1410px;
+  min-width: 1365px;
   border-bottom: 2px solid black;
   border-top: 2px solid black;
 }

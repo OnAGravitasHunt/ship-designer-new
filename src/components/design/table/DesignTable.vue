@@ -92,7 +92,7 @@ export default {
   padding-bottom: 380px;
   overflow-x: hidden;
   width: 100vw;
-  min-width: 1410px;
+  min-width: 1365px;
 }
 .design-table-body::-webkit-scrollbar {
   background-color: transparent;

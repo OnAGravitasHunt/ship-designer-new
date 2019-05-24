@@ -2,7 +2,7 @@ export default {
   state: {
     designTable: {
       columns: [
-        { key: 'slotType', title: 'Slot Type', width: '100px', headingComp: 'HeaderCell', tableComp: 'SlotTypeCell' },
+        { key: 'slotType', title: 'Slot Type', width: '90px', headingComp: 'HeaderCell', tableComp: 'SlotTypeCell' },
         { key: 'refit', title: 'Refit', width: '30px', headingComp: 'HeaderCell', tableComp: 'RefitTableCell' },
         { key: 'name', title: 'Name', width: 'minmax(350px, 1fr)', headingComp: 'HeaderCell', tableComp: 'NameTableCell' },
         { key: 'techTier', title: 'Tech Tier', width: '70px', headingComp: 'HeaderCell', tableComp: 'TableCell' },
@@ -15,8 +15,8 @@ export default {
         { key: 'p', title: 'P', width: '40px', headingComp: 'StatHeaderCell', tableComp: 'TableCell' },
         { key: 'e', title: 'E', width: '40px', headingComp: 'StatHeaderCell', tableComp: 'TableCell' },
         { key: 'r', title: 'R', width: '40px', headingComp: 'StatHeaderCell', tableComp: 'TableCell' },
-        { key: 'ev', title: 'Ev', width: '70px', headingComp: 'PercentHeaderCell', tableComp: 'PercentTableCell' },
-        { key: 'pen', title: 'Pen', width: '70px', headingComp: 'PercentHeaderCell', tableComp: 'PercentTableCell' },
+        { key: 'ev', title: 'Ev', width: '60px', headingComp: 'PercentHeaderCell', tableComp: 'PercentTableCell' },
+        { key: 'pen', title: 'Pen', width: '60px', headingComp: 'PercentHeaderCell', tableComp: 'PercentTableCell' },
         { key: 'br', title: 'BR', width: '50px', headingComp: 'CostHeaderCell', tableComp: 'TableCell' },
         { key: 'sr', title: 'SR', width: '50px', headingComp: 'CostHeaderCell', tableComp: 'TableCell' },
         { key: 'o', title: 'O', width: '40px', headingComp: 'CostHeaderCell', tableComp: 'TableCell' },

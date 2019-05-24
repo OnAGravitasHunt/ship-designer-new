@@ -87,7 +87,7 @@ export default {
     },
     gridStyle () {
       return {
-        gridTemplateColumns: `120px ${this.col2Width - 179}px 120px 70px 100px 70px 90px repeat(7,40px)`
+        gridTemplateColumns: `120px ${this.col2Width - 179}px 110px 70px 100px 70px 90px repeat(7,40px)`
       }
     }
   },
