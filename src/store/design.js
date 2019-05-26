@@ -39,6 +39,9 @@ export default {
     slots: []
   },
   getters: {
+    platformStats (state, getters, rootState, rootGetters) {
+      return rootGetters.platformByName(state.platform).stats
+    },
     totalStats (state, getters, rootState, rootGetters) {
       let parts = state.slots
         .filter(s => s.module)
@@ -46,8 +49,10 @@ export default {
           slot,
           stats: rootGetters.partByName(slot.module).stats
         }))
+      let pStats = getters.platformStats
       return Statblock.add(
-        ...parts.map(p => new Statblock(p.stats, p.slot.techTier, state.platformGrade))
+        ...parts.map(p => new Statblock(p.stats, p.slot.techTier, state.platformGrade)),
+        new Statblock(pStats, 0, state.platformGrade, true)
       )
     },
     weights (state, getters, rootState, rootGetters) {

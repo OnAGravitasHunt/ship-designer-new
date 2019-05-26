@@ -20,18 +20,29 @@ function fixRounding (n, places = 1) {
 }
 
 export default class Statblock {
-  constructor (raw, techTier, platformGrade) {
+  constructor (raw, techTier, platformGrade, isPlatform = false) {
     this.raw = raw
     this.techTier = techTier
     this.platformGrade = platformGrade
     this.processedStats = {}
 
-    for (const stat of statCalcs) {
-      if (stat.name in this.raw) {
-        this.processedStats[stat.name] = fixRounding(
-          this[stat.calc](this.raw[stat.name], this.raw[`${stat.name}Grade`]),
-          stat.round
-        )
+    if (isPlatform) {
+      for (const stat of statCalcs) {
+        if (stat.name in this.raw) {
+          this.processedStats[stat.name] = fixRounding(
+            this.platformStatCalc(this.raw[stat.name]),
+            stat.round
+          )
+        }
+      }
+    } else {
+      for (const stat of statCalcs) {
+        if (stat.name in this.raw) {
+          this.processedStats[stat.name] = fixRounding(
+            this[stat.calc](this.raw[stat.name], this.raw[`${stat.name}Grade`]),
+            stat.round
+          )
+        }
       }
     }
   }
@@ -53,6 +64,10 @@ export default class Statblock {
 
   crewStatCalc (baseStat, gradeStat) {
     return baseStat + this.platformGrade * gradeStat + this.raw.crewChange * this.techTier
+  }
+
+  platformStatCalc (baseStat) {
+    return baseStat || 0
   }
 
   static add (...blocks) {

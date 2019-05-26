@@ -60,6 +60,18 @@ function makeStatsObject (part) {
   }
 }
 
+function makePlatformStatsObject (platform) {
+  let stats = {}
+  for (const stat of statKeys) {
+    stats[stat.jsonKey] = platform[stat.csvKey]
+    delete platform[stat.csvKey]
+  }
+  return {
+    ...platform,
+    stats
+  }
+}
+
 function makeGradesArray (part) {
   let grades = [true, true, true].map((g, i) => !!part[gradeKeys[i]])
   for (const grade of gradeKeys) {
@@ -118,6 +130,7 @@ export class PlatformParser {
   static parse (file) {
     return papa.parse(file, config).data
       .map(makeNumerical)
+      .map(makePlatformStatsObject)
       .map(reKeyPlatform)
       .map(mapCapabilities)
   }

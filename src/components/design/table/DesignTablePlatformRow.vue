@@ -25,13 +25,23 @@
         v-model="defaultTier"
       />
     </div>
-    <div v-for="n in 16" :key="n" class="design-row-cell"></div>
+    <div v-for="n in 2" :key="n" class="design-row-cell"></div>
+    <component v-for="col of columns" :key="col.key" :is="col.tableComp" :value="stats[col.key]"/>
   </div>
 </template>
 
 <script>
+import Statblock from '@/lib/statblock'
+
+import TableCell from './cells/TableCell'
+import PercentTableCell from './cells/PercentTableCell'
+
 export default {
   name: 'DesignTablePlatformRow',
+  components: {
+    TableCell,
+    PercentTableCell
+  },
   computed: {
     moduleName: {
       get () {
@@ -51,6 +61,14 @@ export default {
     },
     permittedPlatforms () {
       return this.$store.getters.currentPlatforms
+    },
+    columns () {
+      return this.$store.state.ui.designTable.columns.slice(6)
+    },
+    stats () {
+      let s = new Statblock(this.$store.getters.platformStats, 0, this.platformGrade, true)
+      return s.processedStats
+      // return this.$store.getters.platformStats
     },
     // styles
     gridColumns () {
