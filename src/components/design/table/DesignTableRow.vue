@@ -9,8 +9,6 @@
 </template>
 
 <script>
-import Statblock from '@/lib/statblock'
-
 import SlotTableCell from './cells/row/SlotTableCell'
 import RefitTableCell from './cells/row/RefitTableCell'
 import NameTableCell from './cells/row/NameTableCell'
