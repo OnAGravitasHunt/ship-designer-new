@@ -61,7 +61,7 @@ export default {
     permittedModules () {
       let modules = this.$store.getters.currentParts
       if (this.rowIndex < this.slotTypes.length) {
-        return modules.filter(module => module.type === this.slotTypes[this.rowIndex])
+        return modules.filter(m => m.type === this.slotTypes[this.rowIndex].name)
       } else {
         return modules.filter(m => m.slot !== 'Infrastructure')
       }
