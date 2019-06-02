@@ -1,45 +1,29 @@
 <template>
   <div class="design-row" :style="[gridColumns, zIndex]">
-    <div class="design-row-cell">Platform</div>
-    <div class="design-row-cell">-</div>
-    <div
-      class="design-row-cell"
-      :style="[zIndex]"
-    >
-      <v-select
-        class="module-selector"
-        v-model="moduleName"
-        :clearable="false"
-        :options="[...permittedPlatforms.map(m => m.name)]"
-      >
-        <template v-slot:selected-option="selected">
-          <div class="selected-option-wrapper" :style="[selectedDiv]">{{selected.label}}</div>
-        </template>
-      </v-select>
-    </div>
-    <div class="design-row-cell double-right input-wrapper">
-      <div class="input-label">Def-ault:</div>
-      <input
-        class="tech-tier-input"
-        type="number"
-        v-model="defaultTier"
-      />
-    </div>
-    <div v-for="n in 2" :key="n" class="design-row-cell"></div>
-    <component v-for="col of columns" :key="col.key" :is="col.tableComp" :value="stats[col.key]"/>
+    <component v-for="col of columns" :key="col.key" :is="col.tableComp" :columnKey="col.key"/>
   </div>
 </template>
 
 <script>
 import Statblock from '@/lib/statblock'
 
+import SlotTableCell from './cells/platformRow/SlotTableCell'
+import RefitTableCell from './cells/platformRow/RefitTableCell'
+import NameTableCell from './cells/platformRow/NameTableCell'
+import TierTableCell from './cells/platformRow/TierTableCell'
 import TableCell from './cells/platformRow/TableCell'
+import StatTableCell from './cells/platformRow/StatTableCell'
 import PercentTableCell from './cells/platformRow/PercentTableCell'
 
 export default {
   name: 'DesignTablePlatformRow',
   components: {
+    SlotTableCell,
+    RefitTableCell,
+    NameTableCell,
+    TierTableCell,
     TableCell,
+    StatTableCell,
     PercentTableCell
   },
   computed: {
@@ -63,12 +47,11 @@ export default {
       return this.$store.getters.currentPlatforms
     },
     columns () {
-      return this.$store.state.ui.designTable.columns.slice(6)
+      return this.$store.state.ui.designTable.columns
     },
     stats () {
       let s = new Statblock(this.$store.getters.platformStats, 0, this.platformGrade, true)
       return s.processedStats
-      // return this.$store.getters.platformStats
     },
     // styles
     gridColumns () {
