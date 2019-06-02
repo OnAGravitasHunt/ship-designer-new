@@ -17,11 +17,12 @@
     </div> -->
     <SlotTableCell :rowIndex="slotIndex" columnKey="slotType"/>
     <!-- Column 2: Refit checkbox -->
-    <div class="design-row-cell" :class="{ required }">
+    <!-- <div class="design-row-cell" :class="{ required }">
       <input type="checkbox" v-model="isRefit" :disabled="refitDisabled">
-    </div>
+    </div> -->
+    <RefitTableCell :rowIndex="slotIndex" columnKey="refit"/>
     <!-- Column 3: Module Name -->
-    <div
+    <!-- <div
       class="design-row-cell"
       :class="{ 'is-refit': isRefit }"
       ref="selectContainer"
@@ -36,7 +37,8 @@
           <div class="selected-option-wrapper" :style="[selectedDiv]">{{selected.label}}</div>
         </template>
       </v-select>
-    </div>
+    </div> -->
+    <NameTableCell :rowIndex="slotIndex" columnKey="name"/>
     <!-- Column 4: Tech Tier -->
     <div class="design-row-cell double-right" :class="{ 'is-refit': isRefit }">
       <input
@@ -57,6 +59,8 @@
 import Statblock from '@/lib/statblock'
 
 import SlotTableCell from './cells/SlotTableCell'
+import RefitTableCell from './cells/RefitTableCell'
+import NameTableCell from './cells/NameTableCell'
 import TableCell from './cells/TableCell'
 import PercentTableCell from './cells/PercentTableCell'
 
@@ -64,6 +68,8 @@ export default {
   name: 'DesignTableRow',
   components: {
     SlotTableCell,
+    RefitTableCell,
+    NameTableCell,
     TableCell,
     PercentTableCell
   },
@@ -273,10 +279,5 @@ export default {
 .is-refit {
   font-weight: bold;
   background-color: mediumturquoise;
-}
-</style>
-<style>
-.module-selector .vs__dropdown-toggle {
-  height: 30px;
 }
 </style>
