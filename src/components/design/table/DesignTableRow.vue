@@ -5,7 +5,7 @@
     :style="[gridColumns, zIndex]"
   >
     <!-- Column 1: Slot type/rearrage -->
-    <div class="design-row-cell" :class="{ required }">
+    <!-- <div class="design-row-cell" :class="{ required }">
       <template v-if="isInfra">
         {{slotType}}
       </template>
@@ -14,7 +14,8 @@
         <div v-else class="cell-main handle"><span class="rearrange">&equiv;</span></div>
         <div class="cell-footer" @click="userDivider = !userDivider"></div>
       </template>
-    </div>
+    </div> -->
+    <SlotTableCell :rowIndex="slotIndex" columnKey="slotType"/>
     <!-- Column 2: Refit checkbox -->
     <div class="design-row-cell" :class="{ required }">
       <input type="checkbox" v-model="isRefit" :disabled="refitDisabled">
@@ -55,12 +56,14 @@
 <script>
 import Statblock from '@/lib/statblock'
 
+import SlotTableCell from './cells/SlotTableCell'
 import TableCell from './cells/TableCell'
 import PercentTableCell from './cells/PercentTableCell'
 
 export default {
   name: 'DesignTableRow',
   components: {
+    SlotTableCell,
     TableCell,
     PercentTableCell
   },

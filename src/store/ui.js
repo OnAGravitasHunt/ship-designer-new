@@ -2,7 +2,7 @@ export default {
   state: {
     designTable: {
       columns: [
-        { key: 'slotType', title: 'Slot Type', width: '90px', headingComp: 'HeaderCell', tableComp: 'SlotTypeCell' },
+        { key: 'slotType', title: 'Slot Type', width: '90px', headingComp: 'HeaderCell', tableComp: 'SlotTableCell' },
         { key: 'refit', title: 'Refit', width: '30px', headingComp: 'HeaderCell', tableComp: 'RefitTableCell' },
         { key: 'name', title: 'Name', width: 'minmax(350px, 1fr)', headingComp: 'HeaderCell', tableComp: 'NameTableCell' },
         { key: 'techTier', title: 'Tech Tier', width: '70px', headingComp: 'HeaderCell', tableComp: 'TableCell' },
