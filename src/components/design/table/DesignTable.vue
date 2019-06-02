@@ -9,7 +9,6 @@
         :slotIndex="index"
         :slotType="slotTypes[index] ? slotTypes[index].name : ''"
         :divider="slotTypes[index] ? slotTypes[index].divider : false"
-        :isInfra="index < slotTypes.length"
       />
       <draggable v-model="coreSlots" handle=".handle">
         <!-- <DesignTablePlatformRow/> -->
@@ -19,7 +18,6 @@
           :slotIndex="index+5"
           slotType=""
           :divider="false"
-          :isInfra="false"
         />
       </draggable>
     </div>
