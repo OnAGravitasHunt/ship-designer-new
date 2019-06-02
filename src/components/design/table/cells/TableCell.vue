@@ -6,8 +6,11 @@
 export default {
   name: 'TableCell',
   props: {
-    value: [String, Number]
-  }
+    value: [String, Number],
+    rowIndex: Number,
+    columnKey: String
+  },
+  computed: {}
 }
 </script>
 

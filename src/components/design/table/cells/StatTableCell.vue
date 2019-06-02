@@ -1,12 +1,12 @@
 <template>
-  <div class="design-row-cell">{{displayStat}}</div>
+  <div class="design-row-cell">{{stats[columnKey]}}</div>
 </template>
 
 <script>
 import Statblock from '@/lib/statblock'
 
 export default {
-  name: 'TableCell',
+  name: 'StatTableCell',
   props: {
     rowIndex: Number,
     columnKey: String
@@ -33,13 +33,6 @@ export default {
         return s.processedStats
       }
       return this.component.stats
-    },
-    displayStat () {
-      if (this.component.name) {
-        return `${Math.round(this.stats[this.columnKey] * 1000) / 10}%`
-      } else {
-        return null
-      }
     },
     // library data items
     nullModule () {

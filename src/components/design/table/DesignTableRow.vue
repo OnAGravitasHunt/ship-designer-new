@@ -5,53 +5,17 @@
     :style="[gridColumns, zIndex]"
   >
     <!-- Column 1: Slot type/rearrage -->
-    <!-- <div class="design-row-cell" :class="{ required }">
-      <template v-if="isInfra">
-        {{slotType}}
-      </template>
-      <template v-else>
-        <div v-if="slotType" class="cell-main">{{slotType}}</div>
-        <div v-else class="cell-main handle"><span class="rearrange">&equiv;</span></div>
-        <div class="cell-footer" @click="userDivider = !userDivider"></div>
-      </template>
-    </div> -->
     <SlotTableCell :rowIndex="slotIndex" columnKey="slotType"/>
     <!-- Column 2: Refit checkbox -->
-    <!-- <div class="design-row-cell" :class="{ required }">
-      <input type="checkbox" v-model="isRefit" :disabled="refitDisabled">
-    </div> -->
     <RefitTableCell :rowIndex="slotIndex" columnKey="refit"/>
     <!-- Column 3: Module Name -->
-    <!-- <div
-      class="design-row-cell"
-      :class="{ 'is-refit': isRefit }"
-      ref="selectContainer"
-      :style="[zIndex]"
-    >
-      <v-select
-        class="module-selector"
-        v-model="moduleName"
-        :options="[...permittedModules.map(m => m.name)]"
-      >
-        <template v-slot:selected-option="selected">
-          <div class="selected-option-wrapper" :style="[selectedDiv]">{{selected.label}}</div>
-        </template>
-      </v-select>
-    </div> -->
     <NameTableCell :rowIndex="slotIndex" columnKey="name"/>
     <!-- Column 4: Tech Tier -->
-    <div class="design-row-cell double-right" :class="{ 'is-refit': isRefit }">
-      <input
-        class="tech-tier-input"
-        :disabled="moduleName === null"
-        type="number"
-        v-model="techTier"
-      />
-    </div>
+    <TierTableCell :rowIndex="slotIndex" columnKey="name"/>
     <!-- Column 5,6: Module Type, Slot -->
     <div class="design-row-cell">{{component.type}}</div>
     <div class="design-row-cell">{{component.slot}}</div>
-    <component v-for="col of columns" :key="col.key" :is="col.tableComp" :value="stats[col.key]"/>
+    <component v-for="col of columns" :key="col.key" :is="col.tableComp" :rowIndex="slotIndex" :columnKey="col.key"/>
   </div>
 </template>
 
@@ -61,7 +25,9 @@ import Statblock from '@/lib/statblock'
 import SlotTableCell from './cells/SlotTableCell'
 import RefitTableCell from './cells/RefitTableCell'
 import NameTableCell from './cells/NameTableCell'
+import TierTableCell from './cells/TierTableCell'
 import TableCell from './cells/TableCell'
+import StatTableCell from './cells/StatTableCell'
 import PercentTableCell from './cells/PercentTableCell'
 
 export default {
@@ -70,7 +36,9 @@ export default {
     SlotTableCell,
     RefitTableCell,
     NameTableCell,
+    TierTableCell,
     TableCell,
+    StatTableCell,
     PercentTableCell
   },
   props: {
@@ -79,22 +47,9 @@ export default {
     divider: Boolean,
     isInfra: Boolean
   },
-  data () {
-    return {
-      // isRefit: false
-    }
-  },
   computed: {
-    moduleName: {
-      get () {
-        return this.slot.module
-      },
-      set (module) {
-        this.$store.dispatch('setSlotProperties', {
-          index: this.slotIndex,
-          properties: { module }
-        })
-      }
+    moduleName () {
+      return this.slot.module
     },
     techTier: {
       get () {
@@ -104,17 +59,6 @@ export default {
         this.$store.dispatch('setSlotProperties', {
           index: this.slotIndex,
           properties: { techTier }
-        })
-      }
-    },
-    isRefit: {
-      get () {
-        return this.slot.isRefit
-      },
-      set (isRefit) {
-        this.$store.dispatch('setSlotProperties', {
-          index: this.slotIndex,
-          properties: { isRefit }
         })
       }
     },
@@ -131,9 +75,6 @@ export default {
         }
       }
     },
-    refitDisabled () {
-      return this.slot.module === null
-    },
     slot () {
       return this.$store.state.design.slots[this.slotIndex]
     },
@@ -147,31 +88,7 @@ export default {
     component () {
       return this.$store.getters.partByName(this.moduleName) || this.nullModule
     },
-    // display strings
-    displayEvasion () {
-      if (this.component.name) {
-        return `${Math.round(this.stats.ev * 1000) / 10}%`
-      } else {
-        return null
-      }
-    },
-    displayPenetration () {
-      if (this.component.name) {
-        return `${Math.round(this.stats.pen * 1000) / 10}%`
-      } else {
-        return null
-      }
-    },
     // data items
-    permittedModules () {
-      let modules = this.$store.getters.currentParts
-      if (this.slotType && this.slotType !== 'Any') {
-        modules = modules.filter(module => module.type === this.slotType)
-      } else {
-        modules = modules.filter(m => m.slot !== 'Infrastructure')
-      }
-      return modules
-    },
     nullModule () {
       return this.$store.state.library.nullModule
     },
@@ -181,7 +98,6 @@ export default {
     // styles
     required () {
       return this.$store.getters.requiredSlot(this.slotIndex) && this.slotIndex > 4
-      // return this.slot.required && this.slotIndex > 4
     },
     gridColumns () {
       return this.$store.getters.getGridTemplateColumns

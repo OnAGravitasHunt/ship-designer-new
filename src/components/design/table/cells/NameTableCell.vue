@@ -94,6 +94,10 @@ export default {
   overflow-x: hidden;
   vertical-align: top;
 }
+.is-refit {
+  font-weight: bold;
+  background-color: mediumturquoise;
+}
  </style>
 <style>
 .module-selector .vs__dropdown-toggle {
