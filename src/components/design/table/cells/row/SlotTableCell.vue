@@ -30,6 +30,9 @@ export default {
     }
   },
   computed: {
+    slot () {
+      return this.$store.state.design.slots[this.rowIndex]
+    },
     required () {
       return this.$store.getters.requiredSlot(this.rowIndex) && this.rowIndex > 4
     },
@@ -39,6 +42,9 @@ export default {
     slotType () {
       return this.rowIndex < this.slotTypes.length ? this.slotTypes[this.rowIndex].name : ''
     },
+    divider () {
+      return this.slotTypes[this.rowIndex] ? this.slotTypes[this.rowIndex].divider : false
+    },
     userDivider: {
       get () {
         return this.slot.userDivider && !this.isInfra
@@ -46,7 +52,7 @@ export default {
       set (userDivider) {
         if (!this.divider && !this.isInfra) {
           this.$store.dispatch('setSlotProperties', {
-            index: this.slotIndex,
+            index: this.rowIndex,
             properties: { userDivider }
           })
         }
