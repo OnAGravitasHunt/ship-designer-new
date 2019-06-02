@@ -33,8 +33,8 @@
 <script>
 import Statblock from '@/lib/statblock'
 
-import TableCell from './cells/TableCell'
-import PercentTableCell from './cells/PercentTableCell'
+import TableCell from './cells/platformRow/TableCell'
+import PercentTableCell from './cells/platformRow/PercentTableCell'
 
 export default {
   name: 'DesignTablePlatformRow',

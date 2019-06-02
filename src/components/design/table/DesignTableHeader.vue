@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import HeaderCell from './cells/HeaderCell'
-import StatHeaderCell from './cells/StatHeaderCell'
-import PercentHeaderCell from './cells/PercentHeaderCell'
-import CostHeaderCell from './cells/CostHeaderCell'
+import HeaderCell from './cells/header/HeaderCell'
+import StatHeaderCell from './cells/header/StatHeaderCell'
+import PercentHeaderCell from './cells/header/PercentHeaderCell'
+import CostHeaderCell from './cells/header/CostHeaderCell'
 
 export default {
   name: 'DesignTableHeader',

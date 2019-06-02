@@ -22,13 +22,13 @@
 <script>
 import Statblock from '@/lib/statblock'
 
-import SlotTableCell from './cells/SlotTableCell'
-import RefitTableCell from './cells/RefitTableCell'
-import NameTableCell from './cells/NameTableCell'
-import TierTableCell from './cells/TierTableCell'
-import TableCell from './cells/TableCell'
-import StatTableCell from './cells/StatTableCell'
-import PercentTableCell from './cells/PercentTableCell'
+import SlotTableCell from './cells/row/SlotTableCell'
+import RefitTableCell from './cells/row/RefitTableCell'
+import NameTableCell from './cells/row/NameTableCell'
+import TierTableCell from './cells/row/TierTableCell'
+import TableCell from './cells/row/TableCell'
+import StatTableCell from './cells/row/StatTableCell'
+import PercentTableCell from './cells/row/PercentTableCell'
 
 export default {
   name: 'DesignTableRow',
