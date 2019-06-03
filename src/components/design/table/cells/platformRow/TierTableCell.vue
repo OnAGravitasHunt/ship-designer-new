@@ -1,5 +1,5 @@
 <template>
-  <div class="design-row-cell double-right input-wrapper">
+  <div class="design-row-cell input-wrapper">
       <div class="input-label">Def-ault:</div>
       <input
         class="tech-tier-input"

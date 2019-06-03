@@ -1,6 +1,12 @@
 <template>
   <div class="design-row" :style="[gridColumns, zIndex]">
-    <component v-for="col of columns" :key="col.key" :is="col.tableComp" :columnKey="col.key"/>
+    <component
+      v-for="col of columns"
+      :key="col.key"
+      :is="col.tableComp"
+      :columnKey="col.key"
+      :class="{ 'double-right': col.border }"
+    />
   </div>
 </template>
 

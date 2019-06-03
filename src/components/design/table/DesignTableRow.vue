@@ -4,7 +4,14 @@
     :class="{ divider, 'user-divider': userDivider }"
     :style="[gridColumns, zIndex]"
   >
-    <component v-for="col of columns" :key="col.key" :is="col.tableComp" :rowIndex="slotIndex" :columnKey="col.key"/>
+    <component
+      v-for="col of columns"
+      :key="col.key"
+      :is="col.tableComp"
+      :rowIndex="slotIndex"
+      :columnKey="col.key"
+      :class="{ 'double-right': col.border }"
+    />
   </div>
 </template>
 
@@ -85,5 +92,8 @@ export default {
 .is-refit {
   font-weight: bold;
   background-color: mediumturquoise;
+}
+.double-right {
+  border-right: 3px double grey;
 }
 </style>

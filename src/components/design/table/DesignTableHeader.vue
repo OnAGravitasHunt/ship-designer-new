@@ -5,6 +5,7 @@
       :key="col.key"
       :is="col.headingComp"
       v-bind="{ title: col.title, value: stats[col.key] }"
+      :class="{ 'double-right': col.border }"
     />
     <div></div>
   </div>

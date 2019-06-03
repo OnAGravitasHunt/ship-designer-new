@@ -1,5 +1,5 @@
 <template>
-  <div class="design-row-cell double-right" :class="{ 'is-refit': isRefit }">
+  <div class="design-row-cell" :class="{ 'is-refit': isRefit }">
     <input
       class="tech-tier-input"
       :disabled="moduleName === null"
@@ -42,9 +42,6 @@ export default {
 </script>
 
  <style scoped>
-.design-row-cell.double-right {
-  border-right: 3px double grey;
-}
 .tech-tier-input {
   box-sizing: border-box;
   outline: none;
