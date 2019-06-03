@@ -1,5 +1,5 @@
 <template>
-  <div class="design-row-cell" :class="{ required }">
+  <div class="design-row-cell" :class="{ required, 'infra': isInfra }">
     <template v-if="isInfra">
       {{slotType}}
     </template>
@@ -23,9 +23,9 @@ export default {
       slotTypes: [
         { name: 'Hullform', divider: false },
         { name: 'Warp Core', divider: false },
-        { name: 'Warp Nacelles', divider: false },
+        { name: 'Nacelles', divider: false },
         { name: 'Computer', divider: false },
-        { name: 'Deflector Dish', divider: true }
+        { name: 'Deflector', divider: true }
       ]
     }
   },
@@ -84,4 +84,7 @@ export default {
 .design-row-cell.required {
   background-color: lightgreen;
 }
+/* .design-row-cell.infra {
+  font-size: 8pt;
+} */
  </style>

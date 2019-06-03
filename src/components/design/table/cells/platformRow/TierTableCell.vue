@@ -42,11 +42,12 @@ export default {
   vertical-align: top;
 }
 .input-label {
-  width: 25px;
+  width: 15px;
   height: 30px;
   display: inline-block;
   margin: 0 2px;
   line-height: 10pt;
   padding-top: 2px;
+  font-size: 6pt;
 }
 </style>

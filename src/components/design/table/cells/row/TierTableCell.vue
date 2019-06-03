@@ -47,7 +47,7 @@ export default {
   outline: none;
   background-color: transparent;
   font-family: 'Avenir';
-  width: 67px;
+  width: 100%;
   font-size: 9pt;
   height: 30px;
   border: 1px solid rgba(60, 60, 60, 0.26);
