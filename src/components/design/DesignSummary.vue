@@ -1,16 +1,18 @@
 <template>
   <div class="design-summary" :style="[gridStyle]">
-    <div class="center-align back-button" @click="saveAndExit">
-      &lang;
-    </div>
-    <div class="left-align b-right">
+    <div class="center-align b-top back-button" @click="saveAndExit">&lang;</div>
+    <div class="left-align b-top b-right">
       <input type="text" class="class-name-input" v-model="className">
     </div>
-    <div class="right-align">Platform Type</div>
-    <div class="right-align double-right">{{platformType}}</div>
-    <div class="center-align span2">{{finalStats.ev}}% Ev</div>
-    <div class="center-align span2 b-right">{{finalStats.pen}}% Pen</div>
-    <div class="center-align double-right build-time">{{buildTime}} Years</div>
+    <div class="right-align b-top">Platform Type</div>
+    <div class="right-align b-top double-right">{{platformType}}</div>
+    <div class="center-align b-top span2">{{finalStats.ev}}% Ev</div>
+    <div class="center-align b-top span2 b-right">{{finalStats.pen}}% Pen</div>
+    <div class="center-align b-top double-right build-time">{{buildTime}} Years</div>
+    <div></div>
+    <div class="center-align">
+      <div class="export-button" @click="exportBBCode">Export BBCode</div>
+    </div>
     <!--  -->
     <div class="left-align b-top b-right capabilities col2">{{capabilities}}</div>
     <div class="right-align b-top">Design Weight</div>
@@ -20,6 +22,11 @@
     <div class="center-align b-right b-top crew-stat">O{{finalStats.o}}</div>
     <div class="center-align b-right b-top crew-stat">EN{{finalStats.en}}</div>
     <div class="center-align double-right b-top crew-stat">T{{finalStats.t}}</div>
+    <div></div>
+    <div class="center-align">
+      <div class="export-button" @click="downloadJSON">Download As File</div>
+      <a ref="downloadShipJSON" style="display:none"></a>
+    </div>
     <!--  -->
     <div class="right-align max-weight col3">Max Weight</div>
     <div class="right-align double-right">{{weights.max}}kt</div>
@@ -30,6 +37,8 @@
 </template>
 
 <script>
+import BBCodeExport from '@/lib/bbcodeExport'
+
 export default {
   name: 'DesignSummary',
   data () {
@@ -95,12 +104,21 @@ export default {
     },
     gridStyle () {
       return {
-        gridTemplateColumns: `70px ${this.col2Width - 109}px 110px 90px repeat(7,40px) 100px 70px 90px`
+        gridTemplateColumns: `70px ${this.col2Width - 109}px 110px 90px repeat(7,40px) minmax(20px, 1fr) 150px 20px`
       }
     },
-    // saving
+    // save and export
     editingDesign () {
       return this.$store.state.editingDesign
+    },
+    bbcodeText () {
+      return BBCodeExport.export({
+        name: this.$store.state.design.className,
+        stats: this.$store.getters.roundedStats,
+        weight: this.$store.getters.weights.design,
+        buildTime: this.$store.getters.buildTime,
+        design: JSON.parse(JSON.stringify(this.$store.state.design))
+      })
     }
   },
   methods: {
@@ -138,15 +156,39 @@ export default {
         this.$store.dispatch('clearDesign')
         this.$store.commit('clearEditing')
       }
+    },
+    exportBBCode () {
+      navigator.clipboard.writeText(this.bbcodeText).then(() => {
+        console.log('Copied!')
+      }, () => {
+        console.error('Failed to copy to clipboard. Logging below instead.')
+        console.log(this.bbcodeText)
+      })
+    },
+    downloadJSON () {
+      let timestamp = new Date()
+      timestamp.setMilliseconds(0)
+      let data = JSON.stringify(this.$store.state.design)
+      let element = this.$refs.downloadShipJSON
+      let filename = `${this.$store.state.design.className || `design-${timestamp.toISOString()}`}.json`
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + data)
+      element.setAttribute('download', filename)
+      element.click()
     }
   }
 }
 </script>
 
 <style scoped>
+.design-summary-wrapper {
+  background-color: lightblue;
+  min-width: 1024px;
+  /* overflow-x: auto; */
+  height: 90px;
+}
 .design-summary {
   background-color: lightblue;
-  flex: 0 0 auto;
+  flex: 1 0 auto;
   display: grid;
   grid-auto-rows: 30px;
   line-height: 30px;
@@ -183,6 +225,7 @@ export default {
   line-height: 90px;
   font-size: 50pt;
   border-right: 2px solid black;
+  cursor: pointer;
 }
 .left-align {
   text-align: left;
@@ -217,5 +260,14 @@ export default {
 }
 .rounded-stat:last-child {
   border-right: 3px double grey;
+}
+.export-button {
+  background-color: mediumseagreen;
+  border-radius: 14px;
+  height: 26px;
+  line-height: 26px;
+  margin: 2px auto;
+  width: 150px;
+  cursor: pointer;
 }
 </style>

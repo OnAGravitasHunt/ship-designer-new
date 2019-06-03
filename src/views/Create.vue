@@ -1,6 +1,6 @@
 <template>
   <div class="create">
-    <DesignPageHeader/>
+    <!-- <DesignPageHeader/> -->
     <DesignSummary/>
     <DesignTable/>
   </div>
