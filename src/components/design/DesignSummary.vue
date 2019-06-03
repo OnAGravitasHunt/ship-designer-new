@@ -4,28 +4,28 @@
     <div class="left-align b-right">
       <input type="text" class="class-name-input" v-model="className">
     </div>
-    <div class="right-align">Max Weight</div>
-    <div class="right-align b-right">{{weights.max}}kt</div>
-    <div class="center-align b-right b-under build-time">Build Time: {{buildTime}} Years</div>
-    <div class="center-align ev-pen b-right">
-      <div>{{finalStats.ev}}% Ev</div>
-      <div>{{finalStats.pen}}% Pen</div>
-    </div>
-    <!-- <div class="b-right"></div> -->
-    <div class="center-align b-right crew-stat">O{{finalStats.o}}</div>
-    <div class="center-align b-right crew-stat">EN{{finalStats.en}}</div>
-    <div class="center-align b-right crew-stat">T{{finalStats.t}}</div>
+    <div class="right-align">Platform Type</div>
+    <div class="left-align double-right">{{platformType}}</div>
+    <div class="center-align span2">{{finalStats.ev}}% Ev</div>
+    <div class="center-align span2 b-right">{{finalStats.pen}}% Pen</div>
+    <div class="center-align double-right build-time">{{buildTime}} Years</div>
     <!--  -->
-    <div class="right-align col1">Platform Type</div>
-    <div class="left-align b-right">{{platformType}}</div>
-    <div class="right-align">Design Weight</div>
-    <div class="right-align b-right">{{weights.design}}kt</div>
-    <div class="right-align b-top">{{finalStats.br}}BR</div>
-    <div class="right-align b-right b-top">{{finalStats.sr}}SR</div>
-    <div class="b-right b-top right-align">Rounded:</div>
-    <div v-for="s of shipStats" :key="s" class="b-right b-top center-align">
+    <div class="right-align col1">Capabilities</div>
+    <div class="left-align b-right capabilities">{{capabilities}}</div>
+    <div class="right-align b-top">Design Weight</div>
+    <div class="right-align b-top double-right">{{weights.design}}kt</div>
+    <div class="center-align b-top span2">{{finalStats.br}}BR</div>
+    <div class="center-align b-right b-top span2">{{finalStats.sr}}SR</div>
+    <div class="center-align b-right b-top crew-stat">O{{finalStats.o}}</div>
+    <div class="center-align b-right b-top crew-stat">EN{{finalStats.en}}</div>
+    <div class="center-align double-right b-top crew-stat">T{{finalStats.t}}</div>
+    <!--  -->
+    <div class="col1"></div>
+    <div class="right-align">Max Weight</div>
+    <div class="right-align double-right">{{weights.max}}kt</div>
+    <div v-for="s of shipStats" :key="s" class="b-right b-top center-align rounded-stat">
       {{s.toUpperCase()}}{{finalStats[s]}}
-      </div>
+    </div>
   </div>
 </template>
 
@@ -81,13 +81,21 @@ export default {
     buildTime () {
       return this.$store.getters.buildTime
     },
+    capabilities () {
+      let cap = this.$store.state.design.slots
+        .filter(s => s.module)
+        .map(s => this.$store.getters.partByName(s.module).special)
+        .filter(s => s)
+        .map(s => s.replace(/ /g, '\xa0'))
+      return [...new Set(cap)].join(', ')
+    },
     // styles
     col2Width () {
       return this.$store.state.ui.designTable.col2Width
     },
     gridStyle () {
       return {
-        gridTemplateColumns: `120px ${this.col2Width - 179}px 110px 70px 100px 70px 90px repeat(7,40px)`
+        gridTemplateColumns: `120px ${this.col2Width - 159}px 110px 90px repeat(7,40px) 100px 70px 90px`
       }
     }
   },
@@ -109,25 +117,30 @@ export default {
 <style scoped>
 .design-summary {
   background-color: lightblue;
-  flex: 0 0 60px;
+  flex: 0 0 auto;
   display: grid;
-  grid-template-rows: 30px 30px;
+  grid-auto-rows: 30px;
   line-height: 30px;
   overflow-x: auto;
   font-size: 11pt;
+}
+.design-summary::-webkit-scrollbar {
+  display: none;
 }
 .col1 {
   grid-column-start: 1;
 }
 .build-time {
-  grid-column: 5 / 7;
+  grid-column: span 3;
 }
-.ev-pen {
-  grid-column: 7 / 9;
+.capabilities {
+  grid-row: span 2;
+  font-size: 10pt;
+  line-height: 20px;
+  overflow-y: auto;
 }
-.ev-pen>div {
-  display: inline-block;
-  width: 50%;
+.span2 {
+  grid-column: span 2;
 }
 .left-align {
   text-align: left;
@@ -159,5 +172,8 @@ export default {
 }
 .b-top {
   border-top: 1px solid grey;
+}
+.rounded-stat:last-child {
+  border-right: 3px double grey;
 }
 </style>

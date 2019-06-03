@@ -10,7 +10,7 @@
       <div class="export-button" @click="exportBBCode">Export BBCode</div>
     </div>
     <div class="export-button-wrapper">
-      <div class="export-button" @click="downloadJSON">Download File</div>
+      <div class="export-button" @click="downloadJSON">Download As File</div>
       <a ref="downloadShipJSON" style="display:none"></a>
     </div>
   </div>
@@ -111,13 +111,16 @@ export default {
   cursor: pointer;
 }
 .export-button-wrapper {
-  flex: 0 0 150px;
+  flex: 0 0 100px;
   font-size: 12pt;
   font-weight: normal;
 }
 .export-button {
+  box-sizing: border-box;
   height: 40px;
-  line-height: 40px;
+  line-height: 17px;
+  font-size: 10pt;
+  padding: 3px 10px;
   text-align: center;
   margin: 10px 0;
   background-color: lightgreen;
