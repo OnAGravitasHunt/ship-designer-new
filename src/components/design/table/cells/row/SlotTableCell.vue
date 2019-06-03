@@ -63,18 +63,6 @@ export default {
 </script>
 
  <style scoped>
-.design-row-cell {
-  box-sizing: border-box;
-  line-height: 30px;
-  font-size: 9pt;
-  border-right: 1px solid grey;
-  background-color: inherit;
-  text-align: center;
-  z-index: 0;
-}
-.design-row-cell:first-child {
-  border-left: 1px solid grey;
-}
 .cell-main {
   height: 28px;
 }
@@ -93,7 +81,7 @@ export default {
 .cell-footer:hover {
   background-color: rgba(0, 0, 0, 0.8)
 }
-.required {
+.design-row-cell.required {
   background-color: lightgreen;
 }
  </style>

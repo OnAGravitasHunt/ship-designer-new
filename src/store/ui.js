@@ -4,7 +4,7 @@ export default {
       columns: [
         { key: 'slotType', title: 'Slot Type', width: '90px', headingComp: 'HeaderCell', tableComp: 'SlotTableCell' },
         { key: 'refit', title: 'Refit', width: '30px', headingComp: 'HeaderCell', tableComp: 'RefitTableCell' },
-        { key: 'name', title: 'Name', width: 'minmax(350px, 1fr)', headingComp: 'HeaderCell', tableComp: 'NameTableCell' },
+        { key: 'name', title: 'Name', width: 'minmax(340px, 1fr)', headingComp: 'HeaderCell', tableComp: 'NameTableCell' },
         { key: 'techTier', title: 'Tech Tier', width: '70px', headingComp: 'HeaderCell', tableComp: 'TierTableCell' },
         { key: 'type', title: 'Module Type', width: '100px', headingComp: 'HeaderCell', tableComp: 'TableCell' },
         { key: 'slot', title: 'Module Slot', width: '90px', headingComp: 'HeaderCell', tableComp: 'TableCell' },
@@ -20,10 +20,10 @@ export default {
         { key: 'br', title: 'BR', width: '50px', headingComp: 'CostHeaderCell', tableComp: 'StatTableCell' },
         { key: 'sr', title: 'SR', width: '50px', headingComp: 'CostHeaderCell', tableComp: 'StatTableCell' },
         { key: 'o', title: 'O', width: '40px', headingComp: 'CostHeaderCell', tableComp: 'StatTableCell' },
-        { key: 'en', title: 'EN', width: '40px', headingComp: 'CostHeaderCell', tableComp: 'StatTableCell' },
+        { key: 'en', title: 'EN', width: '50px', headingComp: 'CostHeaderCell', tableComp: 'StatTableCell' },
         { key: 't', title: 'T', width: '40px', headingComp: 'CostHeaderCell', tableComp: 'StatTableCell' }
       ],
-      col2Width: 350
+      col2Width: 340
     }
   },
   getters: {

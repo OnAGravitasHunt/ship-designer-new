@@ -42,23 +42,7 @@ export default {
 </script>
 
  <style scoped>
-.design-row-cell {
-  box-sizing: border-box;
-  line-height: 30px;
-  font-size: 10pt;
-  border-right: 1px solid grey;
-  background-color: inherit;
-  text-align: center;
-  z-index: 0;
-}
-.design-row-cell:first-child {
-  border-left: 1px solid grey;
-}
-.is-refit {
-  font-weight: bold;
-  background-color: mediumturquoise;
-}
-.double-right {
+.design-row-cell.double-right {
   border-right: 3px double grey;
 }
 .tech-tier-input {

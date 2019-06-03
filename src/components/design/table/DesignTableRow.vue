@@ -29,7 +29,6 @@ export default {
     PercentTableCell
   },
   props: {
-    slotType: String,
     slotIndex: Number,
     divider: Boolean
   },
@@ -41,7 +40,7 @@ export default {
       return this.$store.state.design.slots[this.slotIndex]
     },
     columns () {
-      return this.$store.state.ui.designTable.columns // .slice(6)
+      return this.$store.state.ui.designTable.columns
     },
     // styles
     gridColumns () {
@@ -70,5 +69,21 @@ export default {
 }
 .user-divider {
   border-bottom: 2px solid black;
+}
+.design-row-cell {
+  box-sizing: border-box;
+  line-height: 30px;
+  font-size: 9pt;
+  border-right: 1px solid grey;
+  background-color: inherit;
+  text-align: center;
+  z-index: 0;
+}
+.design-row-cell:first-child {
+  border-left: 1px solid grey;
+}
+.is-refit {
+  font-weight: bold;
+  background-color: mediumturquoise;
 }
 </style>

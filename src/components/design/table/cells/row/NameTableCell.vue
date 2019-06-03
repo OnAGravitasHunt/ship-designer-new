@@ -76,29 +76,13 @@ export default {
 }
 </script>
 
- <style scoped>
-.design-row-cell {
-  box-sizing: border-box;
-  line-height: 30px;
-  font-size: 10pt;
-  border-right: 1px solid grey;
-  background-color: inherit;
-  text-align: center;
-  z-index: 0;
-}
-.design-row-cell:first-child {
-  border-left: 1px solid grey;
-}
+<style scoped>
 .selected-option-wrapper {
   white-space: nowrap;
   overflow-x: hidden;
   vertical-align: top;
 }
-.is-refit {
-  font-weight: bold;
-  background-color: mediumturquoise;
-}
- </style>
+</style>
 <style>
 .module-selector .vs__dropdown-toggle {
   height: 30px;

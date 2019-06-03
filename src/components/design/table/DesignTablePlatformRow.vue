@@ -89,33 +89,7 @@ export default {
 .design-row-cell:first-child {
   border-left: 1px solid grey;
 }
-.selected-option-wrapper {
-  white-space: nowrap;
-  overflow-x: hidden;
-}
 .double-right {
   border-right: 3px double grey;
-}
-.tech-tier-input {
-  box-sizing: border-box;
-  outline: none;
-  background-color: transparent;
-  font-family: 'Avenir';
-  width: 38px;
-  font-size: 9pt;
-  height: 30px;
-  border: 1px solid rgba(60, 60, 60, 0.26);
-  border-radius: 4px;
-  text-align: center;
-  font-weight: inherit;
-  vertical-align: top;
-}
-.input-label {
-  width: 25px;
-  height: 30px;
-  display: inline-block;
-  margin: 0 2px;
-  line-height: 10pt;
-  padding-top: 2px;
 }
 </style>

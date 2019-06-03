@@ -26,22 +26,7 @@ export default {
 }
 </script>
 
- <style scoped>
-.design-row-cell {
-  box-sizing: border-box;
-  line-height: 30px;
-  font-size: 10pt;
-  border-right: 1px solid grey;
-  background-color: inherit;
-  text-align: center;
-  z-index: 0;
-}
-.design-row-cell:first-child {
-  border-left: 1px solid grey;
-}
-.double-right {
-  border-right: 3px double grey;
-}
+<style scoped>
 .tech-tier-input {
   box-sizing: border-box;
   outline: none;
@@ -64,4 +49,4 @@ export default {
   line-height: 10pt;
   padding-top: 2px;
 }
- </style>
+</style>
