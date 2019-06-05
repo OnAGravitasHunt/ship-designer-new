@@ -7,14 +7,14 @@
 </template>
 
 <script>
-import DesignPageHeader from '@/components/design/DesignPageHeader'
+// import DesignPageHeader from '@/components/design/DesignPageHeader'
 import DesignSummary from '@/components/design/DesignSummary'
 import DesignTable from '@/components/design/table/DesignTable'
 
 export default {
   name: 'create',
   components: {
-    DesignPageHeader,
+    // DesignPageHeader,
     DesignSummary,
     DesignTable
   }

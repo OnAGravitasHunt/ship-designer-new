@@ -180,15 +180,9 @@ export default {
 </script>
 
 <style scoped>
-.design-summary-wrapper {
-  background-color: lightblue;
-  min-width: 1024px;
-  /* overflow-x: auto; */
-  height: 90px;
-}
 .design-summary {
   background-color: lightblue;
-  flex: 1 0 auto;
+  flex: 0 0 auto;
   display: grid;
   grid-auto-rows: 30px;
   line-height: 30px;
