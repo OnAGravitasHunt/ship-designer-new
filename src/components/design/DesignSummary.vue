@@ -151,7 +151,7 @@ export default {
             })
           }
         } else {
-          reject()
+          reject(new Error('No class name'))
         }
       })
     },
@@ -160,7 +160,7 @@ export default {
         this.$router.push('/')
         this.$store.dispatch('clearDesign')
         this.$store.commit('clearEditing')
-      }).catch(() => {
+      }).catch((e) => {
         alert('Please enter a name for the class!')
       })
     },
