@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import ui from './ui'
-import design from './design'
-import library from './library'
+import ui from './modules/ui'
+import design from './modules/design'
+import library from './modules/library'
 
 Vue.use(Vuex)
 
