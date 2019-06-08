@@ -67,7 +67,10 @@ export default {
       })
     },
     addNewDesign () {
-      this.$router.push('create')
+      this.$store.dispatch('clearDesign').then(() => {
+        this.$store.commit('setPartList', this.$store.getters.currentPartListName)
+        this.$router.push('create')
+      })
     },
     uploadDesign () {
       this.readFile(this.$refs.uploadShipJSON.files[0]).then(res => {

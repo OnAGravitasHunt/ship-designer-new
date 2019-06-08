@@ -36,7 +36,8 @@ export default {
     platformGrade: 1,
     minSlots: 2,
     platform: "2310s 500-1000kt Frigate 'Kepler' 'Comet'",
-    slots: []
+    slots: [],
+    partList: ''
   },
   getters: {
     platformStats (state, getters, rootState, rootGetters) {
@@ -106,6 +107,9 @@ export default {
     },
     setDefaultTier (state, tier) {
       state.defaultTier = tier
+    },
+    setPartList (state, listName) {
+      state.partList = listName
     }
   },
   actions: {
@@ -174,13 +178,17 @@ export default {
     },
     // clear design
     clearDesign ({ dispatch, commit, rootGetters }) {
-      commit('setClassName', '')
-      dispatch('setPlatform', { name: rootGetters.currentPlatforms[0].name, overwrite: true })
+      return new Promise((resolve, reject) => {
+        commit('setClassName', '')
+        dispatch('setPlatform', { name: rootGetters.currentPlatforms[0].name, overwrite: true })
+        resolve()
+      })
     },
     restoreDesign ({ dispatch, commit, state }, { design }) {
       return new Promise((resolve, reject) => {
         dispatch('setPlatform', { name: design.platform, overwrite: true }).then(() => {
           commit('setSlots', design.slots)
+          commit('setPartList', design.partList)
           commit('setClassName', design.className)
           commit('setDefaultTier', design.defaultTier)
           resolve()

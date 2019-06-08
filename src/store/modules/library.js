@@ -80,6 +80,9 @@ export default {
     platformByName (state, getters) {
       return (name) => getters.currentPlatforms.filter(p => p.name === name)[0] || null
     },
+    currentPartListName (state) {
+      return state.partListNames[state.currentPartListIndex]
+    },
     currentPartList (state) {
       return state.partLists[state.partListNames[state.currentPartListIndex]]
     },

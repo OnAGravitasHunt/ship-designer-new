@@ -139,6 +139,7 @@ export default {
           let savedDesign = {
             name: design.className,
             stats: this.$store.getters.roundedStats,
+            partList: design.partList,
             design
           }
           if (this.editingDesign === null) {
