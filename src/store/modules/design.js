@@ -108,7 +108,7 @@ export default {
     setDefaultTier (state, tier) {
       state.defaultTier = tier
     },
-    setPartList (state, listName) {
+    setDesignPartList (state, listName) {
       state.partList = listName
     }
   },
@@ -188,7 +188,7 @@ export default {
       return new Promise((resolve, reject) => {
         dispatch('setPlatform', { name: design.platform, overwrite: true }).then(() => {
           commit('setSlots', design.slots)
-          commit('setPartList', design.partList)
+          commit('setDesignPartList', design.partList)
           commit('setClassName', design.className)
           commit('setDefaultTier', design.defaultTier)
           resolve()

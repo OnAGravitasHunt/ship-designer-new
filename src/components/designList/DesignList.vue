@@ -68,7 +68,7 @@ export default {
     },
     addNewDesign () {
       this.$store.dispatch('clearDesign').then(() => {
-        this.$store.commit('setPartList', this.$store.getters.currentPartListName)
+        this.$store.commit('setDesignPartList', this.$store.getters.currentPartListName)
         this.$router.push('create')
       })
     },

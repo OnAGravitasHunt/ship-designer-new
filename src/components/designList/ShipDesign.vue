@@ -98,7 +98,7 @@ export default {
           let savedDesign = {
             name: newName,
             stats: this.$store.getters.roundedStats,
-            partList: design.partList,
+            partList: newDesign.partList,
             design: newDesign
           }
           this.$store.dispatch('saveNewDesign', savedDesign).then(() => {
