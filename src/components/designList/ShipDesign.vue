@@ -93,7 +93,9 @@ export default {
             stats: this.$store.getters.roundedStats,
             design: newDesign
           }
-          this.$store.dispatch('saveNewDesign', savedDesign)
+          this.$store.dispatch('saveNewDesign', savedDesign).then(() => {
+            this.$store.dispatch('clearDesign')
+          })
         })
       } else if (newName === '') {
         alert('Name not valid')

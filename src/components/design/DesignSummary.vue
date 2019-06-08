@@ -133,29 +133,36 @@ export default {
       return Math.round(s * 1000) / 10
     },
     saveDesign () {
-      if (this.$store.state.design.className) {
-        let design = JSON.parse(JSON.stringify(this.$store.state.design))
-        let savedDesign = {
-          name: design.className,
-          stats: this.$store.getters.roundedStats,
-          design
-        }
-        if (this.editingDesign === null) {
-          this.$store.dispatch('saveNewDesign', savedDesign)
+      return new Promise((resolve, reject) => {
+        if (this.$store.state.design.className) {
+          let design = JSON.parse(JSON.stringify(this.$store.state.design))
+          let savedDesign = {
+            name: design.className,
+            stats: this.$store.getters.roundedStats,
+            design
+          }
+          if (this.editingDesign === null) {
+            this.$store.dispatch('saveNewDesign', savedDesign).then(() => {
+              resolve()
+            })
+          } else {
+            this.$store.dispatch('saveExistingDesign', savedDesign).then(() => {
+              resolve()
+            })
+          }
         } else {
-          this.$store.dispatch('saveExistingDesign', savedDesign)
+          reject()
         }
-        return true
-      }
-      alert('Please enter a name for the class!')
-      return false
+      })
     },
     saveAndExit () {
-      if (this.saveDesign()) {
+      this.saveDesign().then(() => {
         this.$router.push('/')
         this.$store.dispatch('clearDesign')
         this.$store.commit('clearEditing')
-      }
+      }).catch(() => {
+        alert('Please enter a name for the class!')
+      })
     },
     exportBBCode () {
       navigator.clipboard.writeText(this.bbcodeText).then(() => {

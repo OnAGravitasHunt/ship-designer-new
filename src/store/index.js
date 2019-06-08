@@ -46,12 +46,18 @@ export default new Vuex.Store({
   actions: {
     // TODO: maybe merge these?
     saveNewDesign ({ commit }, design) {
-      commit('addDesign', design)
-      commit('updateLocalStorage')
+      return new Promise((resolve, reject) => {
+        commit('addDesign', design)
+        commit('updateLocalStorage')
+        resolve()
+      })
     },
     saveExistingDesign ({ commit }, design) {
-      commit('updateDesign', design)
-      commit('updateLocalStorage')
+      return new Promise((resolve, reject) => {
+        commit('updateDesign', design)
+        commit('updateLocalStorage')
+        resolve()
+      })
     },
     deleteDesign ({ commit }, index) {
       commit('removeDesign', index)
