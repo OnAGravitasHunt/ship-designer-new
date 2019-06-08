@@ -30,8 +30,20 @@
     <!--  -->
     <div class="right-align max-weight col3">Max Weight</div>
     <div class="right-align double-right">{{weights.max}}kt</div>
-    <div v-for="s of shipStats" :key="s" class="b-right b-top center-align rounded-stat">
+    <div
+      v-for="(s, i) of shipStats"
+      :key="s"
+      class="b-right b-top center-align"
+      :class="{ 'double-right': i === shipStats.length - 1 }"
+    >
       {{s.toUpperCase()}}{{finalStats[s]}}
+    </div>
+    <div></div>
+    <div class="center-align">
+      Parts:
+      <select v-model="selectedPartListIndex">
+        <option v-for="list of partLists" :key="list.index" :value="list.index">{{list.name}}</option>
+      </select>
     </div>
   </div>
 </template>
@@ -119,6 +131,18 @@ export default {
         buildTime: this.$store.getters.buildTime,
         design: JSON.parse(JSON.stringify(this.$store.state.design))
       })
+    },
+    partLists () {
+      return this.$store.state.library.partListNames.map((n, i) => ({ name: n, index: i}))
+    },
+    selectedPartListIndex: {
+      get () {
+        return this.$store.state.library.currentPartListIndex
+      },
+      set (i) {
+        this.$store.commit('setCurrentPartList', i)
+        this.$store.commit('setDesignPartList', this.$store.getters.currentPartListName)
+      }
     }
   },
   methods: {
@@ -259,9 +283,6 @@ export default {
 }
 .b-top {
   border-top: 1px solid grey;
-}
-.rounded-stat:last-child {
-  border-right: 3px double grey;
 }
 .export-button {
   background-color: mediumseagreen;

@@ -78,12 +78,9 @@ export default {
     },
     editDesign () {
       this.$store.commit('setEditing', this.index)
-      // console.log(this.design)
       if (!this.design.design.partList) {
-        console.log(this.$store.getters.currentPartListName)
         this.design.design.partList = this.$store.getters.currentPartListName
       }
-      // console.log(this.design)
       this.$store.dispatch('restoreDesign', { design: this.design.design })
       this.$router.push('create')
     },
