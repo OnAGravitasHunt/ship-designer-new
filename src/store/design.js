@@ -177,11 +177,14 @@ export default {
       commit('setClassName', '')
       dispatch('setPlatform', { name: rootGetters.currentPlatforms[0].name, overwrite: true })
     },
-    restoreDesign ({ dispatch, commit }, { design }) {
-      dispatch('setPlatform', { name: design.platform, overwrite: true }).then(() => {
-        commit('setSlots', design.slots)
-        commit('setClassName', design.className)
-        commit('setDefaultTier', design.defaultTier)
+    restoreDesign ({ dispatch, commit, state }, { design }) {
+      return new Promise((resolve, reject) => {
+        dispatch('setPlatform', { name: design.platform, overwrite: true }).then(() => {
+          commit('setSlots', design.slots)
+          commit('setClassName', design.className)
+          commit('setDefaultTier', design.defaultTier)
+          resolve()
+        })
       })
     }
   }

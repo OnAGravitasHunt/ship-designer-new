@@ -18,6 +18,7 @@
         <div class="header-cell">Cost</div>
         <div class="header-cell"></div>
         <div class="header-cell"></div>
+        <div class="header-cell"></div>
       </div>
       <div class="table-body">
         <div class="no-designs" v-if="!designs.length">
@@ -108,7 +109,7 @@ export default {
 .list-row {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 6fr 4fr 4fr minmax(220px, 6fr) 4fr 4fr 60px 70px;
+  grid-template-columns: 6fr 4fr 4fr minmax(220px, 6fr) 4fr 4fr 60px 70px 70px;
   grid-template-rows: 33px;
   min-width: 900px;
 }
