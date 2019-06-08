@@ -40,10 +40,10 @@
     </div>
     <div></div>
     <div class="center-align">
-      Parts:
-      <select v-model="selectedPartListIndex">
+      Parts: {{$store.state.design.partList}}
+      <!-- <select v-model="selectedPartListIndex">
         <option v-for="list of partLists" :key="list.index" :value="list.index">{{list.name}}</option>
-      </select>
+      </select> -->
     </div>
   </div>
 </template>
