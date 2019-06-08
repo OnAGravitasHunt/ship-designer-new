@@ -39,8 +39,9 @@ export default {
 .home {
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 160px;
-  grid-template-rows: 100px 1fr;
+  grid-template-columns: 1fr 60px;
+  grid-template-rows: auto 1fr;
+  overflow-y: auto;
 }
 .logo {
   line-height: 100px;
@@ -49,11 +50,25 @@ export default {
 }
 .head {
   /* grid-column: 1/3; */
-  padding-left: 160px;
+  min-height: 100px;
+  padding-left: 60px;
   border-bottom: 1px solid black;
   line-height: 100px;
   font-size: 30pt;
   font-weight: bold;
+}
+.version {
+  border-bottom: 1px solid black;
+  text-align: right;
+  padding: 2px 5px 0 0;
+}
+.main {
+  grid-column: 1/3;
+  /* overflow-y: auto; */
+  padding: 20px 0;
+}
+.nav {
+  border-right: 1px solid black;
 }
 @media only screen and (max-width:860px) {
   .head {
@@ -66,18 +81,5 @@ export default {
     /* font-size: 20pt; */
     line-height: 50px;
   }
-}
-.version {
-  border-bottom: 1px solid black;
-  text-align: right;
-  padding: 2px 5px 0 0;
-}
-.main {
-  grid-column: 1/3;
-  overflow-y: auto;
-  padding: 20px 0;
-}
-.nav {
-  border-right: 1px solid black;
 }
 </style>

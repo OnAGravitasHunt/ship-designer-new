@@ -9,16 +9,14 @@
       <div class="add-new-design" @click="addNewDesign">Add new</div>
     </div>
     <div class="design-list-table">
-      <div class="list-row header-row">
-        <div class="header-cell">Design Name</div>
-        <div class="header-cell">Platform</div>
-        <div class="header-cell">Part List</div>
-        <div class="header-cell">Stats</div>
-        <div class="header-cell">Crew</div>
-        <div class="header-cell">Cost</div>
-        <div class="header-cell"></div>
-        <div class="header-cell"></div>
-        <div class="header-cell"></div>
+      <div class="list-row" :style="gridColumns">
+        <div
+          v-for="col of columns"
+          :key="col.key"
+          class="header-cell"
+        >
+          <template v-if="!col.isButton">{{col.title}}</template>
+        </div>
       </div>
       <div class="table-body">
         <div class="no-designs" v-if="!designs.length">
@@ -38,9 +36,21 @@ export default {
   components: {
     ShipDesign
   },
+  data () {
+    return {
+      headings: ['Design Name', 'Platform', 'Part List', 'Stats', 'Crew', 'Cost', '', '', '']
+    }
+  },
   computed: {
     designs () {
       return this.$store.state.savedDesigns
+    },
+    columns () {
+      return this.$store.state.ui.designList.columns
+    },
+    // styles
+    gridColumns () {
+      return this.$store.getters.getDesignListColumns
     }
   },
   methods: {
@@ -73,7 +83,6 @@ export default {
 <style scoped>
 .design-list {
   text-align: left;
-  /* width: 90%; */
   margin: 0 50px;
 }
 .title-bar {
@@ -109,7 +118,6 @@ export default {
 .list-row {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 6fr 4fr 4fr minmax(220px, 6fr) 4fr 4fr 60px 70px 70px;
   grid-template-rows: 33px;
   min-width: 900px;
 }

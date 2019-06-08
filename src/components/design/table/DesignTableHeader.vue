@@ -36,7 +36,7 @@ export default {
       return Math.ceil(this.$store.getters.weights.design / 10 + this.$store.getters.totalStats.br)
     },
     gridColumns () {
-      let g = { ...this.$store.getters.getGridTemplateColumns }
+      let g = { ...this.$store.getters.getDesignTableColumns }
       g.gridTemplateColumns += ' 4px'
       return g
     },

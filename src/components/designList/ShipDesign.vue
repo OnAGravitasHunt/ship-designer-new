@@ -1,19 +1,18 @@
 <template>
-  <div class="ship-design">
-    <div class="table-cell">{{name}}</div>
-    <div class="table-cell">{{platformType}}</div>
-    <div class="table-cell">{{partList}}</div>
-    <div class="table-cell">{{shipStats}}</div>
-    <div class="table-cell">{{crewing}}</div>
-    <div class="table-cell">{{resources}}</div>
-    <div class="table-cell">
-      <div class="button edit-button" @click="editDesign">Edit</div>
-    </div>
-    <div class="table-cell">
-      <div class="button edit-button" @click="duplicateDesign">Duplicate</div>
-    </div>
-    <div class="table-cell">
-      <div class="button delete-button" @click="deleteDesign">Delete</div>
+  <div class="ship-design" :style="gridColumns">
+    <div
+      v-for="col of columns"
+      :key="col.key"
+      class="table-cell"
+    >
+      <template v-if="!col.isButton">{{columnValues[col.key] || ''}}</template>
+      <template v-else>
+        <div
+          class="button"
+          :class="col.classes || []"
+          @click="handleClick(col.method)"
+        >{{col.title}}</div>
+      </template>
     </div>
   </div>
 </template>
@@ -31,32 +30,51 @@ export default {
     }
   },
   computed: {
+    columns () {
+      return this.$store.state.ui.designList.columns
+    },
+    columnValues () {
+      return {
+        name: this.name,
+        platformType: this.platformType,
+        stats: this.stats,
+        crewing: this.crewing,
+        resources: this.resources
+      }
+    },
     name () {
       return this.design.name
     },
     platformType () {
       return ['Frigate', 'Cruiser', 'Explorer'][this.design.design.platformGrade - 1]
     },
-    stats () {
+    shipStats () {
       return this.design.stats
     },
-    shipStats () {
+    stats () {
       return ['C', 'S', 'H', 'L', 'P', 'E', 'R']
-        .map(s => `${s}${this.stats[s.toLowerCase()]}`)
+        .map(s => `${s}${this.shipStats[s.toLowerCase()]}`)
         .join(' ')
     },
     crewing () {
       return ['O', 'EN', 'T']
-        .map(c => `${c}${this.stats[c.toLowerCase()]}`)
+        .map(c => `${c}${this.shipStats[c.toLowerCase()]}`)
         .join(' ')
     },
     resources () {
       return ['BR', 'SR']
-        .map(r => `${this.stats[r.toLowerCase()]}${r}`)
+        .map(r => `${this.shipStats[r.toLowerCase()]}${r}`)
         .join(' ')
+    },
+    // styles
+    gridColumns () {
+      return this.$store.getters.getDesignListColumns
     }
   },
   methods: {
+    handleClick (method) {
+      this[method]()
+    },
     editDesign () {
       this.$store.commit('setEditing', this.index)
       this.$store.dispatch('restoreDesign', { design: this.design.design })
@@ -94,7 +112,6 @@ export default {
 .ship-design {
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 6fr 4fr 4fr minmax(220px, 6fr) 4fr 4fr 60px 70px 70px;
   grid-template-rows: 33px;
   min-width: 900px;
 }
@@ -103,6 +120,7 @@ export default {
   border-bottom: 1px solid black;
   white-space: nowrap;
   overflow: scroll;
+  padding: 0 1px;
   font-size: 10pt;
 }
 .table-cell::-webkit-scrollbar {
@@ -121,9 +139,6 @@ export default {
   line-height: 28px;
   margin: 2px;
   cursor: pointer;
-  background-color: lightgrey;
-}
-.edit-button {
   background-color: lightgrey;
 }
 .delete-button {

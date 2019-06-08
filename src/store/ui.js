@@ -24,12 +24,30 @@ export default {
         { key: 'slot', title: 'Module Slot', width: '90px', headingComp: 'HeaderCell', tableComp: 'TableCell' }
       ],
       col2Width: 340
+    },
+    designList: {
+      columns: [
+        { key: 'name', title: 'Design Name', width: '6fr' },
+        { key: 'platformType', title: 'Platform', width: '4fr' },
+        { key: 'partList', title: 'Part List', width: '4fr' },
+        { key: 'stats', title: 'Stats', width: 'minmax(220px, 6fr)' },
+        { key: 'crewing', title: 'Crew', width: '4fr' },
+        { key: 'resources', title: 'Cost', width: '4fr' },
+        { key: 'edit', title: 'Edit', width: '60px', isButton: true, method: 'editDesign' },
+        { key: 'duplicate', title: 'Duplicate', width: '70px', isButton: true, method: 'duplicateDesign' },
+        { key: 'delete', title: 'Delete', width: '70px', isButton: true, method: 'deleteDesign', classes: ['delete-button'] }
+      ]
     }
   },
   getters: {
-    getGridTemplateColumns (state) {
+    getDesignTableColumns (state) {
       return {
         gridTemplateColumns: state.designTable.columns.map(w => w.width).join(' ')
+      }
+    },
+    getDesignListColumns (state) {
+      return {
+        gridTemplateColumns: state.designList.columns.map(w => w.width).join(' ')
       }
     }
   },
