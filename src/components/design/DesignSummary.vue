@@ -133,7 +133,7 @@ export default {
       })
     },
     partLists () {
-      return this.$store.state.library.partListNames.map((n, i) => ({ name: n, index: i}))
+      return this.$store.state.library.partListNames.map((n, i) => ({ name: n, index: i }))
     },
     selectedPartListIndex: {
       get () {
