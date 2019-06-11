@@ -60,7 +60,7 @@ export default {
       let platform = rootGetters.currentPlatforms.filter(p => p.name === state.platform)[0]
       let filled = Math.max(0, state.slots.filter(s => s.module).length - 5)
       return {
-        max: Math.round(platform.overheadWeight + platform.maxSlots * platform.slotWeight),
+        max: Math.round(platform.overheadWeight + (platform.maxSlots, state.slots.length - 5) * platform.slotWeight),
         design: Math.round(
           platform.overheadWeight + filled * platform.slotWeight
         )
