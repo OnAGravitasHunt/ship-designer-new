@@ -15,7 +15,7 @@
       <div class="button export-button" @click="exportBBCode">Export BBCode</div>
     </div>
     <div class="center-align">
-      <div class="button close-button" @click="exit">&times;</div>
+      <div class="button close-button" @click="exitWithoutSave">Discard</div>
     </div>
     <!-- ROW 2 -->
     <div class="left-align b-top b-right capabilities col2">{{capabilities}}</div>
@@ -120,7 +120,7 @@ export default {
     },
     gridStyle () {
       return {
-        gridTemplateColumns: `70px ${this.col2Width - 109}px 110px 90px repeat(7,40px) minmax(20px, 1fr) 150px 50px 20px`
+        gridTemplateColumns: `70px ${this.col2Width - 109}px 110px 90px repeat(7,40px) minmax(20px, 1fr) 150px 80px 20px`
       }
     },
     // save and export
@@ -191,6 +191,11 @@ export default {
         alert('Please enter a name for the class!')
       })
     },
+    exitWithoutSave () {
+      if (confirm('Are you sure you want to exit without saving?')) {
+        this.exit()
+      }
+    },
     exit () {
       this.$router.push('/')
       this.$store.dispatch('clearDesign')
@@ -227,6 +232,8 @@ export default {
   line-height: 30px;
   overflow-x: auto;
   font-size: 11pt;
+  padding-bottom: 1px;
+  margin-bottom: -1px;
 }
 .design-summary::-webkit-scrollbar {
   display: none;
@@ -307,8 +314,7 @@ export default {
 }
 .close-button {
   background-color: rgba(255, 0, 0, 0.5);
-  width: 26px;
-  font-size: 22pt;
+  width: 70px;
 }
 .close-button:hover {
   background-color: rgba(255, 0, 0, 0.9);
