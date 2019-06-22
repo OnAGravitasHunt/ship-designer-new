@@ -117,7 +117,7 @@ export default {
 .list-name {
   height: 18px;
   margin: auto 0;
-  font-family: 'Avenir';
+  font-family: inherit;
   outline: none;
 }
 .span-cols {

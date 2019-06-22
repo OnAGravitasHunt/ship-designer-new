@@ -46,7 +46,7 @@ export default {
   box-sizing: border-box;
   outline: none;
   background-color: transparent;
-  font-family: 'Avenir';
+  font-family: inherit;
   width: 100%;
   font-size: 9pt;
   height: 30px;
