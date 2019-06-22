@@ -90,7 +90,7 @@ export default {
       state.className = name
     },
     setSlots (state, slots) {
-      Vue.set(state, 'slots', slots)
+      Vue.set(state, 'slots', JSON.parse(JSON.stringify(slots)))
     },
     setSlot (state, { index, properties }) {
       Vue.set(state.slots, index, properties)

@@ -1,5 +1,6 @@
 <template>
   <div class="design-summary" :style="[gridStyle]">
+    <!-- ROW 1 -->
     <div class="center-align b-top back-button" @click="saveAndExit">&lang;</div>
     <div class="left-align b-top b-right">
       <input type="text" class="class-name-input" v-model="className">
@@ -11,9 +12,12 @@
     <div class="center-align b-top double-right build-time">{{buildTime}} Years</div>
     <div></div>
     <div class="center-align">
-      <div class="export-button" @click="exportBBCode">Export BBCode</div>
+      <div class="button export-button" @click="exportBBCode">Export BBCode</div>
     </div>
-    <!--  -->
+    <div class="center-align">
+      <div class="button close-button" @click="exit">&times;</div>
+    </div>
+    <!-- ROW 2 -->
     <div class="left-align b-top b-right capabilities col2">{{capabilities}}</div>
     <div class="right-align b-top">Design Weight</div>
     <div class="right-align b-top double-right">{{weights.design}}kt</div>
@@ -24,10 +28,10 @@
     <div class="center-align double-right b-top crew-stat">T{{finalStats.t}}</div>
     <div></div>
     <div class="center-align">
-      <div class="export-button" @click="downloadJSON">Download As File</div>
+      <div class="button export-button" @click="downloadJSON">Download As File</div>
       <a ref="downloadShipJSON" style="display:none"></a>
     </div>
-    <!--  -->
+    <!-- ROW 3 -->
     <div class="right-align max-weight col3">Max Weight</div>
     <div class="right-align double-right">{{weights.max}}kt</div>
     <div
@@ -116,7 +120,7 @@ export default {
     },
     gridStyle () {
       return {
-        gridTemplateColumns: `70px ${this.col2Width - 109}px 110px 90px repeat(7,40px) minmax(20px, 1fr) 150px 20px`
+        gridTemplateColumns: `70px ${this.col2Width - 109}px 110px 90px repeat(7,40px) minmax(20px, 1fr) 150px 50px 20px`
       }
     },
     // save and export
@@ -182,12 +186,15 @@ export default {
     },
     saveAndExit () {
       this.saveDesign().then(() => {
-        this.$router.push('/')
-        this.$store.dispatch('clearDesign')
-        this.$store.commit('clearEditing')
+        this.exit()
       }).catch((e) => {
         alert('Please enter a name for the class!')
       })
+    },
+    exit () {
+      this.$router.push('/')
+      this.$store.dispatch('clearDesign')
+      this.$store.commit('clearEditing')
     },
     exportBBCode () {
       navigator.clipboard.writeText(this.bbcodeText).then(() => {
@@ -284,13 +291,26 @@ export default {
 .b-top {
   border-top: 1px solid grey;
 }
-.export-button {
-  background-color: mediumseagreen;
+.button {
   border-radius: 14px;
   height: 26px;
   line-height: 26px;
   margin: 2px auto;
-  width: 150px;
   cursor: pointer;
+}
+.export-button {
+  background-color: rgba(60, 180, 120, 0.5);
+  width: 150px;
+}
+.export-button:hover {
+  background-color: rgba(60, 180 ,120 ,0.9);
+}
+.close-button {
+  background-color: rgba(255, 0, 0, 0.5);
+  width: 26px;
+  font-size: 22pt;
+}
+.close-button:hover {
+  background-color: rgba(255, 0, 0, 0.9);
 }
 </style>
